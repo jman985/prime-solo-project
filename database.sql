@@ -126,7 +126,7 @@ VALUES
 (  'MX500','MITXPC' , 'images/MITXPC-case.jpg', 'Mini-ITX' , 'black', 'steel', 2.7),
 (  'Node 202','Fractal Design' , 'images/Node202.jpg', 'Mini-ITX' , 'black', 'steel, plastic', 10.2 ),
 (  'MasterBox NR200', 'CoolerMaster' , 'images/NR200-case.jpg', 'Mini-ITX' , 'black', 'steel, plastic', 18.25 ),
-(  'Core V1', 'Thermaltake' , 'images/ThermaltakeV1.jpg.jpg', 'Mini-ITX' , 'black', 'steel, plastic', 22.5 );
+(  'Core V1', 'Thermaltake' , 'images/ThermaltakeV1.jpg', 'Mini-ITX' , 'black', 'steel, plastic', 22.5 );
 
 
 CREATE TABLE "psu" (
@@ -145,7 +145,8 @@ VALUES
 (  'picoPSU-160-XT', 'Mini-Box', 'images/picoPSU.jpg' , 'picoPSU', 160,'N/A'),
 (  'SF600', 'Corsair', 'images/SF600-PSU.jpg' , 'SFX', 600, '80+ Platinum'),
 (  'SF750', 'Corsair', 'images/SF750-PSU.jpg' , 'SFX', 750, '80+ Platinum'),
-(  'SuperNOVA 550 GM', 'EVGA', 'images/EVGA-550GM-PSU.jpg.jpg' , 'SFX', 550, '80+ Gold');
+(  'SuperNOVA 550 GM', 'EVGA', 'images/EVGA-550GM-PSU.jpg' , 'SFX', 550, '80+ Gold'),
+(  'RM650', 'Corsair', 'images/RM500-PSU.jpg' , 'ATX', 650, '80+ Gold');
 
 
 CREATE TABLE "build" (
@@ -167,3 +168,17 @@ CREATE TABLE "case_psu" (
     "case_id" integer REFERENCES "case",
     "psu_id" integer REFERENCES "psu"
 );
+
+INSERT INTO "case_psu" ("case_id", "psu_id")
+VALUES
+(1,1),
+(2,2),
+(2,3),
+(2,4),
+(3,2),
+(3,3),
+(3,4),
+(4,2),
+(4,3),
+(4,4),
+(4,5);
