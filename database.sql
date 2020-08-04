@@ -9,20 +9,6 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
-CREATE TABLE "build" (
-    "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (100) NOT NULL,
-    "user_id" INT REFERENCES "user"("id"),
-    "cpu_id" INT REFERENCES "cpu"("id"),
-    "mobo_id" INT REFERENCES "motherboard"("id"),
-    "storage_id" INT REFERENCES "storage"("id"),
-    "memory_id" INT REFERENCES "memory"("id"),
-    "cooler_id" INT REFERENCES "cooler"("id"),
-    "psu_id" INT REFERENCES "psu"("id"),
-    "case_id" INT REFERENCES "case"("id"),
-    "gpu_id" INT REFERENCES "gpu"("id"),
-);
-
 
 CREATE TABLE "cpu" (
     "id" SERIAL PRIMARY KEY,
@@ -31,7 +17,7 @@ CREATE TABLE "cpu" (
     "image" VARCHAR(2083),
     "cores" INTEGER NOT NULL,
     "max_speed" DECIMAL,
-    "unlocked" VARCHAR (50) NOT NULL,
+    "unlocked" VARCHAR (50) NOT NULL
 );
 
 INSERT INTO "cpu" ("name", "brand", "image", "cores", "max_speed", "unlocked")
@@ -41,13 +27,12 @@ VALUES
 ('Core i7-9700','Intel','images/i5-9700', 8 , 4.7 , 'No' ),
 ('Core i7-9700K','Intel','images/i5-9700K', 8 , 4.9 , 'Yes' );
 
-
 CREATE TABLE "cooler" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (100) NOT NULL,
     "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
-    "height" DECIMAL,
+    "height" DECIMAL
 );
 
 INSERT INTO "cooler" ("name", "brand", "image", "height")
@@ -63,8 +48,8 @@ CREATE TABLE "motherboard" (
     "name" VARCHAR (100) NOT NULL,
     "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
-    "form_factor" VARCHAR (50) NOT NULL,
-)
+    "form_factor" VARCHAR (50) NOT NULL
+);
 
 INSERT INTO "motherboard" ("name", "brand", "image", "form_factor")
 VALUES 
@@ -98,7 +83,7 @@ CREATE TABLE "gpu" (
     "image" VARCHAR(2083),
     "max_speed" DECIMAL,
     "memory" INTEGER NOT NULL,
-    "length" DECIMAL,
+    "length" DECIMAL
 );
 
 INSERT INTO "gpu" ("name", "brand", "image", "max_speed", "memory", "length")
@@ -115,7 +100,7 @@ CREATE TABLE "storage" (
     "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
     "capacity" INTEGER NOT NULL,
-    "form_factor" VARCHAR (50) NOT NULL,
+    "form_factor" VARCHAR (50) NOT NULL
 );
 
 INSERT INTO "storage" ("name", "brand", "image", "capacity", "form_factor")
@@ -133,7 +118,7 @@ CREATE TABLE "case" (
     "form_factor" VARCHAR (50) NOT NULL,
     "color" VARCHAR (50) NOT NULL,
     "material" VARCHAR (50) NOT NULL,
-    "volume" DECIMAL,
+    "volume" DECIMAL
 );
 
 INSERT INTO "case" ("name", "brand", "image", "form_factor", "color", "material", "volume")
@@ -151,7 +136,7 @@ CREATE TABLE "psu" (
     "image" VARCHAR(2083),
     "form_factor" VARCHAR (50) NOT NULL,
     "wattage" INTEGER NOT NULL,
-    "efficiency_rating" VARCHAR (50) NOT NULL,
+    "efficiency_rating" VARCHAR (50) NOT NULL
 );
 
 
@@ -163,9 +148,22 @@ VALUES
 (  'SuperNOVA 550 GM', 'EVGA', 'images/EVGA-550GM-PSU.jpg.jpg' , 'SFX', 550, '80+ Gold');
 
 
+CREATE TABLE "build" (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR (100) NOT NULL,
+    "user_id" INT REFERENCES "user"("id"),
+    "cpu_id" INT REFERENCES "cpu"("id"),
+    "mobo_id" INT REFERENCES "motherboard"("id"),
+    "storage_id" INT REFERENCES "storage"("id"),
+    "memory_id" INT REFERENCES "memory"("id"),
+    "cooler_id" INT REFERENCES "cooler"("id"),
+    "psu_id" INT REFERENCES "psu"("id"),
+    "case_id" INT REFERENCES "case"("id"),
+    "gpu_id" INT REFERENCES "gpu"("id")
+);
+
 CREATE TABLE "case_psu" (
     "id" SERIAL PRIMARY KEY,
     "case_id" integer REFERENCES "case",
-    "psu_id" integer REFERENCES "psu",
+    "psu_id" integer REFERENCES "psu"
 );
-
