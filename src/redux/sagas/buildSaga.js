@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
+//GET user builds from the database
 function* fetchBuild(action){
   try{
     const config = {

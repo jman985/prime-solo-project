@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+// import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
+import { Box, Grid, Slide, Paper, Typography} from '@material-ui/core';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+import UserBuildsItem from '../UserBuildsItem/UserBuildsItem'
+
 
 
 
@@ -17,20 +17,26 @@ class UserBuildsPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <h1>Your Hackintosh Builds</h1>
-        <ul>
-          {this.props.build.map(build => (
-            <li key = {build.id}>
-              {build.name}
-              <br></br>
-              <img src={build.case_image} alt ={build.case_name}/>
-              
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
+          <br></br>
+          <br></br>
+
+        <Grid 
+      container
+      spacing={10}
+      direction="row"
+      justify="flex-start"
+      alignItems="flex-start"
+    >
+
+          {this.props.build.map(x =>
+            <UserBuildsItem key={x.id} thisBuild={x}/>
+          )}
+    </Grid>
+    </>
+    );
+
   }
 }
 

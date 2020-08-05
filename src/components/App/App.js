@@ -16,7 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserHomePage from '../UserHomePage/UserHomePage';
 import UserBuildsPage from '../UserBuildsPage/UserBuildsPage';
-
+import UserBuildsItem from '../UserBuildsItem/UserBuildsItem';
 import './App.css';
 import BuilderList from '../BuilderList/BuilderList';
 

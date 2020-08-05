@@ -3,9 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-/**
- * GET route template
- */
+
+//GET route for logged-in USER builds
+
 router.get('/', (req, res) => {
     console.log('req.user:', rejectUnauthenticated, req.user);
     pool.query(`SELECT "build"."id", "build"."name", "build"."user_id",
