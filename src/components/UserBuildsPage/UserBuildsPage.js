@@ -23,9 +23,13 @@ class UserBuildsPage extends React.Component {
           {this.props.build.map(build => (
             <li key = {build.id}>
               {build.name}
+              <br></br>
+              <img src={build.case_image} alt ={build.case_name}/>
+              
             </li>
           ))}
-        </ul>      </div>
+        </ul>
+      </div>
     )
   }
 }
