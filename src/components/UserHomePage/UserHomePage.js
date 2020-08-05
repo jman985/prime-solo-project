@@ -22,11 +22,14 @@ class UserPage extends Component {
 
   viewBuildsHandleClick = () => {
 
-    this.props.history.push('/info');
+    this.props.history.push('/builds');
 
   }
+  newBuildHandleClick= () => {
 
+    this.props.history.push('/builder');
 
+  }
 
   // this component doesn't do much to start, just renders some user info to the DOM
   render() {
@@ -34,7 +37,7 @@ class UserPage extends Component {
       <div>
         <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
         <p>Your ID is: {this.props.user.id}</p>
-        <Button variant="contained" color="primary" >Start A New Build</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <Button variant="contained" color="primary" onClick = {this.newBuildHandleClick}>Start A New Build</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
         <Button variant="contained" color="primary" onClick = {this.viewBuildsHandleClick}>View Your Builds</Button>
         <br></br>

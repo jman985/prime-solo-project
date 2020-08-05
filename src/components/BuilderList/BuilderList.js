@@ -9,12 +9,14 @@ import { connect } from 'react-redux';
 
 
 
-class InfoPage extends React.Component {
+class BuilderList extends React.Component {
 
+
+  
   render() {
     return (
       <div>
-        <p>Hackintosh Builds</p>
+        <h1>Build Your Hackintosh</h1>
       </div>
     )
   }
@@ -25,4 +27,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(InfoPage);
+export default connect(mapStateToProps)(BuilderList);
