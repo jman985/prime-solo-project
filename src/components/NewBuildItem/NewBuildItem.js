@@ -78,10 +78,10 @@ class NewBuildItem extends Component {
 
         <MDBCard
           className='card-image'
-        //   style={{    
-        //     backgroundImage: "url {this.props.thisComponent.image}"
-
-        //   }}
+          style={{
+            backgroundImage: 'url(' + this.props.thisComponent.image + ')'
+              
+          }}
         >
             
           <div className='text-white text-center d-flex align-items-center rgba-blue-strong py-4 px-2'>
