@@ -70,7 +70,7 @@ class NewBuildItem extends Component {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;
               <MDBBtn className= 'text-center' color='deep-orange'>
-                <MDBIcon icon='plus' /> Add
+                <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
               </MDBBtn>
             </div>
           </div>
@@ -84,14 +84,14 @@ class NewBuildItem extends Component {
           }}
         >
             
-          <div className='text-white text-center d-flex align-items-center rgba-blue-strong py-4 px-2'>
+          <div className='text-white text-center d-flex align-items-center rgba-blue-strong py-3 px-2'>
             <div>
               <MDBCardTitle tag='h3' className='pt-4'>
                 <strong>{this.props.thisComponent.name}</strong>
               </MDBCardTitle>
               <p>{this.props.thisComponent.description}</p>
               <MDBBtn className= 'text-center' color='deep-orange'>
-                <MDBIcon icon='plus' /> Add
+                <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
               </MDBBtn>
               <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick}>
                 Cancel

@@ -6,7 +6,7 @@ function* deleteBuild(action) {
     // yield console.log('delete item saga:', action.payload)
   try {
     yield axios.delete('/api/build/' + action.payload);
-    yield put({type: 'FETCH_BUILD'})
+    yield put({type: 'FETCH_ALLBUILDS'})
   } catch (error) {
     console.log('error deleting item:', error);
   }

@@ -6,8 +6,6 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 
 
-
-
 //GET route to populate Builder Page with component choices
 
 router.get('/', rejectUnauthenticated, (req, res) => {

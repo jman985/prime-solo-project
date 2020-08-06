@@ -12,7 +12,7 @@ import UserBuildsItem from '../UserBuildsItem/UserBuildsItem'
 class UserBuildsPage extends Component {
 
   componentDidMount() {
-    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.user.id});
+    this.props.dispatch({type: 'FETCH_ALLBUILDS', payload: this.props.user.id});
   }
 
   
@@ -32,7 +32,7 @@ class UserBuildsPage extends Component {
       alignItems="flex-start"
     >
 
-          {this.props.userBuild.map(x =>
+          {this.props.userBuilds.map(x =>
             <UserBuildsItem key={x.id} thisBuild={x}/>
           )}
     </Grid>
@@ -43,7 +43,7 @@ class UserBuildsPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  userBuild: state.userBuild,
+  userBuilds: state.userBuilds,
   user: state.user,
 });
 
