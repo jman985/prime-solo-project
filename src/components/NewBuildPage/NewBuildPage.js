@@ -25,15 +25,51 @@ import NewBuildItem from '../NewBuildItem/NewBuildItem'
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-
+const getCookie = (cookieName) => {
+  // Get name followed by anything except a semicolon
+  const cookieString = RegExp(''+cookieName+'[^;]+').exec(document.cookie);
+  // Return everything after the equal sign, or an empty string if the cookie name not found
+  return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
+}
 
 
 class NewBuildPage extends Component {
 
+  state = {
+    buildname: getCookie('buildname'||''),
+    buildnameIsEditable: false,
+  }
+
   componentDidMount() {
     this.props.dispatch({type: 'FETCH_NEWBUILD', payload: this.props.user.id});
   }
-  
+
+  editUsername = () => {
+
+    this.setState({
+      buildnameIsEditable: true,
+    });
+  }
+
+  onChange= (event) => {
+    event.preventDefault();
+
+    const buildname = event.target.value;
+
+    document.cookie = `buildname=${buildname}`
+
+    this.setState({
+      buildname: buildname,
+    });
+  }
+
+  saveUsername = () => {
+
+    
+    this.setState({
+      buildnameIsEditable: false,
+    });
+  }
 
   render() {
     return (
@@ -42,11 +78,21 @@ class NewBuildPage extends Component {
         <h1><strong>Build Your Hackintosh</strong></h1>
       </div>
       <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
+              
               <h2>{this.props.userBuild.name}</h2>
+              <p>
+                Build Name:{this.state.buildnameIsEditable ?
+              <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<p>{this.state.buildname}</p>}
+           
+            {this.state.buildnameIsEditable ?
+              <button onClick={this.saveUsername}>Save Build Name</button> :
+              <button onClick={this.editUsername}>Edit Build Name</button>
+            }
+          </p>
+          <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
 <div>
    <Grid 
    container
