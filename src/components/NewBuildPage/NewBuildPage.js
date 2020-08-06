@@ -46,7 +46,7 @@ class NewBuildPage extends Component {
               <br></br>
               <br></br>
               <br></br>
-              
+              <h2>{this.props.userBuild.name}</h2>
 <div>
    <Grid 
    container
@@ -69,6 +69,7 @@ class NewBuildPage extends Component {
 }
 
 const mapStateToProps = state => ({
+  userBuild: state.userBuild,
 newBuild: state.newBuild,
 user: state.user,
 });

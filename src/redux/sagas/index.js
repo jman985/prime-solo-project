@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import getUserBuildSaga from './getUserBuildSaga';
 import deleteUserBuildSaga from './deleteUserBuildSaga';
 import getNewBuildSaga from './getNewBuildSaga';
+import addBuildSaga from './addBuildSaga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -20,5 +21,6 @@ export default function* rootSaga() {
     getUserBuildSaga(),
     deleteUserBuildSaga(),
     getNewBuildSaga(),
+    addBuildSaga(),
   ]);
 }

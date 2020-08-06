@@ -33,7 +33,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
  * POST route template
  */
 router.post('/', rejectUnauthenticated, (req, res) => {
-
+    console.log('in post with:', req.user.id);
+    const queryText = `INSERT INTO build (name, user_id, cpu_id, mobo_id, storage_id, memory_id, cooler_id, psu_id, case_id, gpu_id)
+    VALUES ('Untitled', $1, 1, 1, 1, 1, 1, 1, 7, 1);`;
+    pool.query(queryText, [req.user.id])
+    .then(response => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('error adding item', error);
+        res.sendStatus(500);
+    })
 });
 
 

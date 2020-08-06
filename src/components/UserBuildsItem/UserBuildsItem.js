@@ -26,7 +26,7 @@ class UserBuildsItem extends Component {
   constructor() {
     super();
       this.state = {
-      isFlipped: false
+      isFlipped: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -42,6 +42,16 @@ class UserBuildsItem extends Component {
     this.props.dispatch({type: 'REMOVE_BUILD', payload: id})
   }
 
+  checkImage = () =>{
+
+    if(this.props.thisBuild.case_image){
+      return 
+    }
+    else{
+      return 'images/apple_bite.png';
+    }
+  }
+
   render(){
   return (
     <>
@@ -53,7 +63,7 @@ class UserBuildsItem extends Component {
         <CardActionArea>
           <CardMedia  component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
             aria-label="Show more"
-            alt={this.props.thisBuild.case_name}
+            alt={this.props.thisBuild.name}
             src={this.props.thisBuild.case_image}
             title={this.props.thisBuild.name}
             paragraph= {this.props.thisBuild.name}
@@ -76,7 +86,7 @@ class UserBuildsItem extends Component {
         <CardActionArea>
           <CardMedia  component="img" onClick={this.handleClick}
             aria-label="Show more"
-            alt={this.props.thisBuild.case_name}
+            alt={this.props.thisBuild.name}
             src={this.props.thisBuild.case_image}
             title={this.props.thisBuild.name}
           />
@@ -84,11 +94,6 @@ class UserBuildsItem extends Component {
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography paragraph>{this.props.thisBuild.name}</Typography>
-              <Link color="inherit" >
-                <Button variant="contained" color="primary" size="small" color="primary">
-                Select Movie
-                </Button>
-              </Link>
             </CardContent>
           </Collapse>
           </Card>
