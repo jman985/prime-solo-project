@@ -36,6 +36,12 @@ class UserBuildsItem extends Component {
     this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
   }
 
+  removeBuild = (event, id) => {
+    event.preventDefault();
+    console.log('in remove item:', id);
+    this.props.dispatch({type: 'REMOVE_BUILD', payload: id})
+  }
+
   render(){
   return (
     <>
@@ -54,11 +60,13 @@ class UserBuildsItem extends Component {
           />
         </CardActionArea>
             <CardContent>
-              <Typography paragraph>{this.props.thisBuild.name}</Typography>
+              <Typography paragraph></Typography>
                 <Button variant="contained" color="primary" size="small" color="primary">
                 Edit Build
+                </Button>&nbsp;
+                <Button variant="contained" color="secondary" size="small" onClick={ (event) => this.removeBuild(event, this.props.thisBuild.id) }>
+                Delete Build
                 </Button>
-            
             </CardContent>
           </Card>
 
@@ -92,4 +100,9 @@ class UserBuildsItem extends Component {
 }
 }
 
-export default UserBuildsItem;
+const mapStateToProps = state => ({
+  build: state.build,
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(UserBuildsItem);

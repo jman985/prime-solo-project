@@ -17,8 +17,9 @@ function* fetchBuild(action){
   }
 }
 
-function* buildSaga() {
+function* getUserBuildSaga() {
   yield takeLatest('FETCH_BUILD', fetchBuild);
 }
   
-export default buildSaga;
+export default getUserBuildSaga;
+
