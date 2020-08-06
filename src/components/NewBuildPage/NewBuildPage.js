@@ -41,7 +41,9 @@ class NewBuildPage extends Component {
   }
 
   componentDidMount() {
+
     this.props.dispatch({type: 'FETCH_NEWBUILD', payload: this.props.user.id});
+
   }
 
   editUsername = () => {
@@ -65,7 +67,6 @@ class NewBuildPage extends Component {
 
   saveUsername = () => {
 
-    
     this.setState({
       buildnameIsEditable: false,
     });
@@ -78,8 +79,6 @@ class NewBuildPage extends Component {
         <h1><strong>Build Your Hackintosh</strong></h1>
       </div>
       <br></br>
-              
-              <h2>{this.props.userBuild.name}</h2>
               <p>
                 Build Name:{this.state.buildnameIsEditable ?
               <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<p>{this.state.buildname}</p>}
@@ -93,6 +92,7 @@ class NewBuildPage extends Component {
               <br></br>
               <br></br>
               <br></br>
+              <p>{JSON.stringify(this.props.user)}</p>
 <div>
    <Grid 
    container
@@ -101,9 +101,13 @@ class NewBuildPage extends Component {
    justify="flex-start"
    alignItems="flex-start"
  >
+   {/* {this.props.newBuild.filter(x => x.id > 1).map( y =>
+         <NewBuildItem key={y.id} thisComponent={y}/>
+       )} */}
+
    <MDBRow>
-       {this.props.newBuild.map(x =>
-         <NewBuildItem key={x.id} thisComponent={x}/>
+       {this.props.newBuild.map( y =>
+         <NewBuildItem key={y.id} thisComponent={y}/>
        )}
        </MDBRow>
  </Grid>
@@ -115,7 +119,7 @@ class NewBuildPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  userBuild: state.userBuild,
+userBuild: state.userBuild,
 newBuild: state.newBuild,
 user: state.user,
 });
