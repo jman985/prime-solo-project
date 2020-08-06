@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
 import { Box, Grid, Slide, Paper, Typography} from '@material-ui/core';
@@ -9,7 +9,7 @@ import UserBuildsItem from '../UserBuildsItem/UserBuildsItem'
 
 
 
-class UserBuildsPage extends React.Component {
+class UserBuildsPage extends Component {
 
   componentDidMount() {
     this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.user.id});
@@ -32,7 +32,7 @@ class UserBuildsPage extends React.Component {
       alignItems="flex-start"
     >
 
-          {this.props.build.map(x =>
+          {this.props.userBuild.map(x =>
             <UserBuildsItem key={x.id} thisBuild={x}/>
           )}
     </Grid>
@@ -43,7 +43,7 @@ class UserBuildsPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  build: state.build,
+  userBuild: state.userBuild,
   user: state.user,
 });
 

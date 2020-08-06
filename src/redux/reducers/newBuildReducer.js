@@ -1,8 +1,8 @@
-const buildReducer = (state = [], action) => {
+const newBuildReducer = (state = [], action) => {
     switch (action.type) {
-      case 'SET_BUILD':
+      case 'SET_NEWBUILD':
         return action.payload;
-      case 'UNSET_BUILD':
+      case 'UNSET_NEWBUILD':
         return [];
       default:
         return state;
@@ -11,4 +11,4 @@ const buildReducer = (state = [], action) => {
   
   // user will be on the redux state at:
   // state.user
-  export default buildReducer;
+  export default newBuildReducer;

@@ -6,7 +6,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 //GET route for logged-in USER builds
 
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', rejectUnauthenticated, req.user);
     pool.query(`SELECT "build"."id", "build"."name", "build"."user_id",
     "case".brand AS "case_brand",
@@ -32,13 +32,13 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
 
 });
 
 
 //DELETE route
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in delete with:', req.params.id);
     const queryText = `DELETE FROM build WHERE id = $1;`;
     pool.query(queryText, [req.params.id])

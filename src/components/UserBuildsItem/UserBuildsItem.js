@@ -101,7 +101,7 @@ class UserBuildsItem extends Component {
 }
 
 const mapStateToProps = state => ({
-  build: state.build,
+  userBuild: state.userBuild,
   user: state.user,
 });
 

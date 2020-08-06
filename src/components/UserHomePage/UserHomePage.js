@@ -18,7 +18,7 @@ import Avatar from '@material-ui/core/Avatar';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
 
-class UserPage extends Component {
+class UserHomePage extends Component {
 
   viewBuildsHandleClick = () => {
 
@@ -56,4 +56,4 @@ const mapStateToProps = (state) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps)(UserHomePage);
