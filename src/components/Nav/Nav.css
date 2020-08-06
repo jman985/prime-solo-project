@@ -7,14 +7,15 @@
 }
 
 .nav {
-  overflow: hidden;
-  background-color: #00acb0;
+  /* overflow: hidden; */
+  /* background-image: url("/images/970-Evo-Plus-1000.jpg"); */
+background-color: blue;
 }
 
 .nav-link {
   float: left;
   color: #f2f2f2;
-  background-color: #00acb0;
+  /* background-color: #00acb0; */
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
@@ -28,7 +29,7 @@
 }
 
 .nav-link:hover {
-  background-color: #008183;
+  background-color: grey;
 }
 
 .nav-right {
