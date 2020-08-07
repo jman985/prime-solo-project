@@ -1,4 +1,4 @@
-const buildReducer = (state = [], action) => {
+const componentReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_COMPONENT':
         return action.payload;
@@ -11,4 +11,4 @@ const buildReducer = (state = [], action) => {
   
   // user will be on the redux state at:
   // state.user
-  export default buildReducer;
+  export default componentReducer;

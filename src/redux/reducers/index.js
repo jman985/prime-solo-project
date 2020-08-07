@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
   newBuild,
   selectBuild,
   build,
-  buildComponent
+  buildComponent,
 });
 
 export default rootReducer;

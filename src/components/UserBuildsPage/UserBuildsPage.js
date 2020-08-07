@@ -25,6 +25,7 @@ class UserBuildsPage extends Component {
         <h1>Your Hackintosh Builds</h1>
           <br></br>
           <br></br>
+          <p>Your ID is: {this.props.user.id}</p>
 
         <Grid 
       container

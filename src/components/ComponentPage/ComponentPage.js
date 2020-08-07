@@ -43,7 +43,7 @@ class ComponentPage extends Component {
 
   componentDidMount() {
 
-    console.log('component page mounted', this.props.buildComponent );
+    console.log('component page mounted')
 
     // document.cookie = `build_id=${build_id}`
 
@@ -82,33 +82,29 @@ class ComponentPage extends Component {
     return (
       <>
       <div>
-        <h1><strong>Component Page</strong></h1>
+        <h1><strong>Select Your Components</strong></h1>
       </div>
       <br></br>
-            
-          {/* <h1>{this.props.build[0].build_name}</h1> */}
-          {/* <br></br>
+          <br></br>
               <br></br>
               <br></br>
-              <br></br> */}
+              <br></br>
               
-{/* <div>
+<div>
    <Grid 
    container
    spacing={10}
    direction="row"
    justify="flex-start"
-   alignItems="flex-start" */}
- {/* > */}
-   {/* {this.props.newBuild.filter(x => x.id > 1).map( y =>
-         <NewBuildItem key={y.id} thisComponent={y}/>
-       )} */}
-{/* 
+   alignItems="flex-start">
+
+
    <MDBRow container spacing = {50}>
-       {this.props.buildComponent.map( y =>
+       {this.props.buildComponent.filter(x => x.id > 8).map( y =>
          <NewBuildItem key={y.id} thisComponent={y}/>
        )}
        </MDBRow>
+
  </Grid>
  </div>
 <br></br>
@@ -117,7 +113,7 @@ class ComponentPage extends Component {
 
  <Button variant="contained" color="primary" >SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <Button variant="contained" color="secondary" >CANCEL</Button> */}
+ <Button variant="contained" color="secondary" >CANCEL</Button>
 
  </>
  
@@ -135,3 +131,6 @@ user: state.user,
 });
 
 export default connect(mapStateToProps)(ComponentPage);
+
+// {this.props.newBuild.filter(x => x.id > 1).map( y =>
+//   <NewBuildItem key={y.id} thisComponent={y}/>
