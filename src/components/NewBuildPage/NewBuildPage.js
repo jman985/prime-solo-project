@@ -35,17 +35,23 @@ const getCookie = (cookieName) => {
 
 class NewBuildPage extends Component {
 
+  state = {
+    buildname: getCookie('buildname'||''),
+    buildnameIsEditable: false,
+    // build_id: getCookie('build_id')
+  }
+
   componentDidMount() {
 
-    console.log('buildpage mounted', this.props.selectBuild, this.props.userBuilds);
+    console.log('buildpage mounted', this.props.selectBuild );
+
+    // document.cookie = `build_id=${build_id}`
+
     this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
 
   }
 
-  state = {
-    buildname: getCookie('buildname'||''),
-    buildnameIsEditable: false,
-  }
+  
 
   editUsername = () => {
 
@@ -80,7 +86,7 @@ class NewBuildPage extends Component {
         <h1><strong>Build Your Hackintosh</strong></h1>
       </div>
       <br></br>
-              <p>
+              {/* <p>
                 Build Name:{this.state.buildnameIsEditable ?
               <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<p>{this.state.buildname}</p>}
            
@@ -88,12 +94,13 @@ class NewBuildPage extends Component {
               <button onClick={this.saveUsername}>Save Build Name</button> :
               <button onClick={this.editUsername}>Edit Build Name</button>
             }
-          </p>
+          </p> */}
+          {/* <h1>{this.props.build[0].build_name}</h1> */}
           <br></br>
               <br></br>
               <br></br>
               <br></br>
-              <p>{JSON.stringify(this.props.build)}</p>
+              
 <div>
    <Grid 
    container
@@ -107,7 +114,7 @@ class NewBuildPage extends Component {
        )} */}
 
    <MDBRow>
-       {this.props.newBuild.map( y =>
+       {this.props.build.map( y =>
          <NewBuildItem key={y.id} thisComponent={y}/>
        )}
        </MDBRow>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
 import { borders } from '@material-ui/system';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -36,6 +37,13 @@ class NewBuildItem extends Component {
     this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
   }
 
+  editComponent = () => {
+
+    this.props.dispatch({type: 'FETCH_COMPONENT'})
+    this.props.history.push('/component');
+
+  }
+
   render(){
   return (
     <>
@@ -49,11 +57,11 @@ class NewBuildItem extends Component {
               
           }}
         >
-          <div className='text-black text-center d-flex align-items-center rgba-blue-strong py-3 px-2'>
+          <div className='text-black text-center d-flex align-items-center py-3 px-2'>
             <div>
               <MDBCardTitle tag='h1' className='pt-4'>
               </MDBCardTitle>
-              <h2>{this.props.thisComponent.name}</h2>
+              <h2 className= 'text-center'><strong>{this.props.thisComponent.name}</strong></h2>
               <br></br>
               <br></br>
               <br></br>
@@ -69,7 +77,7 @@ class NewBuildItem extends Component {
               </MDBBtn>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='deep-orange'>
+              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.editComponent(event, this.props.thisBuild.id) }>
                 <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
               </MDBBtn>
             </div>
@@ -84,7 +92,7 @@ class NewBuildItem extends Component {
           }}
         >
             
-          <div className='text-white text-center d-flex align-items-center rgba-blue-strong py-3 px-2'>
+          <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-3 px-2'>
             <div>
               <MDBCardTitle tag='h3' className='pt-4'>
                 <strong>{this.props.thisComponent.name}</strong>
@@ -128,4 +136,4 @@ const mapStateToProps = state => ({
     user: state.user,
   });
   
-  export default connect(mapStateToProps)(NewBuildItem);
+  export default withRouter(connect(mapStateToProps)(NewBuildItem));
