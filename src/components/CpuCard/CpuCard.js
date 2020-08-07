@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
-import { connect } from 'react-redux';
 import { withRouter } from "react-router";
+import { connect } from 'react-redux';
 import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
 import { borders } from '@material-ui/system';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -21,9 +21,14 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 
 
-class NewBuildItem extends Component {
+class CpuCard extends Component {
    
+    // componentDidMount() {
 
+    //     this.props.dispatch({type: 'FETCH_COMPONENT', payload: 'cpu'});
+    
+    //   }
+    
   constructor() {
     super();
       this.state = {
@@ -37,17 +42,10 @@ class NewBuildItem extends Component {
     this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
   }
 
-  editComponent = () => {
-
-    this.props.dispatch({type: 'FETCH_COMPONENT'})
-    this.props.history.push('/component');
-
-  }
-
   render(){
   return (
     <>
-    <Grid item xs={10} sm={6} md={3}>
+    <Grid>
     <MDBCol>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
       <MDBCard
@@ -57,11 +55,11 @@ class NewBuildItem extends Component {
               
           }}
         >
-          <div className='text-white text-center rgba-grey-strong d-flex align-items-center py-3 px-1'>
+          <div className='text-black text-center d-flex align-items-center rgba-blue-strong py-3 px-2'>
             <div>
               <MDBCardTitle tag='h1' className='pt-4'>
               </MDBCardTitle>
-              <h2 className= 'text-center'><strong>{this.props.thisComponent.name}</strong></h2>
+              <h2>{this.props.thisComponent.name}</h2>
               <br></br>
               <br></br>
               <br></br>
@@ -76,7 +74,8 @@ class NewBuildItem extends Component {
                 Details
               </MDBBtn>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.editComponent(event, this.props.thisBuild.id) }>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <MDBBtn className= 'text-center' color='deep-orange'>
                 <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
               </MDBBtn>
             </div>
@@ -91,20 +90,15 @@ class NewBuildItem extends Component {
           }}
         >
             
-          <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-4 px-2'>
+          <div className='text-white text-center d-flex align-items-center rgba-blue-strong py-3 px-2'>
             <div>
               <MDBCardTitle tag='h3' className='pt-4'>
                 <strong>{this.props.thisComponent.name}</strong>
               </MDBCardTitle>
-              <p>{this.props.thisComponent.details}</p>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
+              <p>{this.props.thisComponent.description}</p>
               <MDBBtn className= 'text-center' color='deep-orange'>
                 <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
               </MDBBtn>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick}>
                 Cancel
               </MDBBtn>
@@ -140,4 +134,4 @@ const mapStateToProps = state => ({
     user: state.user,
   });
   
-  export default withRouter(connect(mapStateToProps)(NewBuildItem));
+  export default connect(mapStateToProps)(CpuCard);

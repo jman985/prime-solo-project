@@ -19,6 +19,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 import NewBuildItem from '../NewBuildItem/NewBuildItem'
+import CpuCard from '.../CpuCard/CpuCard'
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -35,49 +36,42 @@ const getCookie = (cookieName) => {
 
 class NewBuildPage extends Component {
 
-  state = {
-    buildname: getCookie('buildname'||''),
-    buildnameIsEditable: false,
-    // build_id: getCookie('build_id')
-  }
+//   state = {
+//     buildname: getCookie('buildname'||''),
+//     buildnameIsEditable: false,
+//   }
 
   componentDidMount() {
 
-    console.log('buildpage mounted', this.props.selectBuild );
-
-    // document.cookie = `build_id=${build_id}`
-
-    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
+    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild.id});
 
   }
 
-  
+//   editUsername = () => {
 
-  editUsername = () => {
+//     this.setState({
+//       buildnameIsEditable: true,
+//     });
+//   }
 
-    this.setState({
-      buildnameIsEditable: true,
-    });
-  }
+//   onChange= (event) => {
+//     event.preventDefault();
 
-  onChange= (event) => {
-    event.preventDefault();
+//     const buildname = event.target.value;
 
-    const buildname = event.target.value;
+//     document.cookie = `buildname=${buildname}`
 
-    document.cookie = `buildname=${buildname}`
+//     this.setState({
+//       buildname: buildname,
+//     });
+//   }
 
-    this.setState({
-      buildname: buildname,
-    });
-  }
+//   saveUsername = () => {
 
-  saveUsername = () => {
-
-    this.setState({
-      buildnameIsEditable: false,
-    });
-  }
+//     this.setState({
+//       buildnameIsEditable: false,
+//     });
+//   }
 
   render() {
     return (
@@ -86,7 +80,7 @@ class NewBuildPage extends Component {
         <h1><strong>Build Your Hackintosh</strong></h1>
       </div>
       <br></br>
-              {/* <p>
+              <p>
                 Build Name:{this.state.buildnameIsEditable ?
               <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<p>{this.state.buildname}</p>}
            
@@ -94,13 +88,12 @@ class NewBuildPage extends Component {
               <button onClick={this.saveUsername}>Save Build Name</button> :
               <button onClick={this.editUsername}>Edit Build Name</button>
             }
-          </p> */}
-          {/* <h1>{this.props.build[0].build_name}</h1> */}
+          </p>
           <br></br>
               <br></br>
               <br></br>
               <br></br>
-              
+              <p>{this.props.build[0]}</p>
 <div>
    <Grid 
    container
@@ -112,22 +105,10 @@ class NewBuildPage extends Component {
    {/* {this.props.newBuild.filter(x => x.id > 1).map( y =>
          <NewBuildItem key={y.id} thisComponent={y}/>
        )} */}
-
-   <MDBRow container spacing = {50}>
-       {this.props.build.map( y =>
-         <NewBuildItem key={y.id} thisComponent={y}/>
-       )}
-       </MDBRow>
+    <CpuCard/>
+    
  </Grid>
  </div>
-<br></br>
-<br></br>
-<br></br>
-
- <Button variant="contained" color="primary" >COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button>
-
  </>
  
     )
@@ -136,7 +117,6 @@ class NewBuildPage extends Component {
 
 const mapStateToProps = state => ({
 build: state.build,
-selectBuild: state.selectBuild,
 userBuild: state.userBuild,
 newBuild: state.newBuild,
 user: state.user,

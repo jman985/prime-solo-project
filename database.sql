@@ -1,8 +1,3 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
@@ -13,140 +8,129 @@ CREATE TABLE "user" (
 CREATE TABLE "cpu" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (100) NOT NULL,
-    "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
-    "cores" INTEGER NOT NULL,
-    "max_speed" DECIMAL,
-    "unlocked" VARCHAR (50) NOT NULL
+    "details" VARCHAR(2083)
 );
 
-INSERT INTO "cpu" ("name", "brand", "image", "cores", "max_speed", "unlocked")
+INSERT INTO "cpu" ("name", "image", "details")
 VALUES 
-('Core i5-9400','Intel','images/i5-9400', 6 , 4.1 , 'No' ),
-('Core i5-9600K','Intel','images/i5-9600K', 6 , 4.6 , 'Yes' ),
-('Core i7-9700','Intel','images/i5-9700', 8 , 4.7 , 'No' ),
-('Core i7-9700K','Intel','images/i5-9700K', 8 , 4.9 , 'Yes' );
+('CPU', 'images/Intel-logo.png' , 'CPU stands for "central processing unit".  MacOS runs natively only on Intel processors.'),
+('Intel Core i5-9400', 'images/i5-9400', '6 cores, 6 threads, up to 4.1 GHz max boost' ),
+('Intel Core i5-9600K', 'images/i5-9600K', '6 cores, 6 threads, up to 4.6 GHz max boost'),
+('Intel Core i7-9700', 'images/i5-9700', '8 cores, 8 threads, up to 4.7 GHz max boost'),
+('Intel Core i7-9700K','images/i5-9700K', '8 cores, 8 threads, up to 4.9 GHz max boost');
+
 
 CREATE TABLE "cooler" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (100) NOT NULL,
-    "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
-    "height" DECIMAL
+    "details" VARCHAR(2083)
 );
 
-INSERT INTO "cooler" ("name", "brand", "image", "height")
+INSERT INTO "cooler" ("name", "image", "details")
 VALUES
-(  'NH-L9i', 'Noctua', 'images/NH-L9i-cooler.jpg',37  ),
-(  'NH-L12S', 'Noctua', 'images/NH-L12S-cooler.jpg',70  ),
-(  'NH-U9S', 'Noctua', 'images/NH-U9S-cooler.jpg', 124 );
+('CPU Cooler' , 'images/noctua_logo.jpg' , 'The CPU cooler sits on top of the CPU and keeps it from overheating.'),
+(  'Noctua NH-L9i', 'images/NH-L9i-cooler.jpg', '37 height' ),
+(  'NoctuaNH-L12S', 'images/NH-L12S-cooler.jpg', '70mm height' ),
+(  'Noctua NH-U9S','images/NH-U9S-cooler.jpg', '124mm height' );
 
 
 
 CREATE TABLE "motherboard" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (100) NOT NULL,
-    "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
-    "form_factor" VARCHAR (50) NOT NULL
+    "details" VARCHAR(2083)
 );
 
-INSERT INTO "motherboard" ("name", "brand", "image", "form_factor")
+INSERT INTO "motherboard" ("name", "image", "details")
 VALUES 
-(  'Z390M-ITX', 'ASRock', 'images/ASRock-Z390-mobo.jpg', 'Mini-ITX'),
-(  'Z390 Phantom Gaming-ITX', 'ASRock', 'images/ASRock-Fatality-mobo.jpg', 'Mini-ITX'),
-(  'ROG Strix Z390-I Gaming', 'ASUS', 'images/ASUS-Z390-mobo.jpg', 'Mini-ITX'),
-(  'H370N WiFi', 'Gigabyte', 'images/Gigabyte-H370N-mobo.jpg', 'Mini-ITX');
+('Motherboard' , 'images/asus-logo.png' , 'Also called a PCB (printed circuit board) or chipset, the motherboard connects the components together.  Intel CPUs require Intel chipsets'),
+(  'ASRock Z390M-ITX','images/ASRock-Z390-mobo.jpg', 'Mini-ITX form factor; Intel Z390 chipset'),
+(  'ASRock Z390 Phantom Gaming-ITX','images/ASRock-Fatality-mobo.jpg', 'Mini-ITX form factor;  Intel Z390 chipset'),
+(  'ASUS ROG Strix Z390-I Gaming', 'images/ASUS-Z390-mobo.jpg', 'Mini-ITX form factor; Intel Z390 chipset'),
+(  'Gigabyte H370N WiFi', 'images/Gigabyte-H370N-mobo.jpg', 'Mini-ITX form factor; Intel H370 chipset');
 
 
 CREATE TABLE "memory" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (100) NOT NULL,
-    "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
-    "capacity" INTEGER NOT NULL,
-    "speed" VARCHAR (50) NOT NULL
+    "details" VARCHAR(2083)
 );
 
-INSERT INTO "memory" ("name", "brand", "image", "capacity", "speed")
+INSERT INTO "memory" ("name", "image", "details")
 VALUES 
-( 'Ripjaws V Series', 'G.Skill', 'images/G.Skill.V-memory.jpg', 16, 'DDR4-3200'  ),
-( 'Ripjaws V Series', 'G.Skill', 'images/G.Skill.V32-memory.jpg', 32, 'DDR4-3600'  ),
-( 'T-FORCE Vulcan Z ', 'TEAMGROUP', 'images/T-FORCE-VULCAN-memory.jpg', 16, 'DDR4-2666'  ),
-( 'Vengeance LPX', 'CORSAIR', 'images/CORSAIR-LPX-memory.jpg', 32, 'DDR4-3600'  );
+('Memory' , 'images/micron-logo.png' , 'Also called RAM or "random access memory", the CPU uses RAM to store program data for quick access'),
+( 'G.Skill Ripjaws V Series', 'images/G.Skill.V-memory.jpg', '16GB DDR4-3200MHz RAM' ),
+( 'G.Skill Ripjaws V Series', 'images/G.Skill.V32-memory.jpg', '32GB DDR4-3600MHz RAM' ),
+( 'TEAMGROUP T-FORCE Vulcan Z ', 'images/T-FORCE-VULCAN-memory.jpg', '16GB DDR4-2666MHz RAM' ),
+( 'Corsair Vengeance LPX', 'images/CORSAIR-LPX-memory.jpg', '32GB DDR4-3600MHz RAM' );
 
 
 CREATE TABLE "gpu" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (100) NOT NULL,
-    "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
-    "max_speed" DECIMAL,
-    "memory" INTEGER NOT NULL,
-    "length" DECIMAL
+    "details" VARCHAR(2083)
 );
 
-INSERT INTO "gpu" ("name", "brand", "image", "max_speed", "memory", "length")
-VALUES 
-( 'PULSE Radeon RX 580', 'Sapphire', 'images/Radeon-RX580.jpg', 1366, 8 , 230 ),
-( 'Radeon RX 5700 Evoke OC', 'MSI', 'images/MSI-EvokeOC-5700.jpg', 1700, 8 , 254 ),
-( 'PULSE Radeon RX 5600 XT', 'Sapphire', 'images/Pulse-5600xt.jpg', 1750, 6 , 254 ),
-( 'Radeon RX 5700 XT Gaming OC', 'Gigabyte', 'images/Gigabyte-5700xt.jpg', 1905, 8 , 279.85 );
+INSERT INTO "gpu" ("name", "image", "details")
+VALUES
+('GPU' , 'images/AMD_Radeon.png' , 'GPU stands for "Graphics Processing Unit".  MacOS runs native on AMD GPUs'),
+( 'Sapphire PULSE Radeon RX 580', 'images/Radeon-RX580.jpg', '8GB GDDR5 Memory; 1366 MHz max boost'),
+( 'MSI Radeon RX 5700 Evoke OC', 'images/MSI-EvokeOC-5700.jpg', '8GB GDDR6 Memory; 1700 MHz max boost'),
+( 'Sapphire PULSE Radeon RX 5600 XT', 'images/Pulse-5600xt.jpg', '6GB GDDR6 Memory; 1750 MHz max boost'),
+( 'Gigabyte Radeon RX 5700 XT Gaming OC', 'images/Gigabyte-5700xt.jpg', '8GB GDDR6 Memory; 1905 MHz max boost');
 
 
 CREATE TABLE "storage" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (100) NOT NULL,
-    "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
-    "capacity" INTEGER NOT NULL,
-    "form_factor" VARCHAR (50) NOT NULL
+    "details" VARCHAR(2083)
 );
 
-INSERT INTO "storage" ("name", "brand", "image", "capacity", "form_factor")
+INSERT INTO "storage" ("name", "image", "details")
 VALUES 
-( '970 Evo Plus', 'Samsung', 'images/970-Evo-Plus-500.jpg', 500, 'NVMe M.2' ),
-( '970 Evo Plus', 'Samsung', 'images/970-Evo-Plus-1000.jpg', 1000, 'NVMe M.2' ),
-( '970 Evo Plus', 'Samsung', 'images/970-Evo-Plus-2000.jpg', 2000, 'NVMe M.2' );
+('Storage' , 'images/samsung-logo.png' , 'Sometimes called a hard drive or solid-state drive (SSD), this stores data on the computer. Most real Macs use Samsung memory modules'),
+( 'Samsung 970 Evo Plus', 'images/970-Evo-Plus-500.jpg', '500GB NVMe M.2 PCIe SSD' ),
+( 'Samsung 970 Evo Plus', 'images/970-Evo-Plus-1000.jpg', '1TB NVMe M.2 PCIe SSD' ),
+( 'Samsung 970 Evo Plus', 'images/970-Evo-Plus-2000.jpg', '2TB NVMe M.2 PCIe SSD' );
 
 
 CREATE TABLE "case" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (100) NOT NULL,
-    "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
-    "form_factor" VARCHAR (50) NOT NULL,
-    "color" VARCHAR (50) NOT NULL,
-    "material" VARCHAR (50) NOT NULL,
-    "volume" DECIMAL
+    "details" VARCHAR(2083)
 );
 
-INSERT INTO "case" ("name", "brand", "image", "form_factor", "color", "material", "volume")
+INSERT INTO "case" ("name", "image", "details")
 VALUES 
-(  'MX500','MITXPC' , 'images/MITXPC-case.jpg', 'Mini-ITX' , 'black', 'steel', 2.7),
-(  'Node 202','Fractal Design' , 'images/Node202.jpg', 'Mini-ITX' , 'black', 'steel, plastic', 10.2 ),
-(  'MasterBox NR200', 'CoolerMaster' , 'images/NR200-case.jpg', 'Mini-ITX' , 'black', 'steel, plastic', 18.25 ),
-(  'Core V1', 'Thermaltake' , 'images/ThermaltakeV1.jpg', 'Mini-ITX' , 'black', 'steel, plastic', 22.5 );
+('Case' , 'images/nzxt-logo.jpg' , 'The case houses all of the components.'),
+(  'MITXPC MX500','images/MITXPC-case.jpg', 'Mini-ITX form factor; galvanized steel material; 2.7 liters'),
+(  'Fractal Design Node 202' , 'images/Node202.jpg', 'Mini-ITX form factor; galvanized steel and plastic; 10.2 liters' ),
+(  'CoolerMaster MasterBox NR200', 'images/NR200-case.jpg', 'Mini-ITX form factor; steel/plastic material; 18.25 liters' ),
+(  'Thermaltake Core V1','images/ThermaltakeV1.jpg', 'Mini-ITX form factor; steel/plastic material; 22.5 liters' );
 
 
 CREATE TABLE "psu" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (100) NOT NULL,
-    "brand" VARCHAR (50) NOT NULL,
     "image" VARCHAR(2083),
-    "form_factor" VARCHAR (50) NOT NULL,
-    "wattage" INTEGER NOT NULL,
-    "efficiency_rating" VARCHAR (50) NOT NULL
+    "details" VARCHAR(2083)
 );
 
 
-INSERT INTO "psu" ("name", "brand", "image", "form_factor", "wattage", "efficiency_rating")
-VALUES 
-(  'picoPSU-160-XT', 'Mini-Box', 'images/picoPSU.jpg' , 'picoPSU', 160,'N/A'),
-(  'SF600', 'Corsair', 'images/SF600-PSU.jpg' , 'SFX', 600, '80+ Platinum'),
-(  'SF750', 'Corsair', 'images/SF750-PSU.jpg' , 'SFX', 750, '80+ Platinum'),
-(  'SuperNOVA 550 GM', 'EVGA', 'images/EVGA-550GM-PSU.jpg' , 'SFX', 550, '80+ Gold'),
-(  'RM650', 'Corsair', 'images/RM500-PSU.jpg' , 'ATX', 650, '80+ Gold');
+INSERT INTO "psu" ("name", "image", "details")
+VALUES
+('Power Supply' , 'images/corsair-logo.png' , 'PSU stands for "power supply unit".  It converts power from the wall into power your computer can use.'),
+(  'Corsair SF600', 'images/SF600-PSU.jpg' , '600 Watt SFX 80+ Platinum rated power supply'),
+(  'Corsair SF750','images/SF750-PSU.jpg' , '750 Watt SFX 80+ Platinum rated power supply'),
+(  'EVGA SuperNOVA 550 GM', 'images/EVGA-550GM-PSU.jpg' , '550 Watt SFX 80+ Gold rated power supply'),
+(  'Corsair RM650', 'images/RM500-PSU.jpg' , '650 Watt ATX 80+ Gold rated power supply');
 
 
 CREATE TABLE "build" (
@@ -163,22 +147,13 @@ CREATE TABLE "build" (
     "gpu_id" INT REFERENCES "gpu"("id")
 );
 
-CREATE TABLE "case_psu" (
+CREATE TABLE "components" (
     "id" SERIAL PRIMARY KEY,
-    "case_id" integer REFERENCES "case",
-    "psu_id" integer REFERENCES "psu"
+    "type" VARCHAR (100) NOT NULL,
+    "name" VARCHAR (100) NOT NULL,
+    "image" VARCHAR(2083),
+    "details" VARCHAR(2083)
 );
 
-INSERT INTO "case_psu" ("case_id", "psu_id")
-VALUES
-(1,1),
-(2,2),
-(2,3),
-(2,4),
-(3,2),
-(3,3),
-(3,4),
-(4,2),
-(4,3),
-(4,4),
-(4,5);
+
+

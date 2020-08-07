@@ -53,6 +53,7 @@ class UserHomePage extends Component {
 
 // Instead of taking everything from state, we just want the user info.
 const mapStateToProps = (state) => ({
+  userBuild: state.userBuild,
   user: state.user,
 });
 
