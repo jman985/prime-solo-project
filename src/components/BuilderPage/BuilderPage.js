@@ -36,42 +36,42 @@ const getCookie = (cookieName) => {
 
 class NewBuildPage extends Component {
 
-  state = {
-    buildname: getCookie('buildname'||''),
-    buildnameIsEditable: false,
-  }
+//   state = {
+//     buildname: getCookie('buildname'||''),
+//     buildnameIsEditable: false,
+//   }
 
   componentDidMount() {
 
-    this.props.dispatch({type: 'FETCH_NEWBUILD', payload: this.props.user.id});
+    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild.id});
 
   }
 
-  editUsername = () => {
+//   editUsername = () => {
 
-    this.setState({
-      buildnameIsEditable: true,
-    });
-  }
+//     this.setState({
+//       buildnameIsEditable: true,
+//     });
+//   }
 
-  onChange= (event) => {
-    event.preventDefault();
+//   onChange= (event) => {
+//     event.preventDefault();
 
-    const buildname = event.target.value;
+//     const buildname = event.target.value;
 
-    document.cookie = `buildname=${buildname}`
+//     document.cookie = `buildname=${buildname}`
 
-    this.setState({
-      buildname: buildname,
-    });
-  }
+//     this.setState({
+//       buildname: buildname,
+//     });
+//   }
 
-  saveUsername = () => {
+//   saveUsername = () => {
 
-    this.setState({
-      buildnameIsEditable: false,
-    });
-  }
+//     this.setState({
+//       buildnameIsEditable: false,
+//     });
+//   }
 
   render() {
     return (
@@ -93,7 +93,7 @@ class NewBuildPage extends Component {
               <br></br>
               <br></br>
               <br></br>
-              <p>{JSON.stringify(this.props.user)}</p>
+              <p>{this.props.build[0]}</p>
 <div>
    <Grid 
    container
@@ -116,6 +116,7 @@ class NewBuildPage extends Component {
 }
 
 const mapStateToProps = state => ({
+build: state.build,
 userBuild: state.userBuild,
 newBuild: state.newBuild,
 user: state.user,

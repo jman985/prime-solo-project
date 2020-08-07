@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import { connect } from 'react-redux';
 // import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
 import { borders } from '@material-ui/system';
@@ -42,6 +43,14 @@ class UserBuildsItem extends Component {
     this.props.dispatch({type: 'REMOVE_BUILD', payload: id})
   }
 
+  editBuild = (event, id)=> {
+    event.preventDefault();
+    console.log('select build', id);
+    this.props.dispatch({type: 'SELECT_BUILD', payload: id})
+    this.props.history.push('/builder');
+  }
+
+
   checkImage = () =>{
 
     if(this.props.thisBuild.case_image){
@@ -71,7 +80,7 @@ class UserBuildsItem extends Component {
         </CardActionArea>
             <CardContent>
               <Typography paragraph></Typography>
-                <Button variant="contained" color="primary" size="small" color="primary">
+                <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
                 </Button>&nbsp;
                 <Button variant="contained" color="secondary" size="small" onClick={ (event) => this.removeBuild(event, this.props.thisBuild.id) }>
@@ -106,8 +115,9 @@ class UserBuildsItem extends Component {
 }
 
 const mapStateToProps = state => ({
-  userBuild: state.userBuild,
+  selectBuild: state.selectBuild,
+  userBuilds: state.userBuilds,
   user: state.user,
 });
 
-export default connect(mapStateToProps)(UserBuildsItem);
+export default withRouter(connect(mapStateToProps)(UserBuildsItem));

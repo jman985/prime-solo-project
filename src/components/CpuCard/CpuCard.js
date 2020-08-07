@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import { connect } from 'react-redux';
 import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
 import { borders } from '@material-ui/system';
@@ -22,7 +23,12 @@ import ReactCardFlip from 'react-card-flip';
 
 class CpuCard extends Component {
    
+    // componentDidMount() {
 
+    //     this.props.dispatch({type: 'FETCH_COMPONENT', payload: 'cpu'});
+    
+    //   }
+    
   constructor() {
     super();
       this.state = {

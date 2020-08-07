@@ -35,15 +35,16 @@ const getCookie = (cookieName) => {
 
 class NewBuildPage extends Component {
 
+  componentDidMount() {
+
+    console.log('buildpage mounted', this.props.selectBuild, this.props.userBuilds);
+    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
+
+  }
+
   state = {
     buildname: getCookie('buildname'||''),
     buildnameIsEditable: false,
-  }
-
-  componentDidMount() {
-
-    this.props.dispatch({type: 'FETCH_NEWBUILD', payload: this.props.user.id});
-
   }
 
   editUsername = () => {
@@ -92,7 +93,7 @@ class NewBuildPage extends Component {
               <br></br>
               <br></br>
               <br></br>
-              <p>{JSON.stringify(this.props.user)}</p>
+              <p>{JSON.stringify(this.props.build)}</p>
 <div>
    <Grid 
    container
@@ -119,6 +120,8 @@ class NewBuildPage extends Component {
 }
 
 const mapStateToProps = state => ({
+build: state.build,
+selectBuild: state.selectBuild,
 userBuild: state.userBuild,
 newBuild: state.newBuild,
 user: state.user,

@@ -146,3 +146,14 @@ CREATE TABLE "build" (
     "case_id" INT REFERENCES "case"("id"),
     "gpu_id" INT REFERENCES "gpu"("id")
 );
+
+CREATE TABLE "components" (
+    "id" SERIAL PRIMARY KEY,
+    "type" VARCHAR (100) NOT NULL,
+    "name" VARCHAR (100) NOT NULL,
+    "image" VARCHAR(2083),
+    "details" VARCHAR(2083)
+);
+
+
+
