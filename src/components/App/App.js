@@ -19,6 +19,7 @@ import UserBuildsPage from '../UserBuildsPage/UserBuildsPage';
 import UserBuildsItem from '../UserBuildsItem/UserBuildsItem';
 import './App.css';
 import NewBuildPage from '../NewBuildPage/NewBuildPage';
+import ComponentPage from '../ComponentPage/ComponentPage';
 
 class App extends Component {
   componentDidMount () {
@@ -60,6 +61,11 @@ class App extends Component {
               exact
               path="/builder"
               component={NewBuildPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/component"
+              component={ComponentPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

@@ -37,9 +37,9 @@ class NewBuildItem extends Component {
     this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
   }
 
-  editComponent = () => {
-
-    this.props.dispatch({type: 'FETCH_COMPONENT'})
+  editComponent = (event, component) => {
+    event.preventDefault();
+    this.props.dispatch({type: 'FETCH_COMPONENT', payload: component});
     this.props.history.push('/component');
 
   }
@@ -76,7 +76,7 @@ class NewBuildItem extends Component {
                 Details
               </MDBBtn>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.editComponent(event, this.props.thisBuild.id) }>
+              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.editComponent(event, this.props.thisComponent.type) }>
                 <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
               </MDBBtn>
             </div>
@@ -136,6 +136,7 @@ class NewBuildItem extends Component {
 }
 
 const mapStateToProps = state => ({
+    buildComponent: state.buildComponent,
     newBuild: state.newBuild,
     user: state.user,
   });
