@@ -18,7 +18,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     components.type AS type,
     components.name AS name,
     components.image AS image,
-    components.description AS description
+    components.details AS details
     FROM "build"
     JOIN "components" ON "cpu_id" = "components"."id" WHERE user_id = $1 AND build.id = $2
     UNION
@@ -28,7 +28,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     components.type AS type,
     components.name AS name,
     components.image AS image,
-    components.description AS description
+    components.details AS details
     FROM "build"
     JOIN "components" ON "cooler_id" = "components"."id" WHERE user_id = $1 AND build.id = $2
     UNION
@@ -38,7 +38,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     components.type AS type,
     components.name AS name,
     components.image AS image,
-    components.description AS description
+    components.details AS details
     FROM "build"
     JOIN "components" ON "mobo_id" = "components"."id" WHERE user_id = $1 AND build.id = $2
     UNION
@@ -48,7 +48,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     components.type AS type,
     components.name AS name,
     components.image AS image,
-    components.description AS description
+    components.details AS details
     FROM "build"
     JOIN "components" ON "case_id" = "components"."id" WHERE user_id = $1 AND build.id = $2
     UNION
@@ -58,7 +58,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     components.type AS type,
     components.name AS name,
     components.image AS image,
-    components.description AS description
+    components.details AS details
     FROM "build"
     JOIN "components" ON "gpu_id" = "components"."id" WHERE user_id = 1 AND build.id = $2
     UNION
@@ -68,7 +68,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     components.type AS type,
     components.name AS name,
     components.image AS image,
-    components.description AS description
+    components.details AS details
     FROM "build"
     JOIN "components" ON "storage_id" = "components"."id" WHERE user_id = $1 AND build.id = $2
     UNION
@@ -78,7 +78,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     components.type AS type,
     components.name AS name,
     components.image AS image,
-    components.description AS description
+    components.details AS details
     FROM "build"
     JOIN "components" ON "memory_id" = "components"."id" WHERE user_id = $1 AND build.id = $2
     UNION
@@ -88,7 +88,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     components.type AS type,
     components.name AS name,
     components.image AS image,
-    components.description AS description
+    components.details AS details
     FROM "build"
     JOIN "components" ON "psu_id" = "components"."id" WHERE user_id = $1 AND build.id = $2 ORDER BY id;`, [req.user.id, req.params.id])
         .then(results => res.send(results.rows))
