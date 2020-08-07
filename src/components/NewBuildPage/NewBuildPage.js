@@ -113,13 +113,21 @@ class NewBuildPage extends Component {
          <NewBuildItem key={y.id} thisComponent={y}/>
        )} */}
 
-   <MDBRow>
+   <MDBRow container spacing = {50}>
        {this.props.build.map( y =>
          <NewBuildItem key={y.id} thisComponent={y}/>
        )}
        </MDBRow>
  </Grid>
  </div>
+<br></br>
+<br></br>
+<br></br>
+
+ <Button variant="contained" color="primary" >COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button>
+
  </>
  
     )

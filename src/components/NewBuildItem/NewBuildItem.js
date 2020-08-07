@@ -47,7 +47,7 @@ class NewBuildItem extends Component {
   render(){
   return (
     <>
-    <Grid>
+    <Grid item xs={10} sm={6} md={4}>
     <MDBCol>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
       <MDBCard
@@ -57,7 +57,7 @@ class NewBuildItem extends Component {
               
           }}
         >
-          <div className='text-black text-center d-flex align-items-center py-3 px-2'>
+          <div className='text-white text-center rgba-grey-strong d-flex align-items-center py-4 px-3'>
             <div>
               <MDBCardTitle tag='h1' className='pt-4'>
               </MDBCardTitle>
@@ -76,7 +76,6 @@ class NewBuildItem extends Component {
                 Details
               </MDBBtn>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;
               <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.editComponent(event, this.props.thisBuild.id) }>
                 <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
               </MDBBtn>
@@ -92,7 +91,7 @@ class NewBuildItem extends Component {
           }}
         >
             
-          <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-3 px-2'>
+          <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-4 px-3'>
             <div>
               <MDBCardTitle tag='h3' className='pt-4'>
                 <strong>{this.props.thisComponent.name}</strong>
