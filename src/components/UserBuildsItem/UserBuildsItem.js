@@ -73,7 +73,7 @@ class UserBuildsItem extends Component {
           <CardMedia  component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
             aria-label="Show more"
             alt={this.props.thisBuild.name}
-            src={this.props.thisBuild.case_image}
+            src={this.props.thisBuild.image}
             title={this.props.thisBuild.name}
             paragraph= {this.props.thisBuild.name}
           />
