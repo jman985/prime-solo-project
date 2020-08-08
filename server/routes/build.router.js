@@ -98,5 +98,23 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
+router.put('/', rejectUnauthenticated, (req, res) => {
+    const queryText = 
+    `UPDATE "build"
+    SET $1_id = $2,
+    WHERE "id" = $5;`;
+    const queryInput = [
+      req.body.type,
+      req.body.component,
+      req.body.id,
+    ];
+    pool.query(queryText, queryInput)
+    .then(() => res.sendStatus(201))
+    .catch((error) => {res.sendStatus(500);
+      console.log(error);
+      //console.log(req.body)
+    });
+  });
+
 
 module.exports = router;

@@ -21,8 +21,12 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 
 
-class NewBuildItem extends Component {
+class ComponentItem extends Component {
    
+state = {
+        componentSelected: false,
+        // build_id: getCookie('build_id')
+      }
 
   constructor() {
     super();
@@ -37,11 +41,17 @@ class NewBuildItem extends Component {
     this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
   }
 
-  gotoComponent = (event, component) => {
+  addComponent = (event, id) => {
     event.preventDefault();
-    this.props.dispatch({type: 'FETCH_COMPONENT', payload: component});
-    this.props.history.push('/component');
+    // this.props.dispatch({type: 'FETCH_COMPONENT', payload: component});
+    // // this.props.history.push('/component');
 
+  }
+
+  selectComponent = () => {
+    this.setState({
+      componentSelected: !this.state.componentSelected,
+    });
   }
 
   render(){
@@ -50,38 +60,31 @@ class NewBuildItem extends Component {
     <Grid item xs={10} sm={6} md={3}>
     <MDBCol>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-      <MDBCard
-          className='card-image'
-          style={{
-            backgroundImage: 'url(' + this.props.thisComponent.image + ')'
-              
-          }}
-        >
-          <div className='text-white text-center rgba-grey-strong d-flex align-items-center py-3 px-1'>
-            <div>
-              <MDBCardTitle tag='h1' className='pt-4'>
-              </MDBCardTitle>
-              <h2 className= 'text-center'><strong>{this.props.thisComponent.name}</strong></h2>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick} >
-                Details
-              </MDBBtn>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
-                <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
-              </MDBBtn>
-            </div>
-          </div>
-        </MDBCard>
+        <Card >
+        <CardHeader title={this.props.thisComponent.name}>
+        </CardHeader>
+        <CardActionArea>
+            
+          <CardMedia component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
+            aria-label="Show more"
+            alt={this.props.thisComponent.name}
+            src={this.props.thisComponent.image}
+            title={this.props.thisComponent.name}
+            paragraph= {this.props.thisComponent.details}
+          />
+        </CardActionArea>
+            <CardContent>
+              <Typography paragraph></Typography>
+              {this.state.componentSelected ?
+              <Button variant="contained" color="secondary" size="small" onClick = {this.selectComponent}>
+              REMOVE</Button>
+              :
+                <Button variant="contained" color="primary" size="small" color="primary" onClick = {this.selectComponent}>
+                SELECT THIS {this.props.thisComponent.type} </Button> 
+                
+                }
+            </CardContent>
+          </Card>
 
         <MDBCard
           className='card-image'
@@ -89,6 +92,7 @@ class NewBuildItem extends Component {
             backgroundImage: 'url(' + this.props.thisComponent.image + ')'
               
           }}
+          onClick={this.handleClick} 
         >
             
           <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-4 px-2'>
@@ -101,13 +105,6 @@ class NewBuildItem extends Component {
               <br></br>
               <br></br>
               <br></br>
-              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
-                <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
-              </MDBBtn>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick}>
-                Cancel
-              </MDBBtn>
             </div>
           </div>
         </MDBCard>
@@ -119,6 +116,7 @@ class NewBuildItem extends Component {
         <br></br>
               
     </Grid>
+
 </>
   )
 }
@@ -130,4 +128,4 @@ const mapStateToProps = state => ({
     user: state.user,
   });
   
-  export default withRouter(connect(mapStateToProps)(NewBuildItem));
+  export default withRouter(connect(mapStateToProps)(ComponentItem));

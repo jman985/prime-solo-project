@@ -38,6 +38,7 @@ class UserHomePage extends Component {
       <div>
         <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
         <p>Your ID is: {this.props.user.id}</p>
+
         <Button variant="contained" color="primary" onClick = {this.newBuildHandleClick}>Start A New Build</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
         <Button variant="contained" color="primary" onClick = {this.viewBuildsHandleClick}>View Your Builds</Button>
@@ -53,7 +54,7 @@ class UserHomePage extends Component {
 
 // Instead of taking everything from state, we just want the user info.
 const mapStateToProps = (state) => ({
-  userBuild: state.userBuild,
+  userBuilds: state.userBuilds,
   user: state.user,
 });
 
