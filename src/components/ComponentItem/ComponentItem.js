@@ -48,53 +48,24 @@ state = {
 
   }
 
+  selectComponent = () => {
+    this.setState({
+      componentSelected: !this.state.componentSelected,
+    });
+  }
+
   render(){
   return (
     <>
     <Grid item xs={10} sm={6} md={3}>
     <MDBCol>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-      {/* <MDBCard
-          className='card-image'
-          style={{
-            backgroundImage: 'url(' + this.props.thisComponent.image + ')'
-              
-          }}
-        >
-          <div className='text-white text-center rgba-grey-strong d-flex align-items-center py-3 px-1'>
-            <div>
-              <MDBCardTitle tag='h1' className='pt-4'>
-              </MDBCardTitle>
-              <h2 className= 'text-center'><strong>{this.props.thisComponent.name}</strong></h2>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick} >
-                Details
-              </MDBBtn>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.addComponent(event, this.props.thisComponent.id) }>
-                <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
-              </MDBBtn>
-            </div>
-          </div>
-        </MDBCard> */}
-
-
-
-
         <Card >
         <CardHeader title={this.props.thisComponent.name}>
         </CardHeader>
         <CardActionArea>
-          <CardMedia  component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
+            
+          <CardMedia component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
             aria-label="Show more"
             alt={this.props.thisComponent.name}
             src={this.props.thisComponent.image}
@@ -104,16 +75,16 @@ state = {
         </CardActionArea>
             <CardContent>
               <Typography paragraph></Typography>
-                <Button variant="contained" color="primary" size="small" color="primary">
-                    Add THIS {this.props.thisComponent.type} </Button> &nbsp;
-                <Button variant="contained" color="secondary" size="small">
-                Delete Build
-                </Button>
+              {this.state.componentSelected ?
+              <Button variant="contained" color="secondary" size="small" onClick = {this.selectComponent}>
+              REMOVE</Button>
+              :
+                <Button variant="contained" color="primary" size="small" color="primary" onClick = {this.selectComponent}>
+                SELECT THIS {this.props.thisComponent.type} </Button> 
+                
+                }
             </CardContent>
           </Card>
-
-
-
 
         <MDBCard
           className='card-image'
@@ -121,6 +92,7 @@ state = {
             backgroundImage: 'url(' + this.props.thisComponent.image + ')'
               
           }}
+          onClick={this.handleClick} 
         >
             
           <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-4 px-2'>
@@ -133,19 +105,6 @@ state = {
               <br></br>
               <br></br>
               <br></br>
-    
-            {this.state.componentSelected ?
-            <MDBBtn className= 'text-center' color='deep-yellow' >
-              <MDBIcon icon='check' /> Delete
-            </MDBBtn>:
-            <MDBBtn className= 'text-center' color='deep-orange' >
-            <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
-          </MDBBtn>
-            }
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick}>
-                Return
-              </MDBBtn>
             </div>
           </div>
         </MDBCard>
