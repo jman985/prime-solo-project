@@ -21,7 +21,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 
 
-class NewBuildItem extends Component {
+class ComponentItem extends Component {
    
 
   constructor() {
@@ -141,4 +141,4 @@ const mapStateToProps = state => ({
     user: state.user,
   });
   
-  export default withRouter(connect(mapStateToProps)(NewBuildItem));
+  export default withRouter(connect(mapStateToProps)(ComponentItem));

@@ -4,7 +4,7 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
-//GET route for logged-in USER builds
+//GET route for selected component
 
 router.get('/:component', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', rejectUnauthenticated, req.user);

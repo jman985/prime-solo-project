@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
 import { borders } from '@material-ui/system';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -18,7 +19,8 @@ import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
-import NewBuildItem from '../NewBuildItem/NewBuildItem'
+import ComponentItem from '../ComponentItem/ComponentItem'
+import NewBuildItem from '../NewBuildItem/NewBuildItem';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -130,7 +132,7 @@ newBuild: state.newBuild,
 user: state.user,
 });
 
-export default connect(mapStateToProps)(ComponentPage);
+export default withRouter(connect(mapStateToProps)(ComponentPage));
 
 // {this.props.newBuild.filter(x => x.id > 1).map( y =>
 //   <NewBuildItem key={y.id} thisComponent={y}/>
