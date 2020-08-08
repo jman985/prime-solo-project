@@ -23,6 +23,10 @@ import ReactCardFlip from 'react-card-flip';
 
 class ComponentItem extends Component {
    
+state = {
+        componentSelected: false,
+        // build_id: getCookie('build_id')
+      }
 
   constructor() {
     super();
@@ -37,10 +41,10 @@ class ComponentItem extends Component {
     this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
   }
 
-  gotoComponent = (event, component) => {
+  addComponent = (event, id) => {
     event.preventDefault();
-    this.props.dispatch({type: 'FETCH_COMPONENT', payload: component});
-    this.props.history.push('/component');
+    // this.props.dispatch({type: 'FETCH_COMPONENT', payload: component});
+    // // this.props.history.push('/component');
 
   }
 
@@ -50,7 +54,7 @@ class ComponentItem extends Component {
     <Grid item xs={10} sm={6} md={3}>
     <MDBCol>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-      <MDBCard
+      {/* <MDBCard
           className='card-image'
           style={{
             backgroundImage: 'url(' + this.props.thisComponent.image + ')'
@@ -76,12 +80,40 @@ class ComponentItem extends Component {
                 Details
               </MDBBtn>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.addComponent(event, this.props.thisComponent.id) }>
                 <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
               </MDBBtn>
             </div>
           </div>
-        </MDBCard>
+        </MDBCard> */}
+
+
+
+
+        <Card >
+        <CardHeader title={this.props.thisComponent.name}>
+        </CardHeader>
+        <CardActionArea>
+          <CardMedia  component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
+            aria-label="Show more"
+            alt={this.props.thisComponent.name}
+            src={this.props.thisComponent.image}
+            title={this.props.thisComponent.name}
+            paragraph= {this.props.thisComponent.details}
+          />
+        </CardActionArea>
+            <CardContent>
+              <Typography paragraph></Typography>
+                <Button variant="contained" color="primary" size="small" color="primary">
+                    Add THIS {this.props.thisComponent.type} </Button> &nbsp;
+                <Button variant="contained" color="secondary" size="small">
+                Delete Build
+                </Button>
+            </CardContent>
+          </Card>
+
+
+
 
         <MDBCard
           className='card-image'
@@ -101,12 +133,18 @@ class ComponentItem extends Component {
               <br></br>
               <br></br>
               <br></br>
-              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
-                <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
-              </MDBBtn>
+    
+            {this.state.componentSelected ?
+            <MDBBtn className= 'text-center' color='deep-yellow' >
+              <MDBIcon icon='check' /> Delete
+            </MDBBtn>:
+            <MDBBtn className= 'text-center' color='deep-orange' >
+            <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
+          </MDBBtn>
+            }
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick}>
-                Cancel
+                Return
               </MDBBtn>
             </div>
           </div>
@@ -119,17 +157,7 @@ class ComponentItem extends Component {
         <br></br>
               
     </Grid>
-{/* <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-        <Card>
-          This is the front of the card.
-          <button onClick={this.handleClick}>Click to flip</button>
-        </Card>
- 
-        <Button>
-          This is the back of the card.
-          <button onClick={this.handleClick}>Click to flip</button>
-        </Button>
-      </ReactCardFlip> */}
+
 </>
   )
 }

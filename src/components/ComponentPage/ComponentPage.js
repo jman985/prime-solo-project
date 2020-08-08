@@ -37,48 +37,14 @@ const getCookie = (cookieName) => {
 
 class ComponentPage extends Component {
 
-  state = {
-    buildname: getCookie('buildname'||''),
-    buildnameIsEditable: false,
-    // build_id: getCookie('build_id')
-  }
-
   componentDidMount() {
 
     console.log('component page mounted')
-
-    // document.cookie = `build_id=${build_id}`
 
     // this.props.dispatch({type: 'FETCH_COMPONENT', payload: this.props.selectBuild});
 
   }
 
-
-  // editUsername = () => {
-
-  //   this.setState({
-  //     buildnameIsEditable: true,
-  //   });
-  // }
-
-  // onChange= (event) => {
-  //   event.preventDefault();
-
-  //   const buildname = event.target.value;
-
-  //   document.cookie = `buildname=${buildname}`
-
-  //   this.setState({
-  //     buildname: buildname,
-  //   });
-  // }
-
-  // saveUsername = () => {
-
-  //   this.setState({
-  //     buildnameIsEditable: false,
-  //   });
-  // }
 
   render() {
     return (
@@ -103,7 +69,7 @@ class ComponentPage extends Component {
 
    <MDBRow container spacing = {50}>
        {this.props.buildComponent.filter(x => x.id > 8).map( y =>
-         <NewBuildItem key={y.id} thisComponent={y}/>
+         <ComponentItem key={y.id} thisComponent={y}/>
        )}
        </MDBRow>
 
@@ -134,5 +100,3 @@ user: state.user,
 
 export default withRouter(connect(mapStateToProps)(ComponentPage));
 
-// {this.props.newBuild.filter(x => x.id > 1).map( y =>
-//   <NewBuildItem key={y.id} thisComponent={y}/>

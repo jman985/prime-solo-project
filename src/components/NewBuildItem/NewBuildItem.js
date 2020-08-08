@@ -119,17 +119,6 @@ class NewBuildItem extends Component {
         <br></br>
               
     </Grid>
-{/* <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-        <Card>
-          This is the front of the card.
-          <button onClick={this.handleClick}>Click to flip</button>
-        </Card>
- 
-        <Button>
-          This is the back of the card.
-          <button onClick={this.handleClick}>Click to flip</button>
-        </Button>
-      </ReactCardFlip> */}
 </>
   )
 }

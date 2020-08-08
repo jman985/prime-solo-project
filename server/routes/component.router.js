@@ -18,3 +18,5 @@ router.get('/:component', rejectUnauthenticated, (req, res) => {
     });
 
     module.exports = router;
+
+    
