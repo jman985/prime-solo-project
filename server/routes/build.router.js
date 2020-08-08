@@ -102,7 +102,7 @@ router.put('/', rejectUnauthenticated, (req, res) => {
     const queryText = 
     `UPDATE "build"
     SET $1_id = $2,
-    WHERE "id" = $5;`;
+    WHERE "id" = $3;`;
     const queryInput = [
       req.body.type,
       req.body.component,

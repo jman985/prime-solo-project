@@ -44,7 +44,9 @@ class ComponentPage extends Component {
     this.props.dispatch({type: 'FETCH_COMPONENT', payload: this.props.match.params.componentName});
 
   }
-
+  cancelClick = ()=>{
+    this.props.history.push('/builder/' + this.props.selectBuild)
+  }
 
   render() {
     return (
@@ -81,7 +83,7 @@ class ComponentPage extends Component {
 
  <Button variant="contained" color="primary" >SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <Button variant="contained" color="secondary" >CANCEL</Button>
+ <Button variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
 
  </>
  
