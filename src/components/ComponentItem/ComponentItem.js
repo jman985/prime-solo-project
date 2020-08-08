@@ -51,17 +51,31 @@ state = {
 
   selectComponent = () => {
     this.setState({
-      componentSelected: true,
-      componentId: this.props.thisComponent.id
+      componentSelected: true
     });
-  }
+    
+  this.props.dispatch({type: 'SELECT_COMPONENT', 
+                        payload: { component_id: this.props.thisComponent.id,
+                          build_id: this.props.selectBuild,
+                          type: this.props.thisComponent.type === 'CPU'? "cpu_id" :
+                                this.props.thisComponent.type === 'CPU Cooler'? "cooler_id":
+                                this.props.thisComponent.type === 'Motherboard'? "mobo_id":
+                                this.props.thisComponent.type === 'Case'? "case_id":
+                                this.props.thisComponent.type === 'GPU'? "gpu_id":
+                                this.props.thisComponent.type === 'Storage'? "storage_id":
+                                this.props.thisComponent.type === 'Memory'? "memory_id":
+                                  'psu'
+                                }})
+                              }
+
 
   deSelectComponent = ()=>{
     this.setState({
-      componentSelected: false,
-      componentId: 0
+      componentSelected: false
     });
-  }
+
+    this.props.dispatch({type: 'SELECT_COMPONENT', payload: {component_id: 0, type: ''}})
+    }
 
   
 
@@ -134,6 +148,8 @@ state = {
 }
 
 const mapStateToProps = state => ({
+    selectComponent: state.selectComponent,
+    selectBuild: state.selectBuild,
     buildComponent: state.buildComponent,
     newBuild: state.newBuild,
     user: state.user,

@@ -99,16 +99,12 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/', rejectUnauthenticated, (req, res) => {
-    const queryText = 
-    `UPDATE "build"
-    SET $1_id = $2,
-    WHERE "id" = $3;`;
-    const queryInput = [
-      req.body.type,
-      req.body.component,
-      req.body.id,
-    ];
-    pool.query(queryText, queryInput)
+  console.log('this is the req.body', req.body);
+  
+    pool.query(`UPDATE "build"
+    SET ${req.body.type} = $2
+    WHERE "build"."id" = $3;`,[req.body.component_id, req.body.build_id])
+    // pool.query(queryText, queryInput)
     .then(() => res.sendStatus(201))
     .catch((error) => {res.sendStatus(500);
       console.log(error);

@@ -48,6 +48,16 @@ class ComponentPage extends Component {
     this.props.history.push('/builder/' + this.props.selectBuild)
   }
 
+    saveComponent = ()=> {
+
+    this.props.dispatch({type: 'UPDATE_BUILD', payload: this.props.selectComponent,
+                                                build_id: this.props.selectBuild});
+
+    this.props.history.push('/builder/' + this.props.selectBuild)
+
+    }
+
+
   render() {
     return (
       <>
@@ -81,7 +91,7 @@ class ComponentPage extends Component {
 <br></br>
 <br></br>
 
- <Button variant="contained" color="primary" >SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <Button variant="contained" color="primary" onClick = {this.saveComponent}>SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <Button variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
 
@@ -92,6 +102,7 @@ class ComponentPage extends Component {
 }
 
 const mapStateToProps = state => ({
+selectComponent: state.selectComponent,
 buildComponent: state.buildComponent,
 build: state.build,
 selectBuild: state.selectBuild,
