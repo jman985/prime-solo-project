@@ -39,8 +39,8 @@ class NewBuildItem extends Component {
 
   gotoComponent = (event, component) => {
     event.preventDefault();
-    this.props.dispatch({type: 'FETCH_COMPONENT', payload: component});
-    this.props.history.push('/component');
+    // this.props.dispatch({type: 'FETCH_COMPONENT', payload: component});
+    this.props.history.push('/component/' + component);
 
   }
 

@@ -39,9 +39,9 @@ class ComponentPage extends Component {
 
   componentDidMount() {
 
-    console.log('component page mounted')
+    console.log('component page mounted, component page for', this.props.match.params.componentName)
 
-    // this.props.dispatch({type: 'FETCH_COMPONENT', payload: this.props.selectBuild});
+    this.props.dispatch({type: 'FETCH_COMPONENT', payload: this.props.match.params.componentName});
 
   }
 
@@ -50,7 +50,7 @@ class ComponentPage extends Component {
     return (
       <>
       <div>
-        <h1><strong>Select Your Components</strong></h1>
+        <h1><strong>Select Your {this.props.match.params.componentName}</strong></h1>
       </div>
       <br></br>
           <br></br>

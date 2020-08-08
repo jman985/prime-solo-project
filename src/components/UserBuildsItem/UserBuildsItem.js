@@ -47,7 +47,7 @@ class UserBuildsItem extends Component {
     event.preventDefault();
     console.log('select build', id);
     this.props.dispatch({type: 'SELECT_BUILD', payload: id})
-    this.props.history.push('/builder');
+    this.props.history.push('/builder/' + id);
   }
 
 

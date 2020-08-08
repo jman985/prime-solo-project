@@ -43,11 +43,11 @@ class NewBuildPage extends Component {
 
   componentDidMount() {
 
-    console.log('buildpage mounted', this.props.selectBuild );
+    console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
 
     // document.cookie = `build_id=${build_id}`
 
-    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
+    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
 
   }
 
