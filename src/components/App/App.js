@@ -18,8 +18,11 @@ import UserHomePage from '../UserHomePage/UserHomePage';
 import UserBuildsPage from '../UserBuildsPage/UserBuildsPage';
 import UserBuildsItem from '../UserBuildsItem/UserBuildsItem';
 import './App.css';
-import NewBuildPage from '../NewBuildPage/NewBuildPage';
+import EditBuildPage from '../EditBuildPage/EditBuildPage';
 import ComponentPage from '../ComponentPage/ComponentPage';
+import NewBuildPage from '../NewBuildPage/NewBuildPage';
+
+
 
 class App extends Component {
   componentDidMount () {
@@ -60,11 +63,15 @@ class App extends Component {
              <ProtectedRoute
               exact
               path={`/builder/:buildId`}
-              component={NewBuildPage}
+              component={EditBuildPage}
             />
             <ProtectedRoute 
               exact path= {`/component/:componentName`}
               component={ComponentPage}
+            />
+            <ProtectedRoute 
+              exact path= {`/newbuild`}
+              component={NewBuildPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

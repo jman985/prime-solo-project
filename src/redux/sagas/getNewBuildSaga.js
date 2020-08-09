@@ -8,7 +8,7 @@ function* fetchNewBuild(action){
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     };
-    const response = yield axios.get('/api/builder', config);
+    const response = yield axios.get('/api/newbuild', config);
     console.log('response from server: ', response.data);
     yield put({type:'SET_NEWBUILD', payload: response.data});
   }

@@ -4,8 +4,11 @@ import axios from 'axios';
 // saga will be fired on ADD_BUILD action and axios post to server
 function* addBuild(action) {
   try {
-    yield axios.post('/api/build', action.payload);
-    yield put({type: 'FETCH_BUILD'})
+
+    const response = yield axios.post('/api/build', action.payload);
+    console.log('response from new build POST', response.data);
+    
+    yield put({type: 'SELECT_BUILD', payload: response.data.id})
   } catch (error) {
     console.log('error with adding build:', error);
   }
