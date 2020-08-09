@@ -25,11 +25,16 @@ class UserHomePage extends Component {
     this.props.history.push('/builds');
 
   }
-  newBuildHandleClick= () => {
+  newBuildHandleClick= (event) => {
+    event.preventDefault();
 
     this.props.dispatch({type: 'ADD_BUILD'})
+
+    // this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.selectBuild})
+
+    console.log('this is the selected build', this.props.selectBuild);
     
-    // this.props.history.push('/builder');
+    this.props.history.push('/builder/' + this.props.selectBuild);
 
   }
 
@@ -41,6 +46,7 @@ class UserHomePage extends Component {
         <p>Your ID is: {this.props.user.id}</p>
 
         <Button variant="contained" color="primary" onClick = {this.newBuildHandleClick}>Start A New Build</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       
 
         <Button variant="contained" color="primary" onClick = {this.viewBuildsHandleClick}>View Your Builds</Button>
         <br></br>
@@ -55,6 +61,7 @@ class UserHomePage extends Component {
 
 // Instead of taking everything from state, we just want the user info.
 const mapStateToProps = (state) => ({
+  selectBuild: state.selectBuild,
   userBuilds: state.userBuilds,
   user: state.user,
 });

@@ -8,7 +8,7 @@ function* addBuild(action) {
     const response = yield axios.post('/api/build', action.payload);
     console.log('response from new build POST', response.data);
     
-    yield put({type: 'SELECT_BUILD', payload: response.data})
+    yield put({type: 'SELECT_BUILD', payload: response.data.id})
   } catch (error) {
     console.log('error with adding item:', error);
   }

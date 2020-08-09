@@ -27,7 +27,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     VALUES ('Untitled', $1, 1, 2, 3, 4, 5, 6, 7, 8) RETURNING id;`;
     pool.query(queryText, [req.user.id])
     .then(results => {
-        res.send(results.rows);
+        res.send(results.rows[0]);
     }).catch(error => {
         console.log('error adding item', error);
         res.sendStatus(500);
