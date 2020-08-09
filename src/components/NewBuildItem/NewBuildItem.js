@@ -56,6 +56,7 @@ class NewBuildItem extends Component {
             backgroundImage: 'url(' + this.props.thisComponent.image + ')'
               
           }}
+          onClick= {this.handleClick}
         >
           <div className='text-white text-center rgba-grey-strong d-flex align-items-center py-3 px-1'>
             <div>
@@ -72,10 +73,9 @@ class NewBuildItem extends Component {
               
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick} >
+              {/* <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick} >
                 Details
-              </MDBBtn>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </MDBBtn> */}
               <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                 <MDBIcon icon='plus' /> Add {this.props.thisComponent.type}
               </MDBBtn>
@@ -89,6 +89,7 @@ class NewBuildItem extends Component {
             backgroundImage: 'url(' + this.props.thisComponent.image + ')'
               
           }}
+          onClick= {this.handleClick}
         >
             
           <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-4 px-2'>
@@ -104,10 +105,9 @@ class NewBuildItem extends Component {
               <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                 <MDBIcon icon='plus' /> Add {this.props.thisComponent.type}
               </MDBBtn>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick}>
+              {/* <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick}>
                 Cancel
-              </MDBBtn>
+              </MDBBtn> */}
             </div>
           </div>
         </MDBCard>
