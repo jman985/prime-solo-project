@@ -26,6 +26,7 @@ class ComponentItem extends Component {
 state = {
         componentSelected: false,
         // build_id: getCookie('build_id')
+        componentId: 0
       }
 
   constructor() {
@@ -50,9 +51,26 @@ state = {
 
   selectComponent = () => {
     this.setState({
-      componentSelected: !this.state.componentSelected,
+      componentSelected: true
     });
-  }
+    
+  this.props.dispatch({type: 'SELECT_COMPONENT', 
+                        payload: { component_id: this.props.thisComponent.id,
+                          build_id: this.props.selectBuild,
+                          type: this.props.thisComponent.type
+                                }})
+                              }
+
+
+  deSelectComponent = ()=>{
+    this.setState({
+      componentSelected: false
+    });
+
+    this.props.dispatch({type: 'SELECT_COMPONENT', payload: {component_id: 0, type: ''}})
+    }
+
+  
 
   render(){
   return (
@@ -76,7 +94,7 @@ state = {
             <CardContent>
               <Typography paragraph></Typography>
               {this.state.componentSelected ?
-              <Button variant="contained" color="secondary" size="small" onClick = {this.selectComponent}>
+              <Button variant="contained" color="secondary" size="small" onClick = {this.deSelectComponent}>
               REMOVE</Button>
               :
                 <Button variant="contained" color="primary" size="small" color="primary" onClick = {this.selectComponent}>
@@ -123,6 +141,8 @@ state = {
 }
 
 const mapStateToProps = state => ({
+    selectComponent: state.selectComponent,
+    selectBuild: state.selectBuild,
     buildComponent: state.buildComponent,
     newBuild: state.newBuild,
     user: state.user,

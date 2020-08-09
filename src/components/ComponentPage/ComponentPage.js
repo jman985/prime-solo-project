@@ -39,18 +39,36 @@ class ComponentPage extends Component {
 
   componentDidMount() {
 
-    console.log('component page mounted')
+    console.log('component page mounted, component page for', this.props.match.params.componentName)
 
-    // this.props.dispatch({type: 'FETCH_COMPONENT', payload: this.props.selectBuild});
+    this.props.dispatch({type: 'FETCH_COMPONENT', payload: this.props.match.params.componentName});
 
   }
+  cancelClick = ()=>{
+    this.props.history.push('/builder/' + this.props.selectBuild)
+  }
+
+    saveComponent = ()=> {
+
+    this.props.dispatch({type: this.props.selectComponent.type === 'CPU'? 'UPDATE_CPU' :
+    this.props.selectComponent.type === 'CPU Cooler'? 'UPDATE_COOLER':
+    this.props.selectComponent.type === 'Motherboard'? 'UPDATE_MOBO':
+    this.props.selectComponent.type === 'Case'? 'UPDATE_CASE':
+    this.props.selectComponent.type === 'GPU'? 'UPDATE_GPU':
+    this.props.selectComponent.type === 'Storage'? 'UPDATE_STORAGE':
+    this.props.selectComponent.type === 'Memory'? 'UPDATE_MEMORY':
+      'UPDATE_PSU', payload: this.props.selectComponent});
+
+    this.props.history.push('/builder/' + this.props.selectBuild)
+
+    }
 
 
   render() {
     return (
       <>
       <div>
-        <h1><strong>Select Your Components</strong></h1>
+        <h1><strong>Select Your {this.props.match.params.componentName}</strong></h1>
       </div>
       <br></br>
           <br></br>
@@ -79,9 +97,9 @@ class ComponentPage extends Component {
 <br></br>
 <br></br>
 
- <Button variant="contained" color="primary" >SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <Button variant="contained" color="primary" onClick = {this.saveComponent}>SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <Button variant="contained" color="secondary" >CANCEL</Button>
+ <Button variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
 
  </>
  
@@ -90,6 +108,7 @@ class ComponentPage extends Component {
 }
 
 const mapStateToProps = state => ({
+selectComponent: state.selectComponent,
 buildComponent: state.buildComponent,
 build: state.build,
 selectBuild: state.selectBuild,

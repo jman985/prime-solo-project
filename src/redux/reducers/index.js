@@ -3,10 +3,11 @@ import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
 import userBuilds from './userBuildsReducer';
-import newBuild from './newBuildReducer'
-import selectBuild from './selectBuildReducer'
-import build from './buildReducer'
-import buildComponent from './componentReducer'
+import newBuild from './newBuildReducer';
+import selectBuild from './selectBuildReducer';
+import build from './buildReducer';
+import buildComponent from './componentReducer';
+import selectComponent from './selectComponentReducer';
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   selectBuild,
   build,
   buildComponent,
+  selectComponent
 });
 
 export default rootReducer;

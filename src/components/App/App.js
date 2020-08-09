@@ -59,12 +59,11 @@ class App extends Component {
             />
              <ProtectedRoute
               exact
-              path="/builder"
+              path={`/builder/:buildId`}
               component={NewBuildPage}
             />
-            <ProtectedRoute
-              exact
-              path="/component"
+            <ProtectedRoute 
+              exact path= {`/component/:componentName`}
               component={ComponentPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
