@@ -21,6 +21,7 @@ import './App.css';
 import EditBuildPage from '../EditBuildPage/EditBuildPage';
 import ComponentPage from '../ComponentPage/ComponentPage';
 import NewBuildPage from '../NewBuildPage/NewBuildPage';
+import ReviewPage from '../ReviewPage/ReviewPage';
 
 
 
@@ -72,6 +73,10 @@ class App extends Component {
             <ProtectedRoute 
               exact path= {`/newbuild`}
               component={NewBuildPage}
+            />
+            <ProtectedRoute 
+              exact path= {`/review/:buildId`}
+              component={ReviewPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
