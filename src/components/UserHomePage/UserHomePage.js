@@ -20,21 +20,21 @@ import IconButton from '@material-ui/core/IconButton';
 
 class UserHomePage extends Component {
 
+
   viewBuildsHandleClick = () => {
 
     this.props.history.push('/builds');
 
   }
-  newBuildHandleClick= (event) => {
-    event.preventDefault();
-
-    this.props.dispatch({type: 'ADD_BUILD'})
+  newBuildHandleClick = () => {
 
     // this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.selectBuild})
+    this.props.dispatch({type: 'ADD_BUILD'})
+    this.props.dispatch({type: 'FETCH_NEWBUILD'})
 
     console.log('this is the selected build', this.props.selectBuild);
     
-    this.props.history.push('/builder/' + this.props.selectBuild);
+    this.props.history.push('/newbuild');
 
   }
 
@@ -61,6 +61,7 @@ class UserHomePage extends Component {
 
 // Instead of taking everything from state, we just want the user info.
 const mapStateToProps = (state) => ({
+  newBuild: state.newBuild,
   selectBuild: state.selectBuild,
   userBuilds: state.userBuilds,
   user: state.user,

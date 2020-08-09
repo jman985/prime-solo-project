@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
-import NewBuildItem from '../NewBuildItem/NewBuildItem'
+import NewBuildItem from '../EditBuildItem/EditBuildItem'
 import CpuCard from '.../CpuCard/CpuCard'
 
 // This is one of our simplest components

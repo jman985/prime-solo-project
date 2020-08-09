@@ -20,7 +20,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 import ComponentItem from '../ComponentItem/ComponentItem'
-import NewBuildItem from '../NewBuildItem/NewBuildItem';
+import EditBuildItem from '../EditBuildItem/EditBuildItem';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.

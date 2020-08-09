@@ -25,23 +25,24 @@ import EditBuildItem from '../EditBuildItem/EditBuildItem'
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-const getCookie = (cookieName) => {
-  // Get name followed by anything except a semicolon
-  const cookieString = RegExp(''+cookieName+'[^;]+').exec(document.cookie);
-  // Return everything after the equal sign, or an empty string if the cookie name not found
-  return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
-}
+// const getCookie = (cookieName) => {
+//   // Get name followed by anything except a semicolon
+//   const cookieString = RegExp(''+cookieName+'[^;]+').exec(document.cookie);
+//   // Return everything after the equal sign, or an empty string if the cookie name not found
+//   return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
+// }
 
 
-class NewBuildPage extends Component {
+class EditBuildPage extends Component {
 
-  state = {
-    buildname: getCookie('buildname'||''),
-    buildnameIsEditable: false,
-    // build_id: getCookie('build_id')
-  }
+  // state = {
+  //   buildname: getCookie('buildname'||''),
+  //   buildnameIsEditable: false,
+  //   // build_id: getCookie('build_id')
+  // }
 
-   componentDidMount() {
+  componentDidMount() {
+
       // this.getBuild();
     // if(this.props.match.params.buildId){
     // this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild}),
@@ -51,19 +52,27 @@ class NewBuildPage extends Component {
     //   console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
     //   this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
     // }
-    // await this.getBuild()
-    console.log('new build page mounted, build ID is');
+    this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.match.params.buildId})
+    
+    console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
+
     // document.cookie = `build_id=${build_id}`
-    // this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
+
+    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
+
   }
 
-//   getBuild = () =>{
+  // getBuild = () =>{
 
-//      this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
-//     //   this.props.match.params.buildId = this.props.selectBuild
-//     //   console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
-      
-//   }
+  //   if(this.props.match.params.buildId){
+  //     this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild}),
+  //     this.props.match.params.buildId = this.props.selectBuild
+  //     console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
+  //     }else{
+  //       console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
+  //       this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
+  //     }
+  // }
 
   editUsername = () => {
 
@@ -126,7 +135,7 @@ class NewBuildPage extends Component {
        )} */}
 
    <MDBRow container spacing = {50}>
-       {this.props.newBuild.map( y =>
+       {this.props.build.map( y =>
          <EditBuildItem key={y.id} thisComponent={y}/>
        )}
        </MDBRow>
@@ -154,4 +163,4 @@ newBuild: state.newBuild,
 user: state.user,
 });
 
-export default connect(mapStateToProps)(NewBuildPage);
+export default connect(mapStateToProps)(EditBuildPage);
