@@ -15,7 +15,7 @@ function* fetchBuild(action){
     yield put({type:'SET_BUILD', payload: response.data});
   }
   catch (error) {
-    console.log('Error with fetchNewBuild Saga:', error);
+    console.log('Error with fetchBuild Saga:', error);
   }
 }
 
