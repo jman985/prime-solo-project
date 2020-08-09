@@ -28,6 +28,7 @@ class UserHomePage extends Component {
   newBuildHandleClick= () => {
 
     this.props.dispatch({type: 'ADD_BUILD'})
+    
     this.props.history.push('/builder');
 
   }
