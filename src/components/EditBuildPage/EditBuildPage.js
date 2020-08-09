@@ -100,6 +100,11 @@ class EditBuildPage extends Component {
     });
   }
 
+  reviewBuildClick = () =>{
+
+    this.props.history.push('/review/' + this.props.match.params.buildId);
+
+  }
   render() {
     return (
       <>
@@ -145,7 +150,7 @@ class EditBuildPage extends Component {
 <br></br>
 <br></br>
 
- <Button variant="contained" color="primary" >COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <Button variant="contained" color="primary" onClick = {this.reviewBuildClick}>COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button>
 
