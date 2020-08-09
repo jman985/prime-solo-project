@@ -98,12 +98,13 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
-router.put('/', rejectUnauthenticated, (req, res) => {
+
+router.put('/cpu', rejectUnauthenticated, (req, res) => {
   console.log('this is the req.body', req.body);
   
     pool.query(`UPDATE "build"
-    SET ${req.body.type} = $2
-    WHERE "build"."id" = $3;`,[req.body.component_id, req.body.build_id])
+    SET "cpu_id" = $1
+    WHERE "build"."id" = $2;`,[req.body.component_id, req.body.build_id])
     // pool.query(queryText, queryInput)
     .then(() => res.sendStatus(201))
     .catch((error) => {res.sendStatus(500);
@@ -112,5 +113,109 @@ router.put('/', rejectUnauthenticated, (req, res) => {
     });
   });
 
+
+  router.put('/cooler', rejectUnauthenticated, (req, res) => {
+    console.log('this is the req.body', req.body);
+    
+      pool.query(`UPDATE "build"
+      SET "cooler_id" = $1
+      WHERE "build"."id" = $2;`,[req.body.component_id, req.body.build_id])
+      // pool.query(queryText, queryInput)
+      .then(() => res.sendStatus(201))
+      .catch((error) => {res.sendStatus(500);
+        console.log(error);
+        //console.log(req.body)
+      });
+    });
+
+
+    router.put('/mobo', rejectUnauthenticated, (req, res) => {
+      console.log('this is the req.body', req.body);
+      
+        pool.query(`UPDATE "build"
+        SET "mobo_id" = $1
+        WHERE "build"."id" = $2;`,[req.body.component_id, req.body.build_id])
+        // pool.query(queryText, queryInput)
+        .then(() => res.sendStatus(201))
+        .catch((error) => {res.sendStatus(500);
+          console.log(error);
+          //console.log(req.body)
+        });
+      });
+
+
+      router.put('/case', rejectUnauthenticated, (req, res) => {
+        console.log('this is the req.body', req.body);
+        
+          pool.query(`UPDATE "build"
+          SET "case_id" = $1
+          WHERE "build"."id" = $2;`,[req.body.component_id, req.body.build_id])
+          // pool.query(queryText, queryInput)
+          .then(() => res.sendStatus(201))
+          .catch((error) => {res.sendStatus(500);
+            console.log(error);
+            //console.log(req.body)
+          });
+        });
+
+
+        router.put('/gpu', rejectUnauthenticated, (req, res) => {
+          console.log('this is the req.body', req.body);
+          
+            pool.query(`UPDATE "build"
+            SET "cpu_id" = $1
+            WHERE "build"."id" = $2;`,[req.body.component_id, req.body.build_id])
+            // pool.query(queryText, queryInput)
+            .then(() => res.sendStatus(201))
+            .catch((error) => {res.sendStatus(500);
+              console.log(error);
+              //console.log(req.body)
+            });
+          });
+
+
+          router.put('/storage', rejectUnauthenticated, (req, res) => {
+            console.log('this is the req.body', req.body);
+            
+              pool.query(`UPDATE "build"
+              SET "storage_id" = $1
+              WHERE "build"."id" = $2;`,[req.body.component_id, req.body.build_id])
+              // pool.query(queryText, queryInput)
+              .then(() => res.sendStatus(201))
+              .catch((error) => {res.sendStatus(500);
+                console.log(error);
+                //console.log(req.body)
+              });
+            });
+
+
+            router.put('/memory', rejectUnauthenticated, (req, res) => {
+              console.log('this is the req.body', req.body);
+              
+                pool.query(`UPDATE "build"
+                SET "memory_id" = $1
+                WHERE "build"."id" = $2;`,[req.body.component_id, req.body.build_id])
+                // pool.query(queryText, queryInput)
+                .then(() => res.sendStatus(201))
+                .catch((error) => {res.sendStatus(500);
+                  console.log(error);
+                  //console.log(req.body)
+                });
+              });
+
+
+              router.put('/psu', rejectUnauthenticated, (req, res) => {
+                console.log('this is the req.body', req.body);
+                
+                  pool.query(`UPDATE "build"
+                  SET "psu_id" = $1
+                  WHERE "build"."id" = $2;`,[req.body.component_id, req.body.build_id])
+                  // pool.query(queryText, queryInput)
+                  .then(() => res.sendStatus(201))
+                  .catch((error) => {res.sendStatus(500);
+                    console.log(error);
+                    //console.log(req.body)
+                  });
+                });
 
 module.exports = router;

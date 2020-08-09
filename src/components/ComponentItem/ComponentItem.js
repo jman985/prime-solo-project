@@ -57,14 +57,7 @@ state = {
   this.props.dispatch({type: 'SELECT_COMPONENT', 
                         payload: { component_id: this.props.thisComponent.id,
                           build_id: this.props.selectBuild,
-                          type: this.props.thisComponent.type === 'CPU'? "cpu_id" :
-                                this.props.thisComponent.type === 'CPU Cooler'? "cooler_id":
-                                this.props.thisComponent.type === 'Motherboard'? "mobo_id":
-                                this.props.thisComponent.type === 'Case'? "case_id":
-                                this.props.thisComponent.type === 'GPU'? "gpu_id":
-                                this.props.thisComponent.type === 'Storage'? "storage_id":
-                                this.props.thisComponent.type === 'Memory'? "memory_id":
-                                  'psu'
+                          type: this.props.thisComponent.type
                                 }})
                               }
 

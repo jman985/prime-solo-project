@@ -50,8 +50,14 @@ class ComponentPage extends Component {
 
     saveComponent = ()=> {
 
-    this.props.dispatch({type: 'UPDATE_BUILD', payload: this.props.selectComponent,
-                                                build_id: this.props.selectBuild});
+    this.props.dispatch({type: this.props.selectComponent.type === 'CPU'? 'UPDATE_CPU' :
+    this.props.selectComponent.type === 'CPU Cooler'? 'UPDATE_COOLER':
+    this.props.selectComponent.type === 'Motherboard'? 'UPDATE_MOBO':
+    this.props.selectComponent.type === 'Case'? 'UPDATE_CASE':
+    this.props.selectComponent.type === 'GPU'? 'UPDATE_GPU':
+    this.props.selectComponent.type === 'Storage'? 'UPDATE_STORAGE':
+    this.props.selectComponent.type === 'Memory'? 'UPDATE_MEMORY':
+      'UPDATE_PSU', payload: this.props.selectComponent});
 
     this.props.history.push('/builder/' + this.props.selectBuild)
 
