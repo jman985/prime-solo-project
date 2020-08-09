@@ -90,7 +90,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     components.image AS image,
     components.details AS details
     FROM "build"
-    JOIN "components" ON "psu_id" = "components"."id" WHERE user_id = $1 AND build.id = $2 ORDER BY id;`, [req.user.id, req.params.id])
+    JOIN "components" ON "psu_id" = "components"."id" WHERE user_id = $1 AND build.id = $2 ORDER BY type`, [req.user.id, req.params.id])
         .then(results => res.send(results.rows))
         .catch(error => {
             console.log('Error making SELECT for components:', error);
