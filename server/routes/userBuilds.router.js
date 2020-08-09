@@ -9,7 +9,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', rejectUnauthenticated, req.user);
     pool.query(`SELECT build.id, build.name, image FROM "build"
-    JOIN "components" ON "case_id" = "components"."id" WHERE build.user_id = $1 AND components.type = 'Case';`, [req.user.id])
+    JOIN "components" ON "case_id" = "components"."id" WHERE build.user_id = $1 AND components.type = 'Case' ORDER BY build.id;`, [req.user.id])
         .then(results => res.send(results.rows))
         .catch(error => {
             console.log('Error making SELECT for builds:', error);
