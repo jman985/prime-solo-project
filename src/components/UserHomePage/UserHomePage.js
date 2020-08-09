@@ -29,7 +29,7 @@ class UserHomePage extends Component {
 
     this.props.dispatch({type: 'ADD_BUILD'})
     
-    this.props.history.push('/builder');
+    // this.props.history.push('/builder');
 
   }
 

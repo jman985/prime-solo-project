@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
-//GET new build data from the database
+//GET build data from the database
 function* fetchBuild(action){
   try{
       console.log('querying with', action.payload);

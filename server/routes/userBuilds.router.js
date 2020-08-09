@@ -24,10 +24,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('in post with:', req.user.id);
     const queryText = `INSERT INTO build (name, user_id, cpu_id, cooler_id, mobo_id, case_id, gpu_id, storage_id, memory_id,  psu_id )
-    VALUES ('Untitled', $1, 1, 2, 3, 4, 5, 6, 7, 8);`;
+    VALUES ('Untitled', $1, 1, 2, 3, 4, 5, 6, 7, 8) RETURNING id;`;
     pool.query(queryText, [req.user.id])
-    .then(response => {
-        res.sendStatus(200);
+    .then(results => {
+        res.send(results.rows);
     }).catch(error => {
         console.log('error adding item', error);
         res.sendStatus(500);
@@ -41,7 +41,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `DELETE FROM build WHERE id = $1;`;
     pool.query(queryText, [req.params.id])
     .then(response => {
-        res.sendStatus(200);
+        res.send(200);
     }).catch(error =>{
         console.log('error deleting item', error);
         res.sendStatus(500);
