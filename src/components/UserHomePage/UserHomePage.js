@@ -36,6 +36,8 @@ class UserHomePage extends Component {
     
     this.props.history.push('/newbuild');
 
+    // this.props.history.push('/builder');
+
   }
 
   
