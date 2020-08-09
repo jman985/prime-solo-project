@@ -28,7 +28,7 @@ class ReviewPage extends Component {
           <br></br>
           <br></br>
         <ul>
-          {this.props.build.map( component =>
+          {this.props.build.filter(x => x.id > 8).map( component =>
         <> <li key={component.id}><strong>{component.type}</strong>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {component.name}</li><br></br></>)}
         
 
