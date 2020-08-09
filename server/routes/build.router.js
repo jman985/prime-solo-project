@@ -163,7 +163,7 @@ router.put('/cpu', rejectUnauthenticated, (req, res) => {
           console.log('this is the req.body', req.body);
           
             pool.query(`UPDATE "build"
-            SET "cpu_id" = $1
+            SET "gpu_id" = $1
             WHERE "build"."id" = $2;`,[req.body.component_id, req.body.build_id])
             // pool.query(queryText, queryInput)
             .then(() => res.sendStatus(201))

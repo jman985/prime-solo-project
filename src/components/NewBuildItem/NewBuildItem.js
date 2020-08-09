@@ -77,7 +77,7 @@ class NewBuildItem extends Component {
               </MDBBtn>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
-                <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
+                <MDBIcon icon='plus' /> Add {this.props.thisComponent.type}
               </MDBBtn>
             </div>
           </div>
@@ -102,7 +102,7 @@ class NewBuildItem extends Component {
               <br></br>
               <br></br>
               <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
-                <MDBIcon icon='plus' /> Add {this.props.thisComponent.name}
+                <MDBIcon icon='plus' /> Add {this.props.thisComponent.type}
               </MDBBtn>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick}>
