@@ -37,6 +37,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNav
 
   <MDBNavbar color="orange" dark expand="md" style={{ marginTop: "20px" }}>
   <MDBNavbarBrand>
+    <img src = "images/apple_bite.png" height = "70" alt= "hackintosh"/>
     <strong className="white-text">Hackintosh Builder</strong>
   </MDBNavbarBrand>
   
