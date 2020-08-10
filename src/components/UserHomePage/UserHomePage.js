@@ -17,6 +17,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
+import './UserHomePage.css';
 
 
 const getCookie = (cookieName) => {
@@ -29,6 +30,10 @@ const getCookie = (cookieName) => {
 
 class UserHomePage extends Component {
 
+  componentDidMount(){
+    document.body.style.background= '#6495ED'}
+
+    
   state = {
     buildname: getCookie('buildname'||''),
     

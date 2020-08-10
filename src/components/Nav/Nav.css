@@ -11,15 +11,20 @@
   /* background-image: url("/images/970-Evo-Plus-1000.jpg"); */
 background-color: black;
 }
+.nav-bar {
+  /* overflow: hidden; */
+  /* background-image: url("/images/970-Evo-Plus-1000.jpg"); */
+background-color: #FF8C00
+}
 
 .nav-link {
   float: left;
-  color: #f2f2f2;
+  color: white;
   /* background-color: #00acb0; */
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 25px;
 
   /* these last two make the logout button in
   the nav bar look like another link */
@@ -32,6 +37,7 @@ background-color: black;
   background-color:black;
 }
 
-.nav-right {
-  float: right;
+
+.black-text{
+  font-size: 40px;
 }
