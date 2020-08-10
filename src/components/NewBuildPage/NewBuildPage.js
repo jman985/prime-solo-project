@@ -20,10 +20,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 import EditBuildItem from '../EditBuildItem/EditBuildItem'
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+
 
 const getCookie = (cookieName) => {
   // Get name followed by anything except a semicolon
@@ -42,30 +39,15 @@ class NewBuildPage extends Component {
   }
 
    componentDidMount() {
-      // this.getBuild();
-    // if(this.props.match.params.buildId){
-    // this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild}),
-    // this.props.match.params.buildId = this.props.selectBuild
-    // console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
-    // }else{
-    //   console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
-    //   this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
-    // }
-    // await this.getBuild()
+    this.props.dispatch({type: 'FETCH_NEWBUILD'})
+
     console.log('new build page mounted, build ID is');
     // document.cookie = `build_id=${build_id}`
     // this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
   }
 
-//   getBuild = () =>{
 
-//      this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
-//     //   this.props.match.params.buildId = this.props.selectBuild
-//     //   console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
-      
-//   }
-
-  editUsername = () => {
+editBuildName = () => {
 
     this.setState({
       buildnameIsEditable: true,
@@ -84,7 +66,9 @@ class NewBuildPage extends Component {
     });
   }
 
-  saveUsername = () => {
+  saveBuildName = () => {
+    this.props.dispatch({type: 'UPDATE_NAME', payload: {name: this.state.buildname,
+                                                        id: this.props.match.params.buildId,}})
 
     this.setState({
       buildnameIsEditable: false,
@@ -98,16 +82,15 @@ class NewBuildPage extends Component {
         <h1><strong>Build Your Hackintosh</strong></h1>
       </div>
       <br></br>
-              {/* <p>
+      <p>
                 Build Name:{this.state.buildnameIsEditable ?
-              <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<p>{this.state.buildname}</p>}
+              <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<h1>{this.state.buildname}</h1>}
            
             {this.state.buildnameIsEditable ?
-              <button onClick={this.saveUsername}>Save Build Name</button> :
-              <button onClick={this.editUsername}>Edit Build Name</button>
+              <button onClick={this.saveBuildName}>Save Build Name</button> :
+              <button onClick={this.editBuildName}>Edit Build Name</button>
             }
-          </p> */}
-          {/* <h1>{this.props.build[0].build_name}</h1> */}
+          </p>
           <br></br>
               <br></br>
               <br></br>

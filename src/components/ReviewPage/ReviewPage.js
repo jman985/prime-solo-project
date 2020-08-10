@@ -5,11 +5,19 @@ import { Box, Grid, Slide, Paper, Typography} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
 
-
+const getCookie = (cookieName) => {
+    // Get name followed by anything except a semicolon
+    const cookieString = RegExp(''+cookieName+'[^;]+').exec(document.cookie);
+    // Return everything after the equal sign, or an empty string if the cookie name not found
+    return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
+  }
 
 
 class ReviewPage extends Component {
-
+    state = {
+        buildname: getCookie('buildname'||''),
+        
+      }
   componentDidMount() {
     console.log('review build mounted');
     
@@ -26,7 +34,11 @@ class ReviewPage extends Component {
             <br></br>
         <h1><strong>REVIEW YOUR BUILD</strong></h1>
           <br></br>
+          <h1><strong>Build Name: </strong>{this.state.buildname}</h1>
           <br></br>
+          <h2>Components</h2>
+          <br></br>
+
         <ul>
           {this.props.build.filter(x => x.id > 8).map( component =>
         <> <li key={component.id}><strong>{component.type}</strong>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {component.name}</li><br></br></>)}

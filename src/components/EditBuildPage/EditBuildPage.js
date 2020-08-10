@@ -49,6 +49,7 @@ class EditBuildPage extends Component {
     //   console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
     //   this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
     // }
+
     this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.match.params.buildId})
     
     console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
@@ -104,6 +105,8 @@ class EditBuildPage extends Component {
     this.props.history.push('/review/' + this.props.match.params.buildId);
 
   }
+
+
   render() {
     return (
       <>
@@ -120,7 +123,6 @@ class EditBuildPage extends Component {
               <button onClick={this.editBuildName}>Edit Build Name</button>
             }
           </p>
-          {/* <h1>{this.state.buildname}</h1> */}
           <br></br>
               <br></br>
               <br></br>

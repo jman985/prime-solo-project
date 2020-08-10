@@ -18,8 +18,21 @@ import Avatar from '@material-ui/core/Avatar';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
 
+
+const getCookie = (cookieName) => {
+  // Get name followed by anything except a semicolon
+  const cookieString = RegExp(''+cookieName+'[^;]+').exec(document.cookie);
+  // Return everything after the equal sign, or an empty string if the cookie name not found
+  return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
+}
+
+
 class UserHomePage extends Component {
 
+  state = {
+    buildname: getCookie('buildname'||''),
+    
+  }
 
   viewBuildsHandleClick = () => {
 
@@ -27,6 +40,7 @@ class UserHomePage extends Component {
 
   }
   newBuildHandleClick = () => {
+    document.cookie = `buildname=${''}`
 
     // this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.selectBuild})
     this.props.dispatch({type: 'ADD_BUILD'})

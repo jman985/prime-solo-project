@@ -21,9 +21,10 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 
 
+
+
 class UserBuildsItem extends Component {
    
-
   constructor() {
     super();
       this.state = {
@@ -45,6 +46,7 @@ class UserBuildsItem extends Component {
 
   editBuild = (event, id)=> {
     event.preventDefault();
+    document.cookie = `buildname=${this.props.thisBuild.name}`
     console.log('select build', id);
     this.props.dispatch({type: 'SELECT_BUILD', payload: id})
     this.props.history.push('/builder/' + id);
