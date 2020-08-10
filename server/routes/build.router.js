@@ -218,4 +218,19 @@ router.put('/cpu', rejectUnauthenticated, (req, res) => {
                   });
                 });
 
+                router.put('/name', rejectUnauthenticated, (req, res) => {
+                  console.log('this is the req.body', req.body);
+                  
+                    pool.query(`UPDATE "build"
+                    SET "name" = $1
+                    WHERE "build"."id" = $2`,[req.body.name, req.body.id])
+                    // pool.query(queryText, queryInput)
+                    .then(() => res.sendStatus(201))
+                    .catch((error) => {res.sendStatus(500);
+                      console.log(error);
+                      //console.log(req.body)
+                    });
+                  });
+
+
 module.exports = router;

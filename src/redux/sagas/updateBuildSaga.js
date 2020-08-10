@@ -93,6 +93,16 @@ function* updatePSU(action){
   }
 }
 
+//this saga gets fired with every add component action
+function* updateName(action){
+    try {
+        yield axios.put('/api/builder/name', action.payload);
+        yield put({ type: 'SET_BUILD' });
+    }  catch (error) {
+        console.log('Error with name update:', error);
+    }
+  }
+
 
 function* updateBuildSaga() {
 yield takeLatest('UPDATE_CPU', updateCPU);
@@ -103,6 +113,7 @@ yield takeLatest('UPDATE_GPU', updateGPU);
 yield takeLatest('UPDATE_STORAGE', updateStorage);
 yield takeLatest('UPDATE_MEMORY', updateMemory);
 yield takeLatest('UPDATE_PSU', updatePSU);
+yield takeLatest('UPDATE_NAME', updateName);
 
 }
 
