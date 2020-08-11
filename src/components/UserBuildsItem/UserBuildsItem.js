@@ -109,11 +109,14 @@ class UserBuildsItem extends Component {
             title={this.props.thisBuild.name}
           />
         </CardActionArea>
-          <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <Typography paragraph>{this.props.thisBuild.name}</Typography>
+                <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
+                Edit Build
+                </Button>&nbsp;&nbsp;
+                <Button variant="contained" color="secondary" size="small" onClick={ (event) => this.removeBuild(event, this.props.thisBuild.id) }>
+                Delete Build
+                </Button>
             </CardContent>
-          </Collapse>
           </Card>
         </ReactCardFlip>
 

@@ -1,16 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Box, Grid, Slide, Paper, Typography} from '@material-ui/core';
+import { borders } from '@material-ui/system';
+import Button from '@material-ui/core/Button';
+import './LogOutButton.css'
+
+
+const defaultProps = {
+  bgcolor: 'background.paper',
+  borderColor: 'text.primary',
+  m: 1,
+  border: 1,
+  style: { width: '5rem', height: '5rem' },
+};
+
 
 const LogOutButton = props => (
   <button
     // This button shows up in multiple locations and is styled differently
     // because it's styled differently depending on where it is used, the className
     // is passed to it from it's parents through React props
-    className={props.className}
+    className = "logout-button"
     onClick={() => props.dispatch({ type: 'LOGOUT' })}
   >
     Log Out
   </button>
+
 );
 
 // This component doesn't need 'mapStateToProps'

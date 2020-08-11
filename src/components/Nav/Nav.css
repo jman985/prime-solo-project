@@ -2,7 +2,7 @@
     font-size: 24px;
     font-weight: 700;
     display: inline-block;
-    color: #f2f2f2;
+    color: #ffffff;
     padding-left: 10px;
 }
 
@@ -14,7 +14,7 @@ background-color: black;
 .nav-bar {
   /* overflow: hidden; */
   /* background-image: url("/images/970-Evo-Plus-1000.jpg"); */
-background-color: #ff7043
+background-color: rgb(255, 136, 0);
 }
 
 .nav-link {
@@ -35,6 +35,8 @@ background-color: #ff7043
 
 .nav-link:hover {
   background-color:black;
+  border-radius:30px;
+
 }
 
 

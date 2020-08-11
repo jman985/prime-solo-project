@@ -1,0 +1,20 @@
+.logout-button{
+        border: 2px solid #273272;
+        border-radius:30px;
+        color: #fff;
+        font-size: 25px;
+        padding: 8px;
+        min-width: 140px;
+        cursor: pointer;
+        background-image: linear-gradient(#3f51b5, #273272);
+        box-shadow: 2px 8px #38448b;
+
+}
+.logout-button:hover {
+    background-image: black;
+  }
+  .logout-button:active {
+    background-color: #3e8e41;
+    box-shadow: 1px 4px #273272;
+    transform: translateY(3px);
+  }
