@@ -6,13 +6,13 @@ import Button from '@material-ui/core/Button';
 import './LogOutButton.css'
 
 
-const defaultProps = {
-  bgcolor: 'background.paper',
-  borderColor: 'text.primary',
-  m: 1,
-  border: 1,
-  style: { width: '5rem', height: '5rem' },
-};
+// const defaultProps = {
+//   bgcolor: 'background.paper',
+//   borderColor: 'text.primary',
+//   m: 1,
+//   border: 1,
+//   style: { width: '5rem', height: '5rem' },
+// };
 
 
 const LogOutButton = props => (
