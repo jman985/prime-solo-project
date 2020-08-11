@@ -1,0 +1,8 @@
+.container{
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.edit-name{
+    justify-content: start;
+}

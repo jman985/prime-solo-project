@@ -4,5 +4,8 @@
 }
 
 .edit-name{
-    justify-content: start;
+    justify-content: center;
+    /* display: inline-block; */
+    white-space: nowrap;
+    overflow: hidden;
 }

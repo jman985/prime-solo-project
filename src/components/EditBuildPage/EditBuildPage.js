@@ -97,8 +97,8 @@ class EditBuildPage extends Component {
               <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<h1>{this.state.buildname}</h1>}
            
             {this.state.buildnameIsEditable ?
-              <button onClick={this.saveBuildName}>Save Build Name</button> :
-              <button onClick={this.editBuildName}>Edit Build Name</button>
+              <Button variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button> :
+              <Button variant="outlined" color="primary" onClick={this.editBuildName}>Edit Build Name</Button>
             }
           </h2>
           </div>
@@ -130,10 +130,11 @@ class EditBuildPage extends Component {
 <br></br>
 <br></br>
 
- <Button variant="contained" color="primary" onClick = {this.reviewBuildClick}>COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button>
-
+<div>
+    <Button variant="contained" color="primary" onClick = {this.reviewBuildClick}>COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button>
+</div>
  </>
  
     )
