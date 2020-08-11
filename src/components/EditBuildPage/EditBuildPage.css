@@ -1,6 +1,6 @@
 .container{
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .edit-name{
