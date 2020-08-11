@@ -38,8 +38,15 @@ class NewBuildPage extends Component {
     // build_id: getCookie('build_id')
   }
 
-   componentDidMount() {
-    this.props.dispatch({type: 'FETCH_NEWBUILD'})
+   componentDidUpdate(prevProps) {
+
+    if(this.props.selectBuild!== prevProps.selectBuild){
+    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
+
+    }
+
+
+    // this.props.dispatch({type: 'FETCH_BUILD'})
 
     console.log('new build page mounted, build ID is');
     // document.cookie = `build_id=${build_id}`
@@ -110,7 +117,7 @@ editBuildName = () => {
        )} */}
 
    <MDBRow container spacing = {50}>
-       {this.props.newBuild.map( y =>
+       {this.props.build.map( y =>
          <EditBuildItem key={y.id} thisComponent={y}/>
        )}
        </MDBRow>
