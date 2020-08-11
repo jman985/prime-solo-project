@@ -15,7 +15,8 @@ background-color: black;
   /* overflow: hidden; */
   /* background-image: url("/images/970-Evo-Plus-1000.jpg"); */
 background-color: rgb(255, 136, 0);
-align-items: center
+align-items: center;
+background-image: linear-gradient(to right, rgb(255, 136, 0), #b94d18);
 
 }
 
