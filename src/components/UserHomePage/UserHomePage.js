@@ -31,7 +31,8 @@ const getCookie = (cookieName) => {
 class UserHomePage extends Component {
 
   componentDidMount(){
-    document.body.style.background= '#6495ED'}
+    // document.body.style.background= '#6495ED'
+  }
 
     
   state = {
