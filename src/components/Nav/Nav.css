@@ -34,10 +34,11 @@ background-color: rgb(255, 136, 0);
 }
 
 .nav-link:hover {
-  background-color:black;
+  background-color:rgb(36, 36, 36);
   border-radius:30px;
 
 }
+
 
 
 .black-text{
