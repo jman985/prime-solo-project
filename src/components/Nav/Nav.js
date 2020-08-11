@@ -10,10 +10,12 @@ import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNav
   const Nav = (props) => (
 
   <MDBNavbar className = "nav-bar" dark expand="md">
-    <MDBNavbarBrand>
-      <img src = "images/apple-bite2.png" height = "70" alt= "apple-bite" />&nbsp;
-      <strong className = "black-text">Hackintosh Builder</strong>
-    </MDBNavbarBrand>
+    <MDBNavbarBrand className= "apple-logo">
+      <img  src = "images/apple-bite2.png" height = "100" alt= "apple-bite" />&nbsp;
+      </MDBNavbarBrand>
+     <MDBNavbarBrand className= "nav-brand"> <strong className = "black-text" 
+          >Hackintosh Builder</strong></MDBNavbarBrand>
+    
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <MDBNavbarNav left>
       
