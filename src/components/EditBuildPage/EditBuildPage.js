@@ -19,7 +19,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 import EditBuildItem from '../EditBuildItem/EditBuildItem'
-
+import './EditBuildPage.css'
 
 
 const getCookie = (cookieName) => {
@@ -40,38 +40,15 @@ class EditBuildPage extends Component {
 
   componentDidMount() {
 
-      // this.getBuild();
-    // if(this.props.match.params.buildId){
-    // this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild}),
-    // this.props.match.params.buildId = this.props.selectBuild
-    // console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
-    // }else{
-    //   console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
-    //   this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
-    // }
-
     this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.match.params.buildId})
     
     console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
-
-    // document.cookie = `build_id=${build_id}`
 
     this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
 
   }
 
-  // getBuild = () =>{
-
-  //   if(this.props.match.params.buildId){
-  //     this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild}),
-  //     this.props.match.params.buildId = this.props.selectBuild
-  //     console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
-  //     }else{
-  //       console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
-  //       this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
-  //     }
-  // }
-
+  
   editBuildName = () => {
 
     this.setState({
@@ -111,10 +88,11 @@ class EditBuildPage extends Component {
     return (
       <>
       <div>
-        <h1><strong>Build Your Hackintosh</strong></h1>
+        <h1 style={{ textAlign: 'center'}}><strong >Build Your Hackintosh</strong></h1>
       </div>
       <br></br>
-              <p>
+      <div className= 'edit-name'>
+              <h2 style={{ textAlign: 'center'}}>
                 Build Name:{this.state.buildnameIsEditable ?
               <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<h1>{this.state.buildname}</h1>}
            
@@ -122,13 +100,14 @@ class EditBuildPage extends Component {
               <button onClick={this.saveBuildName}>Save Build Name</button> :
               <button onClick={this.editBuildName}>Edit Build Name</button>
             }
-          </p>
+          </h2>
+          </div>
           <br></br>
               <br></br>
               <br></br>
               <br></br>
               
-<div>
+<div className = 'container'>
    <Grid 
    container
    spacing={10}

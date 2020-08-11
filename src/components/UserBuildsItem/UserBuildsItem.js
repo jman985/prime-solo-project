@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
-// import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
+import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
 import { borders } from '@material-ui/system';
-// import '@fortawesome/fontawesome-free/css/all.min.css';
-// import 'bootstrap-css-only/css/bootstrap.min.css';
-// import 'mdbreact/dist/css/mdb.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
@@ -66,11 +66,15 @@ class UserBuildsItem extends Component {
   render(){
   return (
     <>
-    <Grid item xs={8} sm={4} md={2}>
+    <Grid item xs={8} sm={4} md={2} >
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-      <Card >
+      <Card variant="outlined"
+          style={{
+            textAlign: 'center'
+          }}>
         <CardHeader title={this.props.thisBuild.name}>
         </CardHeader>
+        <div className = "rgba-grey-strong">
         <CardActionArea>
           <CardMedia  component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
             aria-label="Show more"
@@ -80,6 +84,7 @@ class UserBuildsItem extends Component {
             paragraph= {this.props.thisBuild.name}
           />
         </CardActionArea>
+        </div>
             <CardContent>
               <Typography paragraph></Typography>
                 <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
@@ -91,7 +96,9 @@ class UserBuildsItem extends Component {
             </CardContent>
           </Card>
 
-        <Card >
+        <Card variant="outlined"
+        style={{ textAlign: 'center',
+            backgroundImage: 'url('+ this.props.thisBuild.image+')'}}>
         <CardHeader title={this.props.thisBuild.name}>
         </CardHeader>
         <CardActionArea>

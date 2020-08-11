@@ -62,7 +62,7 @@ class UserHomePage extends Component {
   
   render() {
     return (
-      <div>
+      <div className = 'container'>
         <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
         <p>Your ID is: {this.props.user.id}</p>
 

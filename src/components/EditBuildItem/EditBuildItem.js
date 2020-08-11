@@ -19,6 +19,8 @@ import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
+import './EditBuildItem.css'
+
 
 
 class EditBuildItem extends Component {
@@ -53,8 +55,8 @@ class EditBuildItem extends Component {
       <MDBCard
           className='card-image'
           style={{
-            backgroundImage: 'url(' + this.props.thisComponent.image + ')'
-              
+            backgroundImage: 'url(' + this.props.thisComponent.image + ')',
+            textAlign: 'center'
           }}
           onClick= {this.handleClick}
         >

@@ -1,3 +1,4 @@
-body{
-    background-color: blue;
+.container{
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }

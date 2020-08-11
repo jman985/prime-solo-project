@@ -22,23 +22,26 @@ class UserBuildsPage extends Component {
   render() {
     return (
       <>
-        <h1>Your Hackintosh Builds</h1>
           <br></br>
           <br></br>
-          <p>Your ID is: {this.props.user.id}</p>
-
+        <h1 style={{ textAlign: 'center'}}><strong >Your Hackintosh Builds</strong></h1>
+          <br></br>
+          <br></br>
+          {/* <p>Your ID is: {this.props.user.id}</p> */}
+      <div className= 'builds'>
         <Grid 
       container
       spacing={10}
       direction="row"
       justify="flex-start"
-      alignItems="flex-start"
+      alignItems="stretch"
     >
 
           {this.props.userBuilds.map(x =>
             <UserBuildsItem key={x.id} thisBuild={x}/>
           )}
     </Grid>
+    </div>
     </>
     );
 
