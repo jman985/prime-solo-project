@@ -21,16 +21,11 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 import ComponentItem from '../ComponentItem/ComponentItem'
 import EditBuildItem from '../EditBuildItem/EditBuildItem';
+import './ComponentPage.css'
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
 
 const getCookie = (cookieName) => {
-  // Get name followed by anything except a semicolon
   const cookieString = RegExp(''+cookieName+'[^;]+').exec(document.cookie);
-  // Return everything after the equal sign, or an empty string if the cookie name not found
   return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
 }
 
@@ -68,7 +63,7 @@ class ComponentPage extends Component {
     return (
       <>
       <div>
-        <h1><strong>Select Your {this.props.match.params.componentName}</strong></h1>
+        <h1 style={{ textAlign: 'center'}}><strong>Select Your {this.props.match.params.componentName}</strong></h1>
       </div>
       <br></br>
           <br></br>
@@ -76,7 +71,7 @@ class ComponentPage extends Component {
               <br></br>
               <br></br>
               
-<div>
+<div className = '.container'>
    <Grid 
    container
    spacing={10}
@@ -84,12 +79,9 @@ class ComponentPage extends Component {
    justify="flex-start"
    alignItems="flex-start">
 
-
-   <MDBRow container spacing = {50}>
        {this.props.buildComponent.filter(x => x.id > 8).map( y =>
          <ComponentItem key={y.id} thisComponent={y}/>
        )}
-       </MDBRow>
 
  </Grid>
  </div>

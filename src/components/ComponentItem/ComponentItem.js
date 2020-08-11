@@ -19,6 +19,7 @@ import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
+import './ComponentItem.css'
 
 
 class ComponentItem extends Component {
@@ -75,7 +76,7 @@ state = {
   render(){
   return (
     <>
-    <Grid item xs={10} sm={6} md={3}>
+    <Grid item xs={9} sm={5} md={3}>
     <MDBCol>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
         <Card >
