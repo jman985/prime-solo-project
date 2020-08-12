@@ -54,16 +54,6 @@ class UserBuildsItem extends Component {
   }
 
 
-  checkImage = () =>{
-
-    if(this.props.thisBuild.case_image){
-      return 
-    }
-    else{
-      return 'images/apple_bite2.png';
-    }
-  }
-
   render(){
   return (
     <>

@@ -41,7 +41,7 @@ class EditBuildPage extends Component {
   componentDidMount() {
 
   this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
-  
+
   }
 
   

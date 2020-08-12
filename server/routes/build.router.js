@@ -14,6 +14,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 
     pool.query(`SELECT
     build.name AS build_name,
+    build.id AS build_id,
     components.id AS id,
     components.type AS type,
     components.name AS name,
@@ -24,6 +25,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     UNION
     SELECT
     build.name AS build_name,
+    build.id AS build_id,
     components.id AS id,
     components.type AS type,
     components.name AS name,
@@ -34,6 +36,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     UNION
     SELECT
     build.name AS build_name,
+    build.id AS build_id,
     components.id AS id,
     components.type AS type,
     components.name AS name,
@@ -44,6 +47,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     UNION
     SELECT
     build.name AS build_name,
+    build.id AS build_id,
     components.id AS id,
     components.type AS type,
     components.name AS name,
@@ -54,6 +58,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     UNION
     SELECT
     build.name AS build_name,
+    build.id AS build_id,
     components.id AS id,
     components.type AS type,
     components.name AS name,
@@ -64,6 +69,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     UNION
     SELECT
     build.name AS build_name,
+    build.id AS build_id,
     components.id AS id,
     components.type AS type,
     components.name AS name,
@@ -74,6 +80,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     UNION
     SELECT
     build.name AS build_name,
+    build.id AS build_id,
     components.id AS id,
     components.type AS type,
     components.name AS name,
@@ -84,13 +91,14 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     UNION
     SELECT
     build.name AS build_name,
+    build.id AS build_id,
     components.id AS id,
     components.type AS type,
     components.name AS name,
     components.image AS image,
     components.details AS details
     FROM "build"
-    JOIN "components" ON "psu_id" = "components"."id" WHERE user_id = $1 AND build.id = $2 ORDER BY type`, [req.user.id, req.params.id])
+    JOIN "components" ON "psu_id" = "components"."id" WHERE user_id = $1 AND build.id = $2 ORDER BY type;`, [req.user.id, req.params.id])
         .then(results => res.send(results.rows))
         .catch(error => {
             console.log('Error making SELECT for components:', error);

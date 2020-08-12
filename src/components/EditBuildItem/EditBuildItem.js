@@ -25,6 +25,9 @@ import './EditBuildItem.css'
 
 class EditBuildItem extends Component {
    
+  componentDidMount(){
+    this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.thisComponent.build_id})
+  }
 
   constructor() {
     super();
@@ -42,7 +45,10 @@ class EditBuildItem extends Component {
   gotoComponent = (event, component) => {
     event.preventDefault();
     // this.props.dispatch({type: 'FETCH_COMPONENT', payload: component});
-    this.props.history.push('/builder/' + this.props.match.params.buildId + '/' + component);
+  this.props.match.params.buildId?
+    this.props.history.push('/builder/' + this.props.match.params.buildId + '/' + component):
+    this.props.history.push('/builder/' + this.props.thisComponent.build_id + '/' + component);
+
 
   }
 
@@ -128,6 +134,7 @@ class EditBuildItem extends Component {
 
 const mapStateToProps = state => ({
     buildComponent: state.buildComponent,
+    selectBuild: state.selectBuild,
     newBuild: state.newBuild,
     user: state.user,
   });

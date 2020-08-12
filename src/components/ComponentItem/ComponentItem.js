@@ -23,7 +23,8 @@ import './ComponentItem.css'
 
 
 class ComponentItem extends Component {
-   
+  
+  
 state = {
         componentSelected: false,
         // build_id: getCookie('build_id')
@@ -137,6 +138,7 @@ state = {
 
 const mapStateToProps = state => ({
     selectComponent: state.selectComponent,
+    selectBuild: state.selectBuild,
     selectBuild: state.selectBuild,
     buildComponent: state.buildComponent,
     newBuild: state.newBuild,

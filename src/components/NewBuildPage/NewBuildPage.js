@@ -38,23 +38,14 @@ class NewBuildPage extends Component {
     // build_id: getCookie('build_id')
   }
 
-   componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
 
-    if(this.props.selectBuild!== prevProps.selectBuild){
-    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
-
+    if(this.props.selectBuild!==prevProps.selectBuild){
+    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild})
     }
-    
-    // else{
-    //   this.props.dispatch({type: 'FETCH_NEWBUILD'})
-    // }
-
-
-    // this.props.dispatch({type: 'FETCH_BUILD'})
 
     console.log('new build page mounted, build ID is');
-    // document.cookie = `build_id=${build_id}`
-    // this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
+   
   }
 
 
