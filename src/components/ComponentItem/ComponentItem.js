@@ -27,7 +27,6 @@ class ComponentItem extends Component {
   
 state = {
         componentSelected: false,
-        // build_id: getCookie('build_id')
         componentId: 0
       }
 

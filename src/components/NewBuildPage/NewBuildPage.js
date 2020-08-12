@@ -35,7 +35,6 @@ class NewBuildPage extends Component {
   state = {
     buildname: getCookie('buildname'||''),
     buildnameIsEditable: true,
-    // build_id: getCookie('build_id')
   }
 
   componentDidUpdate(prevProps) {

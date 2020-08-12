@@ -37,8 +37,9 @@ class ComponentPage extends Component {
     console.log('component page mounted, component page for', this.props.match.params.componentName)
 
     this.props.dispatch({type: 'FETCH_COMPONENT', payload: this.props.match.params.componentName});
-    
+
   }
+  
   cancelClick = ()=>{
     this.props.history.push('/builder/' + this.props.match.params.buildId)
   }

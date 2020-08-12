@@ -46,7 +46,6 @@ class EditBuildPage extends Component {
 
   
   editBuildName = () => {
-
     this.setState({
       buildnameIsEditable: true,
     });
