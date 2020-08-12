@@ -40,7 +40,7 @@ class ComponentPage extends Component {
 
   }
   cancelClick = ()=>{
-    this.props.history.push('/builder/' + this.props.selectBuild)
+    this.props.history.push('/builder/' + this.props.match.params.buildId)
   }
 
     saveComponent = ()=> {
@@ -54,7 +54,7 @@ class ComponentPage extends Component {
     this.props.selectComponent.type === 'Memory'? 'UPDATE_MEMORY':
       'UPDATE_PSU', payload: this.props.selectComponent});
 
-    this.props.history.push('/builder/' + this.props.selectBuild)
+    this.props.history.push('/builder/' + this.props.match.params.buildId)
 
     }
 

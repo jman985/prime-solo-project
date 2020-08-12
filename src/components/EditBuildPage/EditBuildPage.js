@@ -40,12 +40,8 @@ class EditBuildPage extends Component {
 
   componentDidMount() {
 
-    this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.match.params.buildId})
-    
-    console.log('buildpage mounted, build ID is', this.props.match.params.buildId );
-
-    this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
-
+  this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
+  
   }
 
   
@@ -95,12 +91,12 @@ class EditBuildPage extends Component {
               <h2 style={{ textAlign: 'center'}}>
                 Build Name:{this.state.buildnameIsEditable ?
               <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<h1>{this.state.buildname}</h1>}
-           
+           </h2>
             {this.state.buildnameIsEditable ?
               <Button variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button> :
               <Button variant="outlined" color="primary" onClick={this.editBuildName}>Edit Build Name</Button>
             }
-          </h2>
+          
           </div>
           <br></br>
               <br></br>
@@ -133,7 +129,7 @@ class EditBuildPage extends Component {
 <div>
     <Button variant="contained" color="primary" onClick = {this.reviewBuildClick}>COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button>
+    {/* <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button> */}
 </div>
  </>
  

@@ -5,7 +5,7 @@ import axios from 'axios';
 function* updateCPU(action){
     try {
         yield axios.put('/api/builder/cpu', action.payload);
-        yield put({ type: 'SET_BUILD' });
+        yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
     }  catch (error) {
         console.log('Error with skill update:', error);
     }
@@ -17,7 +17,7 @@ function* updateCPU(action){
 function* updateCooler(action){
   try {
       yield axios.put('/api/builder/cooler', action.payload);
-      yield put({ type: 'SET_BUILD' });
+      yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with skill cooler:', error);
   }
@@ -29,7 +29,7 @@ function* updateCooler(action){
 function* updateMobo(action){
   try {
       yield axios.put('/api/builder/mobo', action.payload);
-      yield put({ type: 'SET_BUILD' });
+      yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with skill mobo:', error);
   }
@@ -41,7 +41,7 @@ function* updateMobo(action){
 function* updateCase(action){
   try {
       yield axios.put('/api/builder/case', action.payload);
-      yield put({ type: 'SET_BUILD' });
+      yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with skill case:', error);
   }
@@ -53,7 +53,7 @@ function* updateCase(action){
 function* updateGPU(action){
   try {
       yield axios.put('/api/builder/gpu', action.payload);
-      yield put({ type: 'SET_BUILD' });
+      yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with skill gpu:', error);
   }
@@ -65,7 +65,7 @@ function* updateGPU(action){
 function* updateStorage(action){
   try {
       yield axios.put('/api/builder/storage', action.payload);
-      yield put({ type: 'SET_BUILD' });
+      yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with storage update :', error);
   }
@@ -77,7 +77,7 @@ function* updateStorage(action){
 function* updateMemory(action){
   try {
       yield axios.put('/api/builder/memory', action.payload);
-      yield put({ type: 'SET_BUILD' });
+      yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with memory update:', error);
   }
@@ -85,9 +85,12 @@ function* updateMemory(action){
 
 //this saga gets fired with every add component action
 function* updatePSU(action){
+
+    console.log('this is the payload', action.payload);
+    
   try {
-      yield axios.put('/api/builder/psu',action.payload);
-      yield put({ type: 'SET_BUILD' });
+      yield axios.put('/api/builder/psu', action.payload);
+      yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with psu update:', error);
   }
@@ -97,7 +100,7 @@ function* updatePSU(action){
 function* updateName(action){
     try {
         yield axios.put('/api/builder/name', action.payload);
-        yield put({ type: 'SET_BUILD' });
+        yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id});
     }  catch (error) {
         console.log('Error with name update:', error);
     }

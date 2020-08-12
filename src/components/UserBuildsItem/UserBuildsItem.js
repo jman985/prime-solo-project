@@ -46,6 +46,7 @@ class UserBuildsItem extends Component {
 
   editBuild = (event, id)=> {
     event.preventDefault();
+    this.props.dispatch({type: 'FETCH_BUILD', payload: id});
     document.cookie = `buildname=${this.props.thisBuild.name}`
     console.log('select build', id);
     this.props.dispatch({type: 'SELECT_BUILD', payload: id})
@@ -59,7 +60,7 @@ class UserBuildsItem extends Component {
       return 
     }
     else{
-      return 'images/apple_bite.png';
+      return 'images/apple_bite2.png';
     }
   }
 

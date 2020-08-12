@@ -44,6 +44,10 @@ class NewBuildPage extends Component {
     this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.selectBuild});
 
     }
+    
+    // else{
+    //   this.props.dispatch({type: 'FETCH_NEWBUILD'})
+    // }
 
 
     // this.props.dispatch({type: 'FETCH_BUILD'})
