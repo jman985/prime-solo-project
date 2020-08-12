@@ -18,7 +18,7 @@ const AboutPage = () => (
 
     <div>
     <p>
-        This project is strictly for INFORMATIONAL and EDUCATIONAL purposes ONLY.
+        This project is strictly for INFORMATIONAL AND EDUCATIONAL PURPOSES ONLY.
           Please note that installing Apple software on non-Apple hardware, while not illegal, 
         violates the <Link to= "https://www.apple.com/legal/sla/ ">APPLE INC. SOFTWARE LICENSE AGREEMENT</Link> </p>
     </div>

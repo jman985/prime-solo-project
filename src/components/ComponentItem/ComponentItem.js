@@ -23,10 +23,10 @@ import './ComponentItem.css'
 
 
 class ComponentItem extends Component {
-   
+  
+  
 state = {
         componentSelected: false,
-        // build_id: getCookie('build_id')
         componentId: 0
       }
 
@@ -43,13 +43,6 @@ state = {
     this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
   }
 
-  addComponent = (event, id) => {
-    event.preventDefault();
-    // this.props.dispatch({type: 'FETCH_COMPONENT', payload: component});
-    // // this.props.history.push('/component');
-
-  }
-
   selectComponent = () => {
     this.setState({
       componentSelected: true
@@ -57,10 +50,10 @@ state = {
     
   this.props.dispatch({type: 'SELECT_COMPONENT', 
                         payload: { component_id: this.props.thisComponent.id,
-                          build_id: this.props.selectBuild,
+                          build_id: this.props.match.params.buildId,
                           type: this.props.thisComponent.type
                                 }})
-                              }
+  }
 
 
   deSelectComponent = ()=>{
@@ -68,7 +61,8 @@ state = {
       componentSelected: false
     });
 
-    this.props.dispatch({type: 'SELECT_COMPONENT', payload: {component_id: 0, type: ''}})
+    this.props.dispatch({type: 'SELECT_COMPONENT', payload: {component_id: 0, build_id: this.props.match.params.buildId,
+      type: ''}})
     }
 
   
@@ -143,6 +137,7 @@ state = {
 
 const mapStateToProps = state => ({
     selectComponent: state.selectComponent,
+    selectBuild: state.selectBuild,
     selectBuild: state.selectBuild,
     buildComponent: state.buildComponent,
     newBuild: state.newBuild,

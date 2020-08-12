@@ -37,7 +37,7 @@ class UserHomePage extends Component {
     
   state = {
     buildname: getCookie('buildname'||''),
-    
+    buildId: getCookie('buildId'||'')
   }
 
   viewBuildsHandleClick = () => {
@@ -47,6 +47,7 @@ class UserHomePage extends Component {
   }
   newBuildHandleClick = () => {
     document.cookie = `buildname=${''}`
+    document.cookie = `buildId'=${''}`
 
     // this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.selectBuild})
     this.props.dispatch({type: 'ADD_BUILD'})

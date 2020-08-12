@@ -46,22 +46,13 @@ class UserBuildsItem extends Component {
 
   editBuild = (event, id)=> {
     event.preventDefault();
+    this.props.dispatch({type: 'FETCH_BUILD', payload: id});
     document.cookie = `buildname=${this.props.thisBuild.name}`
     console.log('select build', id);
     this.props.dispatch({type: 'SELECT_BUILD', payload: id})
     this.props.history.push('/builder/' + id);
   }
 
-
-  checkImage = () =>{
-
-    if(this.props.thisBuild.case_image){
-      return 
-    }
-    else{
-      return 'images/apple_bite.png';
-    }
-  }
 
   render(){
   return (

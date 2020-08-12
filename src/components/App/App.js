@@ -67,7 +67,7 @@ class App extends Component {
               component={EditBuildPage}
             />
             <ProtectedRoute 
-              exact path= {`/component/:componentName`}
+              exact path= {`/builder/:buildId/:componentName`}
               component={ComponentPage}
             />
             <ProtectedRoute 
