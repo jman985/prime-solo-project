@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
-import { borders } from '@material-ui/system';
+import { borders, sizing } from '@material-ui/system';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
@@ -107,21 +107,23 @@ class EditBuildPage extends Component {
               <br></br>
               <br></br>
               
-<div className = 'container'>
+<div >
    <Grid 
    container
    spacing={10}
    direction="row"
    justify="flex-start"
    alignItems="flex-start"
+   
  >
    {/* {this.props.newBuild.filter(x => x.id > 1).map( y =>
          <NewBuildItem key={y.id} thisComponent={y}/>
        )} */}
+          <MDBRow container spacing = {50}>
 
-   <MDBRow container spacing = {50}>
        {this.props.build.map( y =>
          <EditBuildItem key={y.id} thisComponent={y}/>
+        
        )}
        </MDBRow>
  </Grid>

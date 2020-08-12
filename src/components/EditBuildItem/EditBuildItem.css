@@ -1,4 +1,8 @@
 .card-image{
-
 height: 400px;
+width: 400px;
+}
+
+.column{
+    justify-content: space-evenly;
 }

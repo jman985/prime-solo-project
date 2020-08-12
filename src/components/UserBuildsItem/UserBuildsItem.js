@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
 import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
-import { borders } from '@material-ui/system';
+import { borders, sizing } from '@material-ui/system';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
@@ -88,8 +88,7 @@ class UserBuildsItem extends Component {
           </Card>
 
         <Card variant="outlined"
-        style={{ textAlign: 'center',
-            backgroundImage: 'url('+ this.props.thisBuild.image+')'}}>
+        style={{ textAlign: 'center'}}>
         <CardHeader title={this.props.thisBuild.name}>
         </CardHeader>
         <CardActionArea>

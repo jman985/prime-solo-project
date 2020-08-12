@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
-import { borders } from '@material-ui/system';
+import { borders, sizing } from '@material-ui/system';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
@@ -55,7 +55,8 @@ class EditBuildItem extends Component {
   render(){
   return (
     <>
-    <Grid item xs={10} sm={6} md={3}>
+  
+  <Grid item xs={9} sm={5} md={3}>
     <MDBCol>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
       <MDBCard
@@ -120,13 +121,12 @@ class EditBuildItem extends Component {
           </div>
         </MDBCard>
         </ReactCardFlip>
+       </MDBCol>
+       </Grid>
 
-      </MDBCol>
       <br></br>
         <br></br>
-        <br></br>
-              
-    </Grid>
+        <br></br> 
 </>
   )
 }
