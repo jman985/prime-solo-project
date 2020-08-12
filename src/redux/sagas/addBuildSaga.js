@@ -5,7 +5,7 @@ import axios from 'axios';
 function* addBuild(action) {
   try {
 
-    const response = yield axios.post('/api/build', action.payload);
+    const response = yield axios.post('/api/build');
     console.log('response from new build POST', response.data);
     
     yield put({type: 'FETCH_BUILD', payload: response.data.id})

@@ -47,19 +47,21 @@ class UserHomePage extends Component {
   }
   newBuildHandleClick = () => {
     document.cookie = `buildname=${''}`
-    document.cookie = `buildId'=${''}`
 
     // this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.selectBuild})
+    
     this.props.dispatch({type: 'ADD_BUILD'})
-    this.props.dispatch({type: 'FETCH_NEWBUILD'})
+
+    // this.props.dispatch({type: 'FETCH_NEWBUILD'})
 
     console.log('this is the selected build', this.props.selectBuild);
     
     this.props.history.push('/newbuild');
 
     // this.props.history.push('/builder');
-
   }
+
+  
 
   
   render() {
@@ -84,6 +86,7 @@ class UserHomePage extends Component {
 
 // Instead of taking everything from state, we just want the user info.
 const mapStateToProps = (state) => ({
+  build: state.build,
   newBuild: state.newBuild,
   selectBuild: state.selectBuild,
   userBuilds: state.userBuilds,
