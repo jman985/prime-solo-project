@@ -54,14 +54,18 @@ class UserHomePage extends Component {
 
     // this.props.dispatch({type: 'FETCH_NEWBUILD'})
 
-    console.log('this is the selected build', this.props.selectBuild);
-    
-    this.props.history.push('/newbuild');
+    this.newBuildPush();
+    // this.props.history.push('/newbuild');
 
-    // this.props.history.push('/builder');
   }
 
-  
+  newBuildPush = () => {
+
+    console.log('this is the new build id' + this.props.selectBuild);
+    
+    this.props.history.push('/builder/'+ this.props.selectBuild);
+
+  }
 
   
   render() {
