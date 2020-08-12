@@ -25,7 +25,9 @@ class ReviewPage extends Component {
 
   }
 
-  
+  homeClick = ()=>{
+    this.props.history.push('/home');
+  }
 
   render() {
     return (
@@ -47,7 +49,7 @@ class ReviewPage extends Component {
          </ul>
          <br></br>
           <br></br>
-         <Button variant="contained" color="primary" >HOME</Button>
+         <Button variant="contained" color="primary" onClick= {this.homeClick}>HOME</Button>
 
     </>
     )

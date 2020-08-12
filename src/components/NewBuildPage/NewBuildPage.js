@@ -69,12 +69,17 @@ editBuildName = () => {
 
   saveBuildName = () => {
     this.props.dispatch({type: 'UPDATE_NAME', payload: {name: this.state.buildname,
-                                                        id: this.props.match.params.buildId,}})
+                                                        build_id: this.props.selectBuild}})
 
     this.setState({
       buildnameIsEditable: false,
     });
   }
+
+  reviewBuildClick = () =>{
+    this.props.history.push('/review/' + this.props.selectBuild);
+  }
+  
 
   render() {
     return (
@@ -83,16 +88,22 @@ editBuildName = () => {
         <h1><strong>Build Your Hackintosh</strong></h1>
       </div>
       <br></br>
-      <div className= 'edit-name'>
-                <h2>Build Name:{this.state.buildnameIsEditable ?
-              <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<h1>{this.state.buildname}</h1>}
-           
-            {this.state.buildnameIsEditable ?
-              <Button variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button> :
+      <div className= "build-name">
+              
+                {this.state.buildnameIsEditable ?
+              <div>
+              <h2 style={{ textAlign: 'center'}}>NAME YOUR BUILD:
+              <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/></h2>
+              <Button variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button>
+              </div>
+              : 
+              <div>
+                <h2 style={{ textAlign: 'center'}}>BUILD NAME: {this.state.buildname}</h2>
               <Button variant="outlined" color="primary" onClick={this.editBuildName}>Edit Build Name</Button>
-            }
-            </h2>
-      </div>
+              </div>
+                }
+          
+          </div>
           <br></br>
               <br></br>
               <br></br>
@@ -121,8 +132,8 @@ editBuildName = () => {
 <br></br>
 <br></br>
 
-<div>
- <Button variant="contained" color="primary" >COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div >
+ <Button variant="contained" color="primary" onClick = {this.reviewBuildClick}>COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button>
 </div>
