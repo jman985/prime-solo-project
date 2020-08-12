@@ -50,18 +50,9 @@ class UserHomePage extends Component {
   }
   newBuildHandleClick = () => {
     document.cookie = `buildname=${''}`
-
-    // this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.selectBuild})
     
     this.props.dispatch({type: 'ADD_BUILD'})
-
-    // this.props.dispatch({type: 'FETCH_NEWBUILD'})
-
-    console.log('this is the selected build', this.props.selectBuild);
     
-    // this.props.history.push('/newbuild');
-
-    // this.props.history.push('/builder');
   }
 
   

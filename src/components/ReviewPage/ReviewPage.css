@@ -1,0 +1,13 @@
+.container{
+    justify-content: center;
+
+    text-align: center;
+}
+
+.list{
+    text-align: left;
+    width: 40%;
+    position:relative;
+    left: 30%;
+}
+

@@ -32,25 +32,24 @@ class ReviewPage extends Component {
   render() {
     return (
       <>
-            <br></br>
-            <br></br>
+      <div className="container" style={{ textAlign: 'center'}}>
         <h1><strong>REVIEW YOUR BUILD</strong></h1>
           <br></br>
           <h1><strong>Build Name: </strong>{this.state.buildname}</h1>
           <br></br>
           <h2>Components</h2>
           <br></br>
+          </div>
 
-        <ul>
+        <ul className="list">
           {this.props.build.filter(x => x.id > 8).map( component =>
-        <> <li key={component.id}><strong>{component.type}</strong>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {component.name}</li><br></br></>)}
+        <> <li key={component.id}><span className= "list-item"><strong>{component.type}</strong>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {component.name}</span></li><br></br></>)}
         
 
          </ul>
          <br></br>
           <br></br>
          <Button variant="contained" color="primary" onClick= {this.homeClick}>HOME</Button>
-
     </>
     )
 
@@ -60,7 +59,6 @@ class ReviewPage extends Component {
 const mapStateToProps = state => ({
     build: state.build,
     userBuilds: state.userBuilds,
-    user: state.user,
 });
 
 export default connect(mapStateToProps)(ReviewPage);
