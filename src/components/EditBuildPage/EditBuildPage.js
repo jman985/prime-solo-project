@@ -66,7 +66,7 @@ class EditBuildPage extends Component {
 
   saveBuildName = () => {
     this.props.dispatch({type: 'UPDATE_NAME', payload: {name: this.state.buildname,
-                                                        id: this.props.match.params.buildId,}})
+                                                        build_id: this.props.match.params.buildId,}})
 
     this.setState({
       buildnameIsEditable: false,
