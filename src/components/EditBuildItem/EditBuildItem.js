@@ -101,7 +101,7 @@ class EditBuildItem extends Component {
           onClick= {this.handleClick}
         >
             
-          <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-4 px-2'>
+          <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-5 px-1'>
             <div>
               <MDBCardTitle tag='h3' className='pt-4'>
                 <strong>{this.props.thisComponent.name}</strong>

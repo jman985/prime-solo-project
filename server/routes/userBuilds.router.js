@@ -8,8 +8,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', rejectUnauthenticated, req.user);
+
     pool.query(`SELECT build.id, build.name, image FROM "build"
-    JOIN "components" ON "case_id" = "components"."id" WHERE build.user_id = $1 AND components.type = 'Case' ORDER BY build.id;`, [req.user.id])
+    JOIN "components" ON "case_id" = "components"."id" WHERE build.user_id = $1 AND components.type = 'Case' ORDER BY build.name;`, [req.user.id])
         .then(results => res.send(results.rows))
         .catch(error => {
             console.log('Error making SELECT for builds:', error);
@@ -18,9 +19,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     
     });
 
-/**
- * POST route template
- */
+//POST route template to add a new build, populate with default values
+ 
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('in post with:', req.user.id);
     const queryText = `INSERT INTO build (name, user_id, cpu_id, cooler_id, mobo_id, case_id, gpu_id, storage_id, memory_id,  psu_id )

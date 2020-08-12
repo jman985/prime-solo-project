@@ -66,7 +66,6 @@ class EditBuildPage extends Component {
   saveBuildName = () => {
     this.props.dispatch({type: 'UPDATE_NAME', payload: {name: this.state.buildname,
                                                         build_id: this.props.match.params.buildId,}})
-
     this.setState({
       buildnameIsEditable: false,
     });
@@ -90,8 +89,8 @@ class EditBuildPage extends Component {
               
                 {this.state.buildnameIsEditable ?
               <div>
-              <h2 style={{ textAlign: 'center'}}>NAME YOUR BUILD:
-              <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/></h2>
+              <label style={{ textAlign: 'center'}}>NAME YOUR BUILD:</label>
+              <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>
               <Button variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button>
               </div>
               : 
@@ -119,11 +118,12 @@ class EditBuildPage extends Component {
    {/* {this.props.newBuild.filter(x => x.id > 1).map( y =>
          <NewBuildItem key={y.id} thisComponent={y}/>
        )} */}
-          <MDBRow container spacing = {50}>
+       <MDBRow container spacing = {50}>
 
        {this.props.build.map( y =>
+       
          <EditBuildItem key={y.id} thisComponent={y}/>
-        
+       
        )}
        </MDBRow>
  </Grid>

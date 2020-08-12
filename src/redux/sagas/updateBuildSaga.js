@@ -4,7 +4,7 @@ import axios from 'axios';
 //this saga gets fired with every add component action
 function* updateCPU(action){
     try {
-        yield axios.put('/api/builder/cpu', action.payload);
+        yield axios.put('/api/builder/cpu/'+ action.payload.component_id, action.payload);
         yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
     }  catch (error) {
         console.log('Error with skill update:', error);
@@ -16,7 +16,7 @@ function* updateCPU(action){
 //this saga gets fired with every add component action
 function* updateCooler(action){
   try {
-      yield axios.put('/api/builder/cooler', action.payload);
+      yield axios.put('/api/builder/cooler/'+ action.payload.component_id, action.payload);
       yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with skill cooler:', error);
@@ -28,7 +28,7 @@ function* updateCooler(action){
 //this saga gets fired with every add component action
 function* updateMobo(action){
   try {
-      yield axios.put('/api/builder/mobo', action.payload);
+      yield axios.put('/api/builder/mobo/'+ action.payload.component_id, action.payload);
       yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with skill mobo:', error);
@@ -40,7 +40,7 @@ function* updateMobo(action){
 //this saga gets fired with every add component action
 function* updateCase(action){
   try {
-      yield axios.put('/api/builder/case', action.payload);
+      yield axios.put('/api/builder/case/'+ action.payload.component_id, action.payload);
       yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with skill case:', error);
@@ -52,7 +52,7 @@ function* updateCase(action){
 //this saga gets fired with every add component action
 function* updateGPU(action){
   try {
-      yield axios.put('/api/builder/gpu', action.payload);
+      yield axios.put('/api/builder/gpu/'+ action.payload.component_id, action.payload);
       yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with skill gpu:', error);
@@ -64,7 +64,7 @@ function* updateGPU(action){
 //this saga gets fired with every add component action
 function* updateStorage(action){
   try {
-      yield axios.put('/api/builder/storage', action.payload);
+      yield axios.put('/api/builder/storage/'+ action.payload.component_id, action.payload);
       yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with storage update :', error);
@@ -76,7 +76,7 @@ function* updateStorage(action){
 //this saga gets fired with every add component action
 function* updateMemory(action){
   try {
-      yield axios.put('/api/builder/memory', action.payload);
+      yield axios.put('/api/builder/memory/'+ action.payload.component_id, action.payload);
       yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with memory update:', error);
@@ -89,7 +89,7 @@ function* updatePSU(action){
     console.log('this is the payload', action.payload);
     
   try {
-      yield axios.put('/api/builder/psu', action.payload);
+      yield axios.put('/api/builder/psu/'+ action.payload.component_id, action.payload);
       yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id });
   }  catch (error) {
       console.log('Error with psu update:', error);
@@ -99,7 +99,7 @@ function* updatePSU(action){
 //this saga gets fired with every add component action
 function* updateName(action){
     try {
-        yield axios.put('/api/builder/name', action.payload);
+        yield axios.put('/api/builder/name/' + action.payload.build_id, action.payload);
         yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id});
     }  catch (error) {
         console.log('Error with name update:', error);

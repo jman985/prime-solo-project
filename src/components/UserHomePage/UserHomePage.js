@@ -30,8 +30,11 @@ const getCookie = (cookieName) => {
 
 class UserHomePage extends Component {
 
-  componentDidMount(){
-    // document.body.style.background= '#6495ED'
+  componentDidUpdate(prevProps){
+    if(this.props.selectBuild !== prevProps.selectBuild){
+      this.props.history.push('/builder/' + this.props.selectBuild);
+    }
+    
   }
 
     
@@ -56,7 +59,7 @@ class UserHomePage extends Component {
 
     console.log('this is the selected build', this.props.selectBuild);
     
-    this.props.history.push('/newbuild');
+    // this.props.history.push('/newbuild');
 
     // this.props.history.push('/builder');
   }
