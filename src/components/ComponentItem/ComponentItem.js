@@ -110,7 +110,7 @@ state = {
           onClick={this.handleClick} 
         >
             
-          <div className='text-white text-center rgba-blue-strong align-items-center pl-80 px-10'>
+          <div className='text-white text-center align-items-center pl-80 px-10'>
             <div>
               <MDBCardTitle tag='h3' className='pt-4'>
                 <strong>{this.props.thisComponent.name}</strong>
