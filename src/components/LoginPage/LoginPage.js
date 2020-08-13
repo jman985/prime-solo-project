@@ -14,6 +14,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { GiShinyApple } from 'react-icons/gi';
 
 
 // const useStyles = makeStyles((theme) => ({
@@ -71,119 +72,69 @@ class LoginPage extends Component {
   render() {
 
     return (
-      // <div>
-      //   {this.props.errors.loginMessage && (
-      //     <h2
-      //       className="alert"
-      //       role="alert"
-      //     >
-      //       {this.props.errors.loginMessage}
-      //     </h2>
-      //   )}
-      //   <form onSubmit={this.login}>
-      //     <h1>Login</h1>
-      //     <div>
-      //       <label htmlFor="username">
-      //         Username:
-      //         <input
-      //           type="text"
-      //           name="username"
-      //           value={this.state.username}
-      //           onChange={this.handleInputChangeFor('username')}
-      //         />
-      //       </label>
-      //     </div>
-      //     <div>
-      //       <label htmlFor="password">
-      //         Password:
-      //         <input
-      //           type="password"
-      //           name="password"
-      //           value={this.state.password}
-      //           onChange={this.handleInputChangeFor('password')}
-      //         />
-      //       </label>
-      //     </div>
-      //     <div>
-      //       <input
-      //         className="log-in"
-      //         type="submit"
-      //         name="submit"
-      //         value="Log In"
-      //       />
-      //     </div>
-      //   </form>
-      //   <center>
-      //     <button
-      //       type="button"
-      //       className="link-button"
-      //       onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
-      //     >
-      //       Register
-      //     </button>
-      //   </center>
-      // </div>
-
-
-<Container component="main" maxWidth="lg">
-<CssBaseline />
-<div className="paper">
-  <Avatar className = "avatar">
-    <LockOutlinedIcon />
-  </Avatar >
-  <Typography component="h1" variant="h5">
-    Sign in
-  </Typography>
-  <form fullWidth onSubmit={this.login}>
-    <TextField
-      variant="outlined"
-      margin="normal"
-      required
-      fullWidth
-      label="Username"
-      autoFocus
-      type="text"
-      name="username"
-      value={this.state.username}
-      onChange={this.handleInputChangeFor('username')}
-    />
-    <TextField
-      variant="outlined"
-      margin="normal"
-      required
-      fullWidth
-      label="Password"
-      id="password"
-      type="password"
-      name="password"
-      value={this.state.password}
-      onChange={this.handleInputChangeFor('password')}
-    />
-    <FormControlLabel
-      control={<Checkbox value="remember" color="primary" />}
-      label="Remember me"
-    />
-    <Button
-      className = "submit"
-      fullWidth
-      variant="contained"
-      color="primary"
-      type="submit"
-      name="submit">
-      Sign In
-    </Button>
-    <Grid container>
-       <Grid item>
-        <Link variant="body2"  type="button"
-            className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}>
-          {"Don't have an account? Sign Up"}
-        </Link>
-      </Grid>
-    </Grid>
-  </form>
-</div>
-</Container>
+    
+        <Container component="main" maxWidth="lg">
+          <CssBaseline />
+          <div className="paper">
+            <Avatar className = "avatar">
+              <GiShinyApple/>
+            </Avatar >
+            <br></br>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <form fullWidth onSubmit={this.login}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                label="Username"
+                autoFocus
+                type="text"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleInputChangeFor('username')}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                label="Password"
+                id="password"
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleInputChangeFor('password')}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                className = "submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                type="submit"
+                name="submit">
+                <strong>Sign In</strong>
+              </Button>
+                <br></br>
+                <br></br>
+              <Grid container>
+                <Grid item>
+                  <Link variant="body2"  type="button"
+                      className="link-button"
+                      onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}>
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+          </Container>
 
     );
   }

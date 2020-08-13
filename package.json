@@ -22,6 +22,7 @@
     "react-card-flip": "^1.0.11",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.8.6",
+    "react-icons": "^3.10.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^3.4.0",
