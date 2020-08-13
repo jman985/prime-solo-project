@@ -20,6 +20,8 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 import './EditBuildItem.css'
+import { IoMdSwap } from 'react-icons/io';
+import { IoIosAdd } from 'react-icons/io';
 
 
 
@@ -44,11 +46,8 @@ class EditBuildItem extends Component {
 
   gotoComponent = (event, component) => {
     event.preventDefault();
-    // this.props.dispatch({type: 'FETCH_COMPONENT', payload: component});
-  this.props.match.params.buildId?
-    this.props.history.push('/builder/' + this.props.match.params.buildId + '/' + component):
-    this.props.history.push('/builder/' + this.props.thisComponent.build_id + '/' + component);
 
+    this.props.history.push('/builder/' + this.props.match.params.buildId + '/' + component)
 
   }
 
@@ -57,40 +56,63 @@ class EditBuildItem extends Component {
     <>
   
   <Grid item xs={9} sm={5} md={3}>
-    <MDBCol>
+    <MDBCol container spacing = {50}>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-      <MDBCard
-          className='card-image'
-          style={{
-            backgroundImage: 'url(' + this.props.thisComponent.image + ')',
-            textAlign: 'center'
-          }}
-          onClick= {this.handleClick}
-        >
-          <div className='text-black text-center rgba-grey-strong d-flex align-items-center py-5 px-1'>
-            <div>
-              <MDBCardTitle tag='h1' className='pt-4'>
-              </MDBCardTitle>
-              <h2 className= 'text-center'><strong>{this.props.thisComponent.name}</strong></h2>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
+
+      {this.props.thisComponent.id > 8?
+
+          <Card className="card-image" variant="outlined"
+          style={{ textAlign: 'center'}}>
+          <CardHeader title={this.props.thisComponent.name}>
+          </CardHeader>
+          <CardActionArea>
               
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              {/* <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick} >
-                Details
-              </MDBBtn> */}
-              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
-                <MDBIcon icon='plus' /> Add {this.props.thisComponent.type}
-              </MDBBtn>
-            </div>
-          </div>
-        </MDBCard>
+            <CardMedia component="img" onClick={this.handleClick}
+              aria-label="Show more"
+              alt={this.props.thisComponent.name}
+              src={this.props.thisComponent.image}
+              title={this.props.thisComponent.name}
+              paragraph= {this.props.thisComponent.details}
+            />
+            <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+                      <IoMdSwap /> Change {this.props.thisComponent.type}
+                    </MDBBtn>
+          </CardActionArea>
+        </Card>
+          :
+            <MDBCard
+                className='card-image'
+                style={{
+                  backgroundImage: 'url(' + this.props.thisComponent.image + ')',
+                  textAlign: 'center'
+                }}
+                onClick= {this.handleClick}
+              >
+                <div className='text-black text-center rgba-grey-strong d-flex align-items-center py-5 px-1'>
+                  <div>
+                    <MDBCardTitle tag='h1' className='pt-4'>
+                    </MDBCardTitle>
+                    <h2 className= 'text-center'><strong>{this.props.thisComponent.name}</strong></h2>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {/* <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick} >
+                      Details
+                    </MDBBtn> */}
+                    <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+                      <IoIosAdd /> Add {this.props.thisComponent.type}
+                    </MDBBtn>
+                  </div>
+                </div>
+              </MDBCard>
+          }
 
         <MDBCard
           className='card-image'
@@ -106,11 +128,11 @@ class EditBuildItem extends Component {
               <MDBCardTitle tag='h3' className='pt-4'>
                 <strong>{this.props.thisComponent.name}</strong>
               </MDBCardTitle>
-              <p>{this.props.thisComponent.details}</p>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
+                <p>{this.props.thisComponent.details}</p>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
               <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                 <MDBIcon icon='plus' /> Add {this.props.thisComponent.type}
               </MDBBtn>
@@ -120,6 +142,7 @@ class EditBuildItem extends Component {
             </div>
           </div>
         </MDBCard>
+  
         </ReactCardFlip>
        </MDBCol>
        </Grid>

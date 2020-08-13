@@ -79,11 +79,12 @@ class ComponentPage extends Component {
    direction="row"
    justify="flex-start"
    alignItems="flex-start">
+    <MDBRow container spacing = {50}>
 
        {this.props.buildComponent.filter(x => x.id > 8).map( y =>
          <ComponentItem key={y.id} thisComponent={y}/>
        )}
-
+    </MDBRow>
  </Grid>
  </div>
 <br></br>

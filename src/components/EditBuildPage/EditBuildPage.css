@@ -9,3 +9,8 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+.build-name{
+    justify-content: center;
+    /* display: inline-block; */
+}

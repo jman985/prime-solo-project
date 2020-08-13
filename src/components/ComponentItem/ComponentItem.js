@@ -70,7 +70,7 @@ state = {
   render(){
   return (
     <>
-     <Grid item xs={9} sm={5} md={3}>
+  <Grid item xs={9} sm={5} md={3}>
     <MDBCol>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
         <Card >
