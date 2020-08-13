@@ -1,12 +1,14 @@
-.container{
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
 
 
 .horizontal-center {
     margin: 0;
     position: relative;
     transform: translateX(40%);
+    margin-top: 100px;
   }
+
+  .title{
+    font-size: 60px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}

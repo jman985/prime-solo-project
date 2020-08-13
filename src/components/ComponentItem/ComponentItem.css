@@ -2,3 +2,10 @@
     height: 400px;
     width: 400px;
     }
+
+    .card-front{
+
+        width: 400px;
+        max-height: 500px;
+    
+    }

@@ -82,9 +82,9 @@ class EditBuildPage extends Component {
     return (
       <>
       <div>
-        <h1 style={{ textAlign: 'center'}}><strong >Build Your Hackintosh</strong></h1>
+        <h1 className = "title" style={{ textAlign: 'center'}}><strong >Build Your Hackintosh</strong></h1>
       </div>
-      <br></br>
+      
       <div className= "build-name">
               
                 {this.state.buildnameIsEditable ?
@@ -101,14 +101,8 @@ class EditBuildPage extends Component {
                 }
           
           </div>
-          <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
+        
+             
               
 <div className= "container">
    <Grid 
@@ -122,14 +116,13 @@ class EditBuildPage extends Component {
    {/* {this.props.newBuild.filter(x => x.id > 1).map( y =>
          <NewBuildItem key={y.id} thisComponent={y}/>
        )} */}
-       <MDBRow container spacing = {50}>
 
        {this.props.build.map( y =>
        
          <EditBuildItem key={y.id} thisComponent={y}/>
        
        )}
-       </MDBRow>
+       
  </Grid>
  </div>
 <br></br>

@@ -56,18 +56,17 @@ class EditBuildItem extends Component {
   return (
     <>
   
-  <Grid item xs={9} sm={5} md={3}>
-    <MDBCol container spacing = {50}>
+  <Grid item xs={20} sm={8} md={5} >
+    <MDBCol container spacing = {20} className= "column">
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
 
       {this.props.thisComponent.id > 8?
 
-          <Card className="card-image" variant="outlined"
+          <Card className="card-front" variant="outlined"
           style={{ textAlign: 'center'}}>
           <CardHeader title={this.props.thisComponent.name}>
           </CardHeader>
           <CardActionArea>
-              
             <CardMedia component="img" onClick={this.handleClick}
               aria-label="Show more"
               alt={this.props.thisComponent.name}
@@ -77,7 +76,7 @@ class EditBuildItem extends Component {
             />
             <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                       <FaExchangeAlt /> Change {this.props.thisComponent.type}
-                    </MDBBtn>
+              </MDBBtn>
           </CardActionArea>
         </Card>
           :
@@ -124,7 +123,7 @@ class EditBuildItem extends Component {
           onClick= {this.handleClick}
         >
             
-          <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-5 px-1'>
+          <div className='text-white text-center d-flex align-items-center py-5 px-1'>
             <div>
               <MDBCardTitle tag='h3' className='pt-4'>
                 <strong>{this.props.thisComponent.name}</strong>
@@ -145,8 +144,7 @@ class EditBuildItem extends Component {
                 }
             </div>
           </div>
-        </MDBCard>
-  
+          </MDBCard>
         </ReactCardFlip>
        </MDBCol>
        </Grid>

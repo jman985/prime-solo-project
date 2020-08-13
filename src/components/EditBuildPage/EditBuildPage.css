@@ -13,10 +13,15 @@
 .build-name{
     justify-content: center;
     /* display: inline-block; */
+    padding-top:  10px;
 }
 
 .horizontal-center {
     margin: 0;
     position: relative;
     transform: translateX(5000%);
+  }
+
+  .title{
+      font-size: 60px;
   }

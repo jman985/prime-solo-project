@@ -73,7 +73,7 @@ state = {
   <Grid item xs={9} sm={5} md={3}>
     <MDBCol container spacing = {50}>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-        <Card className="card-image" variant="outlined"
+        <Card className="card-front" variant="outlined"
           style={{ textAlign: 'center'}}>
         <CardHeader title={this.props.thisComponent.name}>
         </CardHeader>
@@ -84,9 +84,9 @@ state = {
             src={this.props.thisComponent.image}
             title={this.props.thisComponent.name}
             paragraph= {this.props.thisComponent.details}
+            
           />
-        </CardActionArea>
-            <CardContent>
+          <CardContent>
               <Typography paragraph></Typography>
               {this.state.componentSelected ?
               <Button variant="contained" color="secondary" size="small" onClick = {this.deSelectComponent}>
@@ -97,6 +97,8 @@ state = {
                 
                 }
             </CardContent>
+        </CardActionArea>
+            
           </Card>
 
         <MDBCard variant="outlined"
@@ -108,7 +110,7 @@ state = {
           onClick={this.handleClick} 
         >
             
-          <div className='text-white text-center d-flex rgba-blue-strong align-items-center py-4 px-2'>
+          <div className='text-white text-center rgba-blue-strong align-items-center pl-80 px-10'>
             <div>
               <MDBCardTitle tag='h3' className='pt-4'>
                 <strong>{this.props.thisComponent.name}</strong>

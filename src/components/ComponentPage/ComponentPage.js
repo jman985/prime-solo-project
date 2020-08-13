@@ -64,13 +64,9 @@ class ComponentPage extends Component {
     return (
       <>
       <div>
-        <h1 style={{ textAlign: 'center'}}><strong>Select Your {this.props.match.params.componentName}</strong></h1>
+        <h1 className= "title" style={{ textAlign: 'center'}}><strong>Select Your {this.props.match.params.componentName}</strong></h1>
       </div>
-      <br></br>
-          <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
+      
               
 <div className = '.container'>
    <Grid 
@@ -85,16 +81,12 @@ class ComponentPage extends Component {
        )}
  </Grid>
  </div>
-<br></br>
-<br></br>
-<br></br>
-
+ 
   <div className = "horizontal-center">
  <Button variant="contained" color="primary" onClick = {this.saveComponent}>SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <Button variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
  </div>
-
  </>
  
     )
