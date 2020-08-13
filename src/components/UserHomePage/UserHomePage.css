@@ -1,4 +1,12 @@
 .container{
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    margin-top: 200px;
+}
+.boxes{
+    flex-wrap: nowrap;
+
+flex-direction: row;
+justify-content: space-evenly;
+
 }
