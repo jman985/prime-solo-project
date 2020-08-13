@@ -24,7 +24,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('in post with:', req.user.id);
     const queryText = `INSERT INTO build (name, user_id, cpu_id, cooler_id, mobo_id, case_id, gpu_id, storage_id, memory_id,  psu_id )
-    VALUES ('', $1, 1, 2, 3, 4, 5, 6, 7, 8) RETURNING id;`;
+    VALUES ('NO NAME', $1, 1, 2, 3, 4, 5, 6, 7, 8) RETURNING id;`;
     pool.query(queryText, [req.user.id])
     .then(results => {
         res.send(results.rows[0]);

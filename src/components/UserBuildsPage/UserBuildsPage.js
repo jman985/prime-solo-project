@@ -22,14 +22,13 @@ class UserBuildsPage extends Component {
   render() {
     return (
       <>
-          <br></br>
-          <br></br>
-        <h1 style={{ textAlign: 'center'}}><strong >Your Hackintosh Builds</strong></h1>
-          <br></br>
-          <br></br>
+         
+        <h1 style={{ textAlign: 'center', marginTop: '150px', marginBottom:'30px', fontSize:'70px'}}><strong >Your Hackintosh Builds</strong></h1>
+         
           {/* <p>Your ID is: {this.props.user.id}</p> */}
+
       <div className= 'builds'>
-        <Grid 
+    <Grid 
       container
       spacing={10}
       direction="row"

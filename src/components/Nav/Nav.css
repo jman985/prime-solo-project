@@ -5,11 +5,11 @@ background-color: rgb(255, 136, 0);
 align-items: center;
 /* background-image: linear-gradient(to right, rgb(255, 136, 0), #b94d18); */
 background-image: linear-gradient(to right, yellow , red);
+width: 100%; /* Full width */
+}
 
-}
 .nav-links{
-  text-emphasis-color: grey;
-}
+  text-emphasis-color: white}
 
 .nav-link {
   float: left;

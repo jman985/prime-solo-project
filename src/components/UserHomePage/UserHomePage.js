@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { Link } from 'react-router-dom';
 import { Box, Grid, Slide, Paper, Typography} from '@material-ui/core';
+import { borders } from '@material-ui/system';
 import { withStyles } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -18,6 +19,7 @@ import Avatar from '@material-ui/core/Avatar';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
 import './UserHomePage.css';
+import { FaBox } from 'react-icons/fa';
 
 
 const getCookie = (cookieName) => {
@@ -27,6 +29,13 @@ const getCookie = (cookieName) => {
   return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
 }
 
+const defaultProps = {
+  bgcolor: 'background.paper',
+  borderColor: 'text.primary',
+  m: 1,
+  border: 5,
+  style: { width: '700px', height: '700px' },
+};
 
 class UserHomePage extends Component {
 
@@ -48,32 +57,33 @@ class UserHomePage extends Component {
     this.props.history.push('/builds');
 
   }
+
   newBuildHandleClick = () => {
-    document.cookie = `buildname=${''}`
+    document.cookie = `buildname=${'NO NAME'}`
     
     this.props.dispatch({type: 'ADD_BUILD'})
-    
-  }
-
   
+  }
 
   
   render() {
     return (
+      <>
       <div className = 'container'>
-        <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
+        <h1 style={{ textAlign: 'center', marginTop: '150px', fontSize:'70px'}} id="welcome">Welcome, {this.props.user.username}!</h1>
         <p>Your ID is: {this.props.user.id}</p>
-
+        
         <Button variant="contained" color="primary" onClick = {this.newBuildHandleClick}>Start A New Build</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        
-
         <Button variant="contained" color="primary" onClick = {this.viewBuildsHandleClick}>View Your Builds</Button>
-        <br></br>
-        <br></br>
-        <br></br>
-
-        <LogOutButton className="log-in" />
+        
       </div>
+    <Box display="flex" justifyContent="center">
+      <Box borderRadius={16} {...defaultProps} onClick = {this.newBuildHandleClick}/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Box borderRadius={16} {...defaultProps} onClick = {this.viewBuildsHandleClick}/>
+    </Box>
+      </>
     );
   }
 }

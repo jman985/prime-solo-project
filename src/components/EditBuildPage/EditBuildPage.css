@@ -1,27 +1,38 @@
 .container{
-    flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    margin-top: auto;
 }
-
 .edit-name{
     justify-content: center;
     /* display: inline-block; */
     white-space: nowrap;
     overflow: hidden;
+    margin-bottom: auto;
 }
 
 .build-name{
     justify-content: center;
+    position: relative;
     /* display: inline-block; */
-    padding-top:  10px;
+    margin-left: 20%;
 }
 
 .horizontal-center {
     margin: 0;
     position: relative;
-    transform: translateX(5000%);
+    transform: translateX(40%);
   }
 
   .title{
       font-size: 60px;
+    
+  }
+
+  .build-edit{
+    margin-left: 15%;
+    font-size: inherit;
+  }
+
+  .build-display{
+    margin-left: 32%;
   }

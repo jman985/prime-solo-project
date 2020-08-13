@@ -9,7 +9,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNav
 
   const Nav = (props) => (
 
-  <MDBNavbar className = "nav-bar" dark expand="md">
+  <MDBNavbar className = "nav-bar" dark expand="sm" scrolling fixed="top">
     <MDBNavbarBrand className= "apple-logo">
       <img  src = "images/apple-bite2.png" height = "100" alt= "apple-bite" />&nbsp;
       </MDBNavbarBrand>

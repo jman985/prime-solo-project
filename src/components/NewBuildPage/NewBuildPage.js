@@ -22,18 +22,12 @@ import EditBuildItem from '../EditBuildItem/EditBuildItem'
 
 
 
-const getCookie = (cookieName) => {
-  // Get name followed by anything except a semicolon
-  const cookieString = RegExp(''+cookieName+'[^;]+').exec(document.cookie);
-  // Return everything after the equal sign, or an empty string if the cookie name not found
-  return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
-}
 
 
 class NewBuildPage extends Component {
 
   state = {
-    buildname: getCookie('buildname'||''),
+    buildname: '',
     buildnameIsEditable: true,
   }
 
