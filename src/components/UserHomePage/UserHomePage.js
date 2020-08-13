@@ -69,15 +69,12 @@ class UserHomePage extends Component {
     return (
       <>
       <div className = 'container'>
-        <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
+        <h1 style={{ textAlign: 'center', marginTop: '150px', fontSize:'70px'}} id="welcome">Welcome, {this.props.user.username}!</h1>
         <p>Your ID is: {this.props.user.id}</p>
         
         <Button variant="contained" color="primary" onClick = {this.newBuildHandleClick}>Start A New Build</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        
         <Button variant="contained" color="primary" onClick = {this.viewBuildsHandleClick}>View Your Builds</Button>
-        <br></br>
-        <br></br>
-        <br></br>
         
       </div>
     <Box display="flex" justifyContent="center">
