@@ -20,6 +20,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 import EditBuildItem from '../EditBuildItem/EditBuildItem'
 import './EditBuildPage.css'
+import { MdModeEdit } from 'react-icons/md';
 
 
 const getCookie = (cookieName) => {
@@ -86,17 +87,29 @@ class EditBuildPage extends Component {
         <h1 className = "title" style={{ textAlign: 'center',marginTop: '120px'}}><strong >Build Your Hackintosh</strong></h1>
       </div>
 
+      {/* <div className= "build-name">
+              <label style={{ textAlign: 'center'}}>
+                Build Name:</label>{this.state.buildnameIsEditable ?
+              <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<p>{this.state.buildname}</p>}
+
+            {this.state.buildnameIsEditable ?
+              <Button variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button> :
+              <Button variant="outlined" color="primary" onClick={this.editBuildName}>Edit Build Name</Button>
+            }
+          
+          </div> */}
       <div className="build-name">
                 {this.state.buildnameIsEditable ?
-              <div style={{ textAlign: 'center'}}>
-              <label style={{ textAlign: 'center'}}>NAME YOUR BUILD:</label>
+              <div className="build-edit">
+              <label style={{ textAlign: 'center',fontSize: "25px"}}>NAME YOUR BUILD:</label>
               <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>
-              <Button variant="contained" color="primary" onClick={this.saveBuildName}>Save Name</Button>
+              <Button variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button>
               </div>
               : 
-              <div style={{ textAlign: 'center'}}>
-                <label style={{ textAlign: 'center'}}>BUILD NAME: {this.state.buildname}</label>
-              <Button variant="outlined" color="primary" onClick={this.editBuildName}>Edit Name</Button>
+              <div className="build-display">
+                <label style={{ textAlign: 'center',fontSize: "25px"}}>{this.state.buildname} </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+              <Button variant="outlined" color="secondary" onClick={this.editBuildName}><MdModeEdit/>Edit Build Name</Button>
               </div>
                 }
         </div>
@@ -104,20 +117,18 @@ class EditBuildPage extends Component {
 <div className= "container">
    <Grid 
    container
-   spacing={10}
+   spacing={16}
    direction="row"
-   justify="flex-start"
+   justify="space-between"
    alignItems="flex-start"
    
  >
    {/* {this.props.newBuild.filter(x => x.id > 1).map( y =>
          <NewBuildItem key={y.id} thisComponent={y}/>
        )} */}
-
+  
        {this.props.build.map( y =>
-       
          <EditBuildItem key={y.id} thisComponent={y}/>
-       
        )}
        
  </Grid>
@@ -126,8 +137,8 @@ class EditBuildPage extends Component {
 <br></br>
 <br></br>
 
-<div className = "horizontal-center">
-    <Button variant="contained" color="primary" onClick = {this.reviewBuildClick}>COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div className= "horizontal-center">
+    <Button style={{ fontSize: "40px"}} variant="contained" size ="large" color="primary" onClick = {this.reviewBuildClick}>COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     {/* <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button> */}
 </div>

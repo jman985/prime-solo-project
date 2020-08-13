@@ -57,7 +57,7 @@ class EditBuildItem extends Component {
     <>
   
   <Grid item xs={20} sm={8} md={5} >
-    <MDBCol container spacing = {20} className= "column">
+    <MDBCol container spacing = {15} className= "column">
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
 
       {this.props.thisComponent.id > 8?
@@ -148,10 +148,7 @@ class EditBuildItem extends Component {
         </ReactCardFlip>
        </MDBCol>
        </Grid>
-
-      <br></br>
-        <br></br>
-        <br></br> 
+ 
 </>
   )
 }

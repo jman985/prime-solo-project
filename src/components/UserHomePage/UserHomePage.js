@@ -59,7 +59,7 @@ class UserHomePage extends Component {
   }
 
   newBuildHandleClick = () => {
-    document.cookie = `buildname=${' '}`
+    document.cookie = `buildname=${'NO NAME'}`
     
     this.props.dispatch({type: 'ADD_BUILD'})
   

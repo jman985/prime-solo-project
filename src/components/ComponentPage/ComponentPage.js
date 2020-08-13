@@ -73,7 +73,7 @@ class ComponentPage extends Component {
    container
    spacing={10}
    direction="row"
-   justify="flex-start"
+   justify="center"
    alignItems="flex-start">
 
        {this.props.buildComponent.filter(x => x.id > 8).map( y =>
@@ -84,9 +84,9 @@ class ComponentPage extends Component {
 
 
   <div className = "horizontal-center">
- <Button variant="contained" color="primary" onClick = {this.saveComponent}>SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <Button style={{ fontSize: "40px"}} variant="contained" color="primary" onClick = {this.saveComponent}>SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <Button variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
+ <Button style={{ fontSize: "40px"}} variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
  </div>
 
  </>
