@@ -57,11 +57,12 @@ class UserHomePage extends Component {
     this.props.history.push('/builds');
 
   }
+
   newBuildHandleClick = () => {
-    document.cookie = `buildname=${''}`
+    document.cookie = `buildname=${' '}`
     
     this.props.dispatch({type: 'ADD_BUILD'})
-    
+  
   }
 
   

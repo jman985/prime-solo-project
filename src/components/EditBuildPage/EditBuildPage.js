@@ -35,7 +35,7 @@ class EditBuildPage extends Component {
   state = {
     buildname: getCookie('buildname'||''),
     buildnameIsEditable: false,
-    
+
   }
 
   componentDidMount() {
@@ -54,13 +54,14 @@ class EditBuildPage extends Component {
   onChange= (event) => {
     event.preventDefault();
 
-    const buildname = event.target.value;
+    const newbuildname = event.target.value;
 
-    document.cookie = `buildname=${buildname}`
+    document.cookie = `buildname=${newbuildname}`
 
     this.setState({
-      buildname: buildname,
+      buildname: newbuildname,
     });
+    
   }
 
   saveBuildName = () => {
@@ -84,6 +85,8 @@ class EditBuildPage extends Component {
       <div>
         <h1 className = "title" style={{ textAlign: 'center',marginTop: '120px'}}><strong >Build Your Hackintosh</strong></h1>
       </div>
+
+      <div className="build-name">
                 {this.state.buildnameIsEditable ?
               <div style={{ textAlign: 'center'}}>
               <label style={{ textAlign: 'center'}}>NAME YOUR BUILD:</label>
@@ -96,6 +99,7 @@ class EditBuildPage extends Component {
               <Button variant="outlined" color="primary" onClick={this.editBuildName}>Edit Name</Button>
               </div>
                 }
+        </div>
               
 <div className= "container">
    <Grid 

@@ -22,7 +22,6 @@ import ReactCardFlip from 'react-card-flip';
 
 
 
-
 class UserBuildsItem extends Component {
    
   constructor() {
