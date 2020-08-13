@@ -1,6 +1,6 @@
 .container{
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .edit-name{
@@ -14,3 +14,9 @@
     justify-content: center;
     /* display: inline-block; */
 }
+
+.horizontal-center {
+    margin: 0;
+    position: relative;
+    transform: translateX(5000%);
+  }

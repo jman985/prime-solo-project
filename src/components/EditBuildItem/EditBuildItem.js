@@ -22,6 +22,7 @@ import ReactCardFlip from 'react-card-flip';
 import './EditBuildItem.css'
 import { IoMdSwap } from 'react-icons/io';
 import { IoIosAdd } from 'react-icons/io';
+import { FaExchangeAlt } from 'react-icons/fa';
 
 
 
@@ -75,7 +76,7 @@ class EditBuildItem extends Component {
               paragraph= {this.props.thisComponent.details}
             />
             <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
-                      <IoMdSwap /> Change {this.props.thisComponent.type}
+                      <FaExchangeAlt /> Change {this.props.thisComponent.type}
                     </MDBBtn>
           </CardActionArea>
         </Card>
@@ -133,12 +134,15 @@ class EditBuildItem extends Component {
                 <br></br>
                 <br></br>
                 <br></br>
-              <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
-                <MDBIcon icon='plus' /> Add {this.props.thisComponent.type}
-              </MDBBtn>
-              {/* <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick}>
-                Cancel
-              </MDBBtn> */}
+                {this.props.thisComponent.id > 8?
+                    <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+                      <FaExchangeAlt /> Change {this.props.thisComponent.type}
+                    </MDBBtn>
+                    :
+                    <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+                      <IoIosAdd/> Add {this.props.thisComponent.type}
+                    </MDBBtn>
+                }
             </div>
           </div>
         </MDBCard>

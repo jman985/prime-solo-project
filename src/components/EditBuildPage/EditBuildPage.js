@@ -110,7 +110,7 @@ class EditBuildPage extends Component {
               <br></br>
               <br></br>
               
-<div >
+<div className= "container">
    <Grid 
    container
    spacing={10}
@@ -136,7 +136,7 @@ class EditBuildPage extends Component {
 <br></br>
 <br></br>
 
-<div>
+<div className = "horizontal-center">
     <Button variant="contained" color="primary" onClick = {this.reviewBuildClick}>COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     {/* <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button> */}

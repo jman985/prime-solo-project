@@ -71,13 +71,13 @@ state = {
   return (
     <>
   <Grid item xs={9} sm={5} md={3}>
-    <MDBCol>
+    <MDBCol container spacing = {50}>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-        <Card >
+        <Card className="card-image" variant="outlined"
+          style={{ textAlign: 'center'}}>
         <CardHeader title={this.props.thisComponent.name}>
         </CardHeader>
         <CardActionArea>
-            
           <CardMedia component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
             aria-label="Show more"
             alt={this.props.thisComponent.name}
@@ -99,7 +99,7 @@ state = {
             </CardContent>
           </Card>
 
-        <MDBCard
+        <MDBCard variant="outlined"
           className='card-image'
           style={{
             backgroundImage: 'url(' + this.props.thisComponent.image + ')'

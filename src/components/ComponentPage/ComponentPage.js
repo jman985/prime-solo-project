@@ -79,21 +79,21 @@ class ComponentPage extends Component {
    direction="row"
    justify="flex-start"
    alignItems="flex-start">
-    <MDBRow container spacing = {50}>
 
        {this.props.buildComponent.filter(x => x.id > 8).map( y =>
          <ComponentItem key={y.id} thisComponent={y}/>
        )}
-    </MDBRow>
  </Grid>
  </div>
 <br></br>
 <br></br>
 <br></br>
 
+  <div className = "horizontal-center">
  <Button variant="contained" color="primary" onClick = {this.saveComponent}>SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <Button variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
+ </div>
 
  </>
  
