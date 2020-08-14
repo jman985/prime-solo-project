@@ -14,17 +14,21 @@ const AboutPage = () => (
       Special thanks to Prime Academy, Paxos Instructors, and the entire Paxos Cohort.
   </p>
     </div>
-  <h1 style={{ textAlign: 'center', marginTop: '100px', marginBottom:'100px', fontSize:'70px'}}>BIRD UP!</h1>
+
     <div>
-
-    <p>Thanks to all Prime Academy students, staff, and alumni.</p>
-
+      <img src="https://slack-imgs.com/?c=1&o1=gu&url=https%3A%2F%2Femoji.slack-edge.com%2FT4402UEHM%2Fpaxosparakeet%2F3debf97a53f0f9a0.png"/>
+    </div>
     <br></br>
 
-    <p>
-    DISCLAIMER:  This project is strictly for INFORMATIONAL AND EDUCATIONAL PURPOSES ONLY.
+    <div>
+      <p>Thanks to all Prime Academy students, staff, and alumni.</p>
+
+
+      <p style= {{marginTop: '400px'}}>
+          DISCLAIMER:  This project is strictly for INFORMATIONAL AND EDUCATIONAL PURPOSES ONLY.
           Please note that installing Apple software on non-Apple hardware, while not illegal, 
-        violates the <Link to= "https://www.apple.com/legal/sla/ ">APPLE INC. SOFTWARE LICENSE AGREEMENT</Link> </p>
+          violates the <Link to= "https://www.apple.com/legal/sla/ ">APPLE INC. SOFTWARE LICENSE AGREEMENT</Link>.
+      </p>
     </div>
   </div>
 );

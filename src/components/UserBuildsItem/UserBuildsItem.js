@@ -65,7 +65,8 @@ class UserBuildsItem extends Component {
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
       <Card variant="outlined"
           style={{
-            textAlign: 'center'
+            textAlign: 'center',
+            marginLeft: "30px"
           }}>
         <CardHeader title={this.props.thisBuild.name}>
         </CardHeader>
@@ -92,7 +93,7 @@ class UserBuildsItem extends Component {
           </Card>
 
         <Card variant="outlined"
-        style={{ textAlign: 'center'}}>
+        style={{ textAlign: 'center',marginLeft: "30px"}}>
         <CardHeader title={this.props.thisBuild.name}>
         </CardHeader>
         <div className = "rgba-grey-strong">
@@ -106,9 +107,10 @@ class UserBuildsItem extends Component {
         </CardActionArea>
         </div>
             <CardContent>
+            <Typography paragraph></Typography>
                 <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
-                </Button>&nbsp;&nbsp;
+                </Button>&nbsp;
                 <Button variant="contained" color="secondary" size="small" onClick={ (event) => this.removeBuild(event, this.props.thisBuild.id) }>
                 Delete Build
                 </Button>
