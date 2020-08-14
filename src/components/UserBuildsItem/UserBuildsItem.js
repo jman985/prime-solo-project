@@ -95,6 +95,7 @@ class UserBuildsItem extends Component {
         style={{ textAlign: 'center'}}>
         <CardHeader title={this.props.thisBuild.name}>
         </CardHeader>
+        <div className = "rgba-grey-strong">
         <CardActionArea>
           <CardMedia  component="img" onClick={this.handleClick}
             aria-label="Show more"
@@ -103,6 +104,7 @@ class UserBuildsItem extends Component {
             title={this.props.thisBuild.name}
           />
         </CardActionArea>
+        </div>
             <CardContent>
                 <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build

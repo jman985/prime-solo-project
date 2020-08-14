@@ -117,7 +117,7 @@ editBuildName = () => {
        {this.props.build.map( y =>
          <EditBuildItem key={y.id} thisComponent={y}/>
        )}
-       </MDBRow>
+    </MDBRow>
  </Grid>
  </div>
 <br></br>

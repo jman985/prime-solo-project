@@ -20,7 +20,7 @@ import UserBuildsItem from '../UserBuildsItem/UserBuildsItem';
 import './App.css';
 import EditBuildPage from '../EditBuildPage/EditBuildPage';
 import ComponentPage from '../ComponentPage/ComponentPage';
-import NewBuildPage from '../NewBuildPage/NewBuildPage';
+// import NewBuildPage from '../NewBuildPage/NewBuildPage';
 import ReviewPage from '../ReviewPage/ReviewPage';
 
 
@@ -70,10 +70,10 @@ class App extends Component {
               exact path= {`/builder/:buildId/:componentName`}
               component={ComponentPage}
             />
-            <ProtectedRoute 
+            {/* <ProtectedRoute 
               exact path= {`/newbuild`}
               component={NewBuildPage}
-            />
+            /> */}
             <ProtectedRoute 
               exact path= {`/review/:buildId`}
               component={ReviewPage}

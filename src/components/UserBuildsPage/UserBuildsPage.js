@@ -24,7 +24,7 @@ class UserBuildsPage extends Component {
   handleResize = () => {
     this.forceUpdate();
   };
-  
+
   render() {
     return (
       <>
@@ -39,9 +39,8 @@ class UserBuildsPage extends Component {
       spacing={10}
       direction="row"
       justify="flex-start"
-      alignItems="stretch"
+      alignItems="flex-start"
     >
-
           {this.props.userBuilds.map(x =>
             <UserBuildsItem key={x.id} thisBuild={x}/>
           )}

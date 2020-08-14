@@ -126,7 +126,6 @@ class EditBuildItem extends Component {
           className='card-image'
           style={{
             backgroundImage: 'url(' + this.props.thisComponent.image + ')'
-              
           }}
           onClick= {this.handleClick}
         >
@@ -143,11 +142,13 @@ class EditBuildItem extends Component {
                 <br></br>
                 
                 {this.props.thisComponent.id > 8?
-                    <MDBBtn className= 'text-center h1' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+                    <MDBBtn className= 'text-center h1' color='deep-orange' 
+                      onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                       <FaExchangeAlt /> Change {this.props.thisComponent.type}
                     </MDBBtn>
                     :
-                    <MDBBtn className= 'text-center h1' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+                    <MDBBtn className= 'text-center h1' color='deep-orange' 
+                      onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                       <IoIosAdd/> Add {this.props.thisComponent.type}
                     </MDBBtn>
                 }

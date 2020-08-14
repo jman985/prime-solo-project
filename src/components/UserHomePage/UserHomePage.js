@@ -87,19 +87,24 @@ class UserHomePage extends Component {
       <>
 
       <div className = 'container'>
-        <h1 style={{ textAlign: 'center', marginTop: '150px', fontSize:'70px', marginBottom: '50px'}} id="welcome">Welcome, {this.props.user.username}!</h1>
+        <h1 style={{ textAlign: 'center', marginTop: '150px', fontSize:'70px', marginBottom: '50px'}} id="welcome">
+          Welcome, {this.props.user.username}!</h1>
         {/* <p>Your ID is: {this.props.user.id}</p> */}
       </div>
 
 
         <Box display="flex" justifyContent="center">
-          <Box borderRadius={107} {...defaultProps} className="box-left" >
-            <Button style={{fontSize:'40px'}} className= "button" variant="contained" color="primary" onClick = {this.viewBuildsHandleClick}>View Your Builds</Button>
+
+          <Box borderRadius={107} {...defaultProps} className="box-right" >
+            <Button style={{fontSize:'40px'}} variant="contained" color="primary" 
+            onClick = {this.newBuildHandleClick}>Build Your Hackintosh</Button>
           </Box>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <Box borderRadius={107} {...defaultProps} className="box-right" >
-            <Button style={{fontSize:'40px'}} variant="contained" color="primary" onClick = {this.newBuildHandleClick}>Start A New Build</Button>
+          <Box borderRadius={107} {...defaultProps} className="box-left" >
+            <Button style={{fontSize:'40px'}} variant="contained" color="primary" 
+            onClick = {this.viewBuildsHandleClick}>View Your Builds</Button>
           </Box>
+          
         </Box>
 
       </>
