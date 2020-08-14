@@ -44,7 +44,9 @@ class EditBuildPage extends Component {
   this.props.dispatch({type: 'FETCH_BUILD', payload: this.props.match.params.buildId});
 
   }
-
+  componentWillUnmount(){
+    this.props.dispatch({type: 'UNSET_BUILD'});
+  }
   
   editBuildName = () => {
     this.setState({

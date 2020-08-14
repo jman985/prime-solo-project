@@ -6,6 +6,7 @@ align-items: center;
 /* background-image: linear-gradient(to right, rgb(255, 136, 0), #b94d18); */
 background-image: linear-gradient(to right, yellow , red);
 width: 100%; /* Full width */
+height: 105px;
 }
 
 .nav-links{
@@ -30,15 +31,15 @@ width: 100%; /* Full width */
 }
 
 .nav-brand{
-  margin-bottom: -.4%;
+  margin-bottom: -.2%;
 }
 
 .apple-logo{
-  margin-top: -.5%;
+  margin-top: -.2%;
 }
 
 .black-text{
-  font-size: 70px;
+  font-size: 60px;
   font-family: 'SEGA';
   text-align: center;
 }
