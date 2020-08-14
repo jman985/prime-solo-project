@@ -18,6 +18,19 @@ align-items: center;
 .card-front{
 
     width: 400px;
-    max-height: 500px;
+    max-height: 400px;
 
 }
+
+.component-default-front{
+    max-height: 400px;
+    width: 400px;
+    background-position: center;
+    background-size:cover;
+    box-shadow:inset 0 0 0 2000px rgba(65, 63, 69, 0.733);
+
+}
+
+.title{
+    text-align: center;
+    margin-left: 20px;}

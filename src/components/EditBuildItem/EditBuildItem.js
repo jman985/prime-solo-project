@@ -39,7 +39,7 @@ class EditBuildItem extends Component {
   handleResize = () => {
     this.forceUpdate();
   };
-  
+
   constructor() {
     super();
       this.state = {
@@ -64,13 +64,13 @@ class EditBuildItem extends Component {
   return (
     <>
   
-  <Grid item xs={20} sm={8} md={5} >
-    <MDBCol container spacing = {15} className= "column">
+  <Grid item xs={10} sm={8} md={5} >
+    <MDBCol container spacing = {10} className= "column">
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
 
       {this.props.thisComponent.id > 8?
 
-          <Card className="card-front" variant="outlined"
+        <Card className="card-front" variant="outlined"
           style={{ textAlign: 'center'}}>
           <CardHeader title={this.props.thisComponent.name}>
           </CardHeader>
@@ -82,25 +82,25 @@ class EditBuildItem extends Component {
               title={this.props.thisComponent.name}
               paragraph= {this.props.thisComponent.details}
             />
-            <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
-                      <FaExchangeAlt /> Change {this.props.thisComponent.type}
-              </MDBBtn>
           </CardActionArea>
+            <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+              <FaExchangeAlt /> Change {this.props.thisComponent.type}
+            </MDBBtn>
         </Card>
           :
             <MDBCard
-                className='card-image'
+                className='component-default-front'
                 style={{
                   backgroundImage: 'url(' + this.props.thisComponent.image + ')',
                   textAlign: 'center'
                 }}
                 onClick= {this.handleClick}
               >
-                <div className='text-black text-center rgba-grey-strong d-flex align-items-center py-5 px-1'>
-                  <div>
-                    <MDBCardTitle tag='h1' className='pt-4'>
-                    </MDBCardTitle>
-                    <h2 className= 'text-center'><strong>{this.props.thisComponent.name}</strong></h2>
+                <div className='text-white text-center d-flex align-items-center py-5 px-1'>
+                  <div className="align-items-center">
+                  <MDBCardTitle tag='h1' className='pt-4 text-center'>
+                    <strong className="title">{this.props.thisComponent.name}</strong>
+                  </MDBCardTitle>
                     <br></br>
                     <br></br>
                     <br></br>
@@ -131,22 +131,23 @@ class EditBuildItem extends Component {
           onClick= {this.handleClick}
         >
             
-          <div className='text-white text-center d-flex align-items-center py-5 px-1'>
+          <div className='text-white d-flex align-items-center py-5 px-1' style={{ textAlign: 'center'}} >
             <div>
-              <MDBCardTitle tag='h3' className='pt-4'>
+              <MDBCardTitle tag='h3' className='pt-2 text-center' >
                 <strong>{this.props.thisComponent.name}</strong>
               </MDBCardTitle>
+                <br></br>
+                <br></br>
                 <p>{this.props.thisComponent.details}</p>
                 <br></br>
                 <br></br>
-                <br></br>
-                <br></br>
+                
                 {this.props.thisComponent.id > 8?
-                    <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+                    <MDBBtn className= 'text-center h1' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                       <FaExchangeAlt /> Change {this.props.thisComponent.type}
                     </MDBBtn>
                     :
-                    <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+                    <MDBBtn className= 'text-center h1' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                       <IoIosAdd/> Add {this.props.thisComponent.type}
                     </MDBBtn>
                 }

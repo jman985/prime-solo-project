@@ -126,6 +126,10 @@ class ComponentItem extends Component {
               <MDBCardTitle tag='h3' className='pt-4'>
                 <strong>{this.props.thisComponent.name}</strong>
               </MDBCardTitle>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
               <p>{this.props.thisComponent.details}</p>
               <br></br>
               <br></br>
