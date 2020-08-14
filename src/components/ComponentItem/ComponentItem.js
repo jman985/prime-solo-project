@@ -23,9 +23,20 @@ import './ComponentItem.css'
 
 
 class ComponentItem extends Component {
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleResize = () => {
+    this.forceUpdate();
+  };
   
-  
-state = {
+  state = {
         componentSelected: false,
         componentId: 0
       }

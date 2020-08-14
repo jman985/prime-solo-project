@@ -31,15 +31,23 @@ const getCookie = (cookieName) => {
 
 
 class ComponentPage extends Component {
-
+  
   componentDidMount() {
-
+    window.addEventListener('resize', this.handleResize)
+    
     console.log('component page mounted, component page for', this.props.match.params.componentName)
 
     this.props.dispatch({type: 'FETCH_COMPONENT', payload: this.props.match.params.componentName});
 
   }
-  
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize)
+  }
+
+  handleResize = () => {
+    this.forceUpdate();
+  }
   cancelClick = ()=>{
     this.props.history.push('/builder/' + this.props.match.params.buildId)
   }

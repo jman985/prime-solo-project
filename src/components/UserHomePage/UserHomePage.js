@@ -38,15 +38,25 @@ const defaultProps = {
 };
 
 class UserHomePage extends Component {
-
+  
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
+  
   componentDidUpdate(prevProps){
     if(this.props.selectBuild !== prevProps.selectBuild){
       this.props.history.push('/builder/' + this.props.selectBuild);
     }
     
   }
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.handleResize);
+  }
 
-    
+  handleResize = () => {
+    this.forceUpdate();
+  };
+
   state = {
     buildname: getCookie('buildname'||''),
     buildId: getCookie('buildId'||'')

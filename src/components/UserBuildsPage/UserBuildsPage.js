@@ -14,11 +14,17 @@ class UserBuildsPage extends Component {
   componentDidMount() {
     this.props.dispatch({type: 'FETCH_ALLBUILDS', payload: this.props.user.id});
     // console.log(this.props.match.params.id);
-    
+    window.addEventListener('resize', this.handleResize);
+
   }
 
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.handleResize);
+  }
+  handleResize = () => {
+    this.forceUpdate();
+  };
   
-
   render() {
     return (
       <>

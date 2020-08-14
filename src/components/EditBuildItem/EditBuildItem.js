@@ -29,9 +29,17 @@ import { FaExchangeAlt } from 'react-icons/fa';
 class EditBuildItem extends Component {
    
   componentDidMount(){
-    this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.thisComponent.build_id})
+    window.addEventListener('resize', this.handleResize);
+    // this.props.dispatch({type: 'SELECT_BUILD', payload: this.props.thisComponent.build_id})
+  }
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.handleResize);
   }
 
+  handleResize = () => {
+    this.forceUpdate();
+  };
+  
   constructor() {
     super();
       this.state = {
