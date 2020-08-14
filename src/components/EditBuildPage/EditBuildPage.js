@@ -74,9 +74,7 @@ class EditBuildPage extends Component {
   }
 
   reviewBuildClick = () =>{
-
     this.props.history.push('/review/' + this.props.match.params.buildId);
-
   }
 
 

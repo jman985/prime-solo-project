@@ -98,6 +98,8 @@ function* updatePSU(action){
 
 //this saga gets fired with every add component action
 function* updateName(action){
+    console.log('this is the name payload',action.payload);
+    
     try {
         yield axios.put('/api/builder/name/' + action.payload.build_id, action.payload);
         yield put({ type: 'FETCH_BUILD', payload: action.payload.build_id});

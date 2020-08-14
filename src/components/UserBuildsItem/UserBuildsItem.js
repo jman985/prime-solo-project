@@ -20,7 +20,12 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 
-
+const getCookie = (cookieName) => {
+  // Get name followed by anything except a semicolon
+  const cookieString = RegExp(''+cookieName+'[^;]+').exec(document.cookie);
+  // Return everything after the equal sign, or an empty string if the cookie name not found
+  return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
+}
 
 class UserBuildsItem extends Component {
    
@@ -69,7 +74,7 @@ class UserBuildsItem extends Component {
           <CardMedia  component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
             aria-label="Show more"
             alt={this.props.thisBuild.name}
-            src={this.props.thisBuild.image}
+            src={this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
             title={this.props.thisBuild.name}
             paragraph= {this.props.thisBuild.name}
           />
@@ -94,7 +99,7 @@ class UserBuildsItem extends Component {
           <CardMedia  component="img" onClick={this.handleClick}
             aria-label="Show more"
             alt={this.props.thisBuild.name}
-            src={this.props.thisBuild.image}
+            src= {this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
             title={this.props.thisBuild.name}
           />
         </CardActionArea>
