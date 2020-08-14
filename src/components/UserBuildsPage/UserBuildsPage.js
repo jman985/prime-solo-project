@@ -29,7 +29,7 @@ class UserBuildsPage extends Component {
     return (
       <>
          
-        <h1 style={{ textAlign: 'center', marginTop: '150px', marginBottom:'50px', fontSize:'70px'}}><strong >Your Hackintosh Builds</strong></h1>
+        <h1 style={{ textAlign: 'center', fontFamily: 'apple',marginTop: '150px', marginBottom:'50px', fontSize:'70px'}}><strong >Your Hackintosh Builds</strong></h1>
          
           {/* <p>Your ID is: {this.props.user.id}</p> */}
 

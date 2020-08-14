@@ -72,7 +72,7 @@ class UserBuildsItem extends Component {
         </CardHeader>
         <div className = "rgba-grey-strong">
         <CardActionArea>
-          <CardMedia  component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
+          <CardMedia  component="img" onClick={this.handleClick}
             aria-label="Show more"
             alt={this.props.thisBuild.name}
             src={this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
@@ -91,18 +91,15 @@ class UserBuildsItem extends Component {
                 </Button>
             </CardContent>
           </Card>
-
         <Card variant="outlined"
-        style={{ textAlign: 'center',marginLeft: "30px"}}>
-        <CardHeader title={this.props.thisBuild.name}>
-        </CardHeader>
+          style={{ textAlign: 'center',marginLeft: "30px",fontFamily: 'apple'}}>
+        <CardHeader title= {this.props.thisBuild.name}/>
         <div className = "rgba-grey-strong">
         <CardActionArea>
           <CardMedia  component="img" onClick={this.handleClick}
             aria-label="Show more"
             alt={this.props.thisBuild.name}
             src= {this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
-            title={this.props.thisBuild.name}
           />
         </CardActionArea>
         </div>

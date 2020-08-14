@@ -11,7 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader';
 import Collapse from '@material-ui/core/Collapse';
-import { Box, Grid, Slide, Paper, Typography} from '@material-ui/core';
+import { Box, Grid, Slide, Paper, Typography, TextField} from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -84,21 +84,24 @@ class EditBuildPage extends Component {
     return (
       <>
       <div>
-        <h1 className = "title" style={{ textAlign: 'center',marginTop: '120px'}}><strong >Build Your Hackintosh</strong></h1>
+        <h1 className = "title" style={{ textAlign: 'center', marginTop: '120px', fontFamily: 'apple'}}>
+          <strong >Build Your Hackintosh</strong></h1>
       </div>
 
         <div className="build-name">
                 {this.state.buildnameIsEditable ?
               <div className="build-edit">
-              <label style={{ textAlign: 'center',fontSize: "25px"}}>NAME YOUR BUILD:</label>
-              <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>
-              <Button variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button>
+                
+                <TextField id="outlined-basic" label="Name your build" variant="outlined" onChange = {(event)=> this.onChange(event)}/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Button style={{ textAlign: 'center',fontSize: "20px"}} variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button>
               </div>
               : 
               <div className="build-display">
-                <label style={{ textAlign: 'center',fontSize: "25px"}}>{this.state.buildname} </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <label style={{ textAlign: 'center',fontSize: "25px",fontFamily:'apple'}}>{this.state.buildname} </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;
-              <Button variant="outlined" color="secondary" onClick={this.editBuildName}><MdModeEdit/>Edit Build Name</Button>
+              <Button style={{ textAlign: 'center',fontSize: "20px"}} variant="outlined" color="secondary" onClick={this.editBuildName}><MdModeEdit/>Edit Build Name</Button>
               </div>
                 }
         </div>

@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 
 const AboutPage = () => (
   <div style={{ textAlign: 'center'}}>
-    <h1 style={{ textAlign: 'center', marginTop: '150px', marginBottom:'30px', fontSize:'70px'}}>Acknowledgements</h1>
+    <h1 style={{ textAlign: 'center', marginTop: '150px', marginBottom:'30px', fontSize:'70px', fontFamily: 'apple'}}>
+      Acknowledgements</h1>
     <div>
       <p >
       Special thanks to Prime Academy, Paxos Instructors, and the entire Paxos Cohort.

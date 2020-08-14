@@ -98,8 +98,8 @@ class EditBuildItem extends Component {
               >
                 <div className='text-white text-center d-flex align-items-center py-5 px-1'>
                   <div className="align-items-center">
-                  <MDBCardTitle tag='h1' className='pt-4 text-center'>
-                    <strong className="title">{this.props.thisComponent.name}</strong>
+                  <MDBCardTitle  >
+                    <strong className="title" style={{ fontSize: '60px',fontFamily: 'apple'}}>{this.props.thisComponent.name}</strong>
                   </MDBCardTitle>
                     <br></br>
                     <br></br>

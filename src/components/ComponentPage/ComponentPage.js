@@ -72,7 +72,8 @@ class ComponentPage extends Component {
     return (
       <>
       <div>
-        <h1 className= "title" style={{ textAlign: 'center', marginTop: '150px', marginBottom:'30px', fontSize:'70px'}}><strong>Select Your {this.props.match.params.componentName}</strong></h1>
+        <h1 className= "title" style={{ textAlign: 'center', marginTop: '150px', marginBottom:'30px', fontSize:'70px', fontFamily: 'apple'}}>
+          <strong>Select Your {this.props.match.params.componentName}</strong></h1>
       </div>
       
               

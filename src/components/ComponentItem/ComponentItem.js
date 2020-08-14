@@ -104,7 +104,7 @@ class ComponentItem extends Component {
               REMOVE</Button>
               :
                 <Button variant="contained" color="primary" size="small" color="primary" onClick = {this.selectComponent}>
-                SELECT THIS {this.props.thisComponent.type} </Button> 
+                SELECT</Button> 
                 
                 }
             </CardContent>

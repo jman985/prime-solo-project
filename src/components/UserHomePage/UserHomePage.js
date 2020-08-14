@@ -75,7 +75,7 @@ class UserHomePage extends Component {
   }
 
   newBuildHandleClick = () => {
-    document.cookie = `buildname=${'NO NAME'}`
+    document.cookie = `buildname=${' '}`
     
     this.props.dispatch({type: 'ADD_BUILD'})
   
@@ -87,7 +87,7 @@ class UserHomePage extends Component {
       <>
 
       <div className = 'container'>
-        <h1 style={{ textAlign: 'center', marginTop: '150px', fontSize:'70px', marginBottom: '50px'}} id="welcome">
+        <h1 style={{ textAlign: 'center', fontFamily:'apple', marginTop: '150px', fontSize:'70px', marginBottom: '50px'}} id="welcome">
           Welcome, {this.props.user.username}!</h1>
         {/* <p>Your ID is: {this.props.user.id}</p> */}
       </div>
@@ -96,12 +96,12 @@ class UserHomePage extends Component {
         <Box display="flex" justifyContent="center">
 
           <Box borderRadius={107} {...defaultProps} className="box-right" >
-            <Button style={{fontSize:'40px'}} variant="contained" color="primary" 
+            <Button style={{fontSize:'40px',fontFamily: 'apple'}} variant="contained" color="primary" 
             onClick = {this.newBuildHandleClick}>Build Your Hackintosh</Button>
           </Box>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <Box borderRadius={107} {...defaultProps} className="box-left" >
-            <Button style={{fontSize:'40px'}} variant="contained" color="primary" 
+            <Button style={{fontSize:'40px', fontFamily: 'apple'}} variant="contained" color="primary" 
             onClick = {this.viewBuildsHandleClick}>View Your Builds</Button>
           </Box>
           

@@ -1,4 +1,11 @@
 @font-face {
     font-family: 'SEGA';
     src: local('SEGA'), url(./fonts/SEGA.TTF) format('truetype');
+
   }
+
+  @font-face{
+    font-family: 'apple';
+    src: local('apple'), url(./fonts/MYRIADAT.TTF) format('truetype');
+  }
+
