@@ -85,18 +85,7 @@ class EditBuildPage extends Component {
         <h1 className = "title" style={{ textAlign: 'center',marginTop: '120px'}}><strong >Build Your Hackintosh</strong></h1>
       </div>
 
-      {/* <div className= "build-name">
-              <label style={{ textAlign: 'center'}}>
-                Build Name:</label>{this.state.buildnameIsEditable ?
-              <input placeholder="build name" onChange = {(event)=> this.onChange(event)}/>:<p>{this.state.buildname}</p>}
-
-            {this.state.buildnameIsEditable ?
-              <Button variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button> :
-              <Button variant="outlined" color="primary" onClick={this.editBuildName}>Edit Build Name</Button>
-            }
-          
-          </div> */}
-      <div className="build-name">
+        <div className="build-name">
                 {this.state.buildnameIsEditable ?
               <div className="build-edit">
               <label style={{ textAlign: 'center',fontSize: "25px"}}>NAME YOUR BUILD:</label>

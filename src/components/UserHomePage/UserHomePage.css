@@ -10,3 +10,14 @@ flex-direction: row;
 justify-content: space-evenly;
 
 }
+
+.box-left{
+    background-image: url(https://i.ytimg.com/vi/u5ChXnY1d4Y/maxresdefault.jpg);
+    background-position: center;
+
+}
+
+.box-right{
+    background-image: url(https://blogs.umass.edu/Techbytes/files/2016/06/K8WBToG.png);
+    background-position: center;
+}

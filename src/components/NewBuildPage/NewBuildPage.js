@@ -22,8 +22,6 @@ import EditBuildItem from '../EditBuildItem/EditBuildItem'
 
 
 
-
-
 class NewBuildPage extends Component {
 
   state = {

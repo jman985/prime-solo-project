@@ -20,6 +20,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
 import './UserHomePage.css';
 import { FaBox } from 'react-icons/fa';
+import ReactCardFlip from 'react-card-flip';
 
 
 const getCookie = (cookieName) => {
@@ -34,7 +35,11 @@ const defaultProps = {
   borderColor: 'text.primary',
   m: 1,
   border: 5,
-  style: { width: '700px', height: '700px' },
+  style: { width: '615px', height: '615px' },
+  textAlign: 'center',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 };
 
 class UserHomePage extends Component {
@@ -49,7 +54,7 @@ class UserHomePage extends Component {
     }
     
   }
-  
+
   componentWillUnmount(){
     window.removeEventListener('resize', this.handleResize);
   }
@@ -80,20 +85,23 @@ class UserHomePage extends Component {
   render() {
     return (
       <>
+
       <div className = 'container'>
-        <h1 style={{ textAlign: 'center', marginTop: '150px', fontSize:'70px'}} id="welcome">Welcome, {this.props.user.username}!</h1>
-        <p>Your ID is: {this.props.user.id}</p>
-        
-        <Button variant="contained" color="primary" onClick = {this.newBuildHandleClick}>Start A New Build</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       
-        <Button variant="contained" color="primary" onClick = {this.viewBuildsHandleClick}>View Your Builds</Button>
-        
+        <h1 style={{ textAlign: 'center', marginTop: '150px', fontSize:'70px', marginBottom: '50px'}} id="welcome">Welcome, {this.props.user.username}!</h1>
+        {/* <p>Your ID is: {this.props.user.id}</p> */}
       </div>
-    <Box display="flex" justifyContent="center">
-      <Box borderRadius={16} {...defaultProps} onClick = {this.newBuildHandleClick}/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <Box borderRadius={16} {...defaultProps} onClick = {this.viewBuildsHandleClick}/>
-    </Box>
+
+
+        <Box display="flex" justifyContent="center">
+          <Box borderRadius={107} {...defaultProps} className="box-left" >
+            <Button style={{fontSize:'40px'}} className= "button" variant="contained" color="primary" onClick = {this.viewBuildsHandleClick}>View Your Builds</Button>
+          </Box>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <Box borderRadius={107} {...defaultProps} className="box-right" >
+            <Button style={{fontSize:'40px'}} variant="contained" color="primary" onClick = {this.newBuildHandleClick}>Start A New Build</Button>
+          </Box>
+        </Box>
+
       </>
     );
   }
