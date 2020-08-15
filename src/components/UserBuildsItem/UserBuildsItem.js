@@ -12,7 +12,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader';
 import Collapse from '@material-ui/core/Collapse';
-import { Box, Grid, Slide, Paper, Typography} from '@material-ui/core';
+import { Box, Grid, Slide, Paper,Typography,Dialog,DialogContent,DialogContentText,DialogTitle,DialogActions} from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -29,6 +29,10 @@ const getCookie = (cookieName) => {
 
 class UserBuildsItem extends Component {
    
+  state = {
+    deleteDialogOpen: false
+  }
+
   constructor() {
     super();
       this.state = {
@@ -46,6 +50,7 @@ class UserBuildsItem extends Component {
     event.preventDefault();
     console.log('in remove item:', id);
     this.props.dispatch({type: 'REMOVE_BUILD', payload: id})
+    this.handleDialogClose();
   }
 
   editBuild = (event, id)=> {
@@ -57,6 +62,17 @@ class UserBuildsItem extends Component {
     this.props.history.push('/builder/' + id);
   }
 
+  handleDialogClickOpen = () => {
+    this.setState({
+      deleteDialogOpen: true
+    })
+  };
+
+  handleDialogClose = () => {
+      this.setState({
+        deleteDialogOpen: false
+      })
+    };
 
   render(){
   return (
@@ -86,7 +102,7 @@ class UserBuildsItem extends Component {
                 <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
                 </Button>&nbsp;
-                <Button variant="contained" color="secondary" size="small" onClick={ (event) => this.removeBuild(event, this.props.thisBuild.id) }>
+                <Button variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen}>
                 Delete Build
                 </Button>
             </CardContent>
@@ -108,7 +124,7 @@ class UserBuildsItem extends Component {
                 <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
                 </Button>&nbsp;
-                <Button variant="contained" color="secondary" size="small" onClick={ (event) => this.removeBuild(event, this.props.thisBuild.id) }>
+                <Button variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen} >
                 Delete Build
                 </Button>
             </CardContent>
@@ -116,6 +132,29 @@ class UserBuildsItem extends Component {
         </ReactCardFlip>
 
     </Grid>
+    <div>
+      <Dialog
+        open={this.state.deleteDialogOpen}
+        onClose={this.handleDialogClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete this build?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            This action cannot be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+        <Button onClick={ (event) => this.removeBuild(event, this.props.thisBuild.id) } color="secondary" autoFocus>
+            Yes
+          </Button>
+          <Button onClick={this.handleDialogClose} color="primary">
+            No
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
 </>
   )
 }
