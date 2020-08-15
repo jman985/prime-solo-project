@@ -42,7 +42,8 @@ class ComponentPage extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.handleResize);
+    this.props.dispatch({type: 'UNSET_COMPONENT'});
   }
 
   handleResize = () => {
@@ -63,7 +64,7 @@ class ComponentPage extends Component {
     this.props.selectComponent.type === 'Memory'? 'UPDATE_MEMORY':
       'UPDATE_PSU', payload: this.props.selectComponent});
 
-    this.props.history.push('/builder/' + this.props.match.params.buildId)
+    this.props.history.push('/builder/' + this.props.match.params.buildId);
 
     }
 

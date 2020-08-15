@@ -11,7 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader';
 import Collapse from '@material-ui/core/Collapse';
-import { Box, Grid, Slide, Paper, Typography, TextField} from '@material-ui/core';
+import { Box, Grid, Slide, Paper, Typography, TextField, Dialog, DialogContent, DialogContentText, DialogTitle, DialogActions} from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -36,6 +36,7 @@ class EditBuildPage extends Component {
   state = {
     buildname: getCookie('buildname'||''),
     buildnameIsEditable: false,
+    deleteDialogOpen: false
 
   }
 
@@ -79,6 +80,25 @@ class EditBuildPage extends Component {
     this.props.history.push('/review/' + this.props.match.params.buildId);
   }
 
+  removeBuild = (event) => {
+    event.preventDefault();
+    console.log('in remove item:', this.props.match.params.buildId);
+    this.props.dispatch({type: 'REMOVE_BUILD', payload: this.props.match.params.buildId})
+    this.handleDialogClose();
+    this.props.history.push('/home');
+  }
+
+  handleDialogClickOpen = () => {
+    this.setState({
+      deleteDialogOpen: true
+    })
+  };
+
+  handleDialogClose = () => {
+      this.setState({
+        deleteDialogOpen: false
+      })
+    };
 
   render() {
     return (
@@ -130,10 +150,36 @@ class EditBuildPage extends Component {
 <br></br>
 
 <div className= "horizontal-center">
-    <Button style={{ fontSize: "40px"}} variant="contained" size ="large" color="primary" onClick = {this.reviewBuildClick}>COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <Button style={{ fontSize: "40px"}} variant="contained" size ="large" color="primary" onClick = {this.reviewBuildClick}>
+      COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    {/* <Button variant="contained" color="secondary" >DELETE BUILD AND START OVER</Button> */}
+    <Button style={{ fontSize: "40px"}} variant="contained" size ="large" color="secondary" onClick={this.handleDialogClickOpen} >
+      DELETE BUILD AND START OVER</Button>
 </div>
+
+<div>
+      <Dialog
+        open={this.state.deleteDialogOpen}
+        onClose={this.handleDialogClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete this build?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            This action cannot be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+        <Button onClick={ (event) => this.removeBuild(event) } color="secondary" autoFocus>
+            Yes
+          </Button>
+          <Button onClick={this.handleDialogClose} color="primary">
+            No
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
  </>
  
     )
