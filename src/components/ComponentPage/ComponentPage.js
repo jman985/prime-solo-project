@@ -47,9 +47,8 @@ const styles = theme => ({
     marginLeft: '20px'
   },
   Button:{
-    textAlign: 'center',
-    fontFamily:'apple',
-    fontSize: "18px"
+    fontSize: "40px",
+    fontFamily:'apple'
   }
 });
 
@@ -99,7 +98,10 @@ class ComponentPage extends Component {
 
 
   render() {
+    const {classes} = this.props;
+
     return (
+
       <>
       <div>
         <h1 className= "title" style={{ textAlign: 'center', marginTop: '150px', marginBottom:'30px', fontSize:'70px', fontFamily: 'apple'}}>
@@ -107,33 +109,37 @@ class ComponentPage extends Component {
       </div>
       
               
-<div className = '.container'>
-   <Grid 
-   container
-   spacing={10}
-   direction="row"
-   justify="center"
-   alignItems="flex-start">
+          <div className = '.container'>
+            <Grid 
+            container
+            spacing={10}
+            direction="row"
+            justify="center"
+            alignItems="flex-start">
 
-       {this.props.buildComponent.filter(x => x.id > 8).map( y =>
-         <ComponentItem key={y.id} thisComponent={y}/>
-       )}
- </Grid>
- </div>
+                {this.props.buildComponent.filter(x => x.id > 8).map( y =>
+                  <ComponentItem key={y.id} thisComponent={y}/>
+                )}
+          </Grid>
+          </div>
 
 
-  <div style={{textAlign:'center',marginTop: '70px'}}>
- <Button style={{ fontSize: "40px",fontFamily:'apple'}} variant="contained" color="primary" onClick = {this.saveComponent}>SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <Button style={{ fontSize: "40px",fontFamily:'apple', position:'absolute'}} variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
- </div>
+      <div style={{textAlign:'center',marginTop: '70px'}}>
+        <Button className= {classes.Button} variant="contained" color="primary" onClick = {this.saveComponent}>
+            SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <Button className= {classes.Button} variant="contained" color="secondary" onClick = {this.cancelClick} >
+        CANCEL</Button>
+    </div>
 
  </>
- 
-    )
+     )
   }
 }
 
+ComponentPage.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
 selectComponent: state.selectComponent,
@@ -145,9 +151,6 @@ newBuild: state.newBuild,
 user: state.user,
 });
 
-ComponentPage.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(connect(mapStateToProps)(withRouter(ComponentPage)));
 
