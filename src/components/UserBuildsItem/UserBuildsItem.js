@@ -12,7 +12,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader';
 import Collapse from '@material-ui/core/Collapse';
-import { Box, Grid, Slide, Paper,Typography,Dialog,DialogContent,DialogContentText,DialogTitle,DialogActions} from '@material-ui/core';
+import { Box, Grid, Slide, Paper,Typography,Dialog,DialogContent,DialogContentText,DialogTitle,DialogActions,CardActions} from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -37,7 +37,7 @@ const styles = theme => ({
     borderColor: '#3f51b5'
   },
   Media: {
-    height: 240,
+    height: 260,
     objectFit: 'contain'
   },
   backCard:{
@@ -127,7 +127,7 @@ class UserBuildsItem extends Component {
           />
         </CardActionArea>
             <CardContent>
-              <Typography paragraph></Typography>
+            <Typography paragraph></Typography>
                 <Button className={classes.Button} variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
                 </Button>&nbsp;&nbsp;&nbsp;
@@ -140,28 +140,34 @@ class UserBuildsItem extends Component {
         <Card variant="outlined"
           className={classes.backCard}>
         <CardHeader style={{fontFamily:'apple'}} title= {this.props.thisBuild.name}/>
-        <CardActionArea>
           <CardMedia component="text" onClick={this.handleClick} className={classes.Media}
             aria-label="Show more"
             title={this.props.thisBuild.name}
             style={{width: 400,
-              height:400,
+              maxHeight:600,
               textAlign: 'center',
               color:'white',
               fontFamily:'apple',
-              boxShadow: 'inset 0 0 0 2000px rgba(65, 63, 69, 0.733)',
+              boxShadow: 'inset 0 0 0 1000px rgba(65, 63, 69, 0.733)',
               backgroundImage: this.props.thisBuild.case_id>8? 'url(' + this.props.thisBuild.image + ')': 
               'url("images/apple-bite2.png")',
               backgroundPosition: 'center'
               }}
-          />
-                <Button className={classes.Button} variant="contained" color="primary" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
+            >
+              <ul>
+                  <p>{this.props.thisBuild.id}                  </p>
+              </ul>
+                </CardMedia>
+                <CardContent >
+                  <Button className={classes.Button} variant="contained" color="primary" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
-                </Button>&nbsp;
-                <Button className={classes.Button} variant="contained" color="secondary" onClick={this.handleDialogClickOpen} >
+                  </Button>&nbsp;
+                  <Button className={classes.Button} variant="contained" color="secondary" onClick={this.handleDialogClickOpen} >
                 Delete Build
                 </Button>
-        </CardActionArea>
+                </CardContent>
+                
+        
             
           </Card>
         </ReactCardFlip>
