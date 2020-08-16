@@ -27,6 +27,36 @@ const getCookie = (cookieName) => {
   return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
 }
 
+const styles = theme => ({
+  frontCard: {
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple', 
+  },
+  Media: {
+    height: 240,
+    objectFit: 'contain'
+  },
+  backCard:{
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple', 
+  },
+  cardTitle: {
+    textAlign: 'center',
+    marginLeft: '20px'
+  },
+  Button:{
+    textAlign: 'center',
+    fontFamily:'apple',
+    fontSize: "18px"
+  }
+});
+
 class UserBuildsItem extends Component {
    
   state = {
@@ -75,57 +105,51 @@ class UserBuildsItem extends Component {
     };
 
   render(){
+    const {classes} = this.props;
+
   return (
     <>
-    <Grid item xs={8} sm={4} md={2} >
+    <Grid item xs={9} sm={4} md={3} >
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-      <Card variant="outlined"
-          style={{
-            textAlign: 'center',
-            marginLeft: "30px"
-            ,fontFamily:'apple'
-          }}>
+      <Card variant="outlined" className={classes.frontCard}>
         <CardHeader title={this.props.thisBuild.name}>
         </CardHeader>
-        <div className = "rgba-grey-strong">
         <CardActionArea>
-          <CardMedia  component="img" onClick={this.handleClick}
+          <CardMedia  component="img" onClick={this.handleClick} className={classes.Media}
             aria-label="Show more"
             alt={this.props.thisBuild.name}
             src={this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
             title={this.props.thisBuild.name}
             paragraph= {this.props.thisBuild.name}
+            
           />
         </CardActionArea>
-        </div>
             <CardContent>
               <Typography paragraph></Typography>
-                <Button style={{fontFamily:'apple',fontSize: "20px"}} variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
+                <Button className={classes.Button} variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
                 </Button>&nbsp;&nbsp;&nbsp;
-                <Button style={{fontFamily:'apple',fontSize: "20px"}} variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen}>
+                <Button className={classes.Button} variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen}>
                 Delete Build
                 </Button>
             </CardContent>
           </Card>
         <Card variant="outlined"
-          style={{ textAlign: 'center',marginLeft: "30px",fontFamily: 'apple'}}>
+          className={classes.frontCard}>
         <CardHeader title= {this.props.thisBuild.name}/>
-        <div className = "rgba-grey-strong">
         <CardActionArea>
-          <CardMedia  component="img" onClick={this.handleClick}
+          <CardMedia  component="img" onClick={this.handleClick} className={classes.Media}
             aria-label="Show more"
             alt={this.props.thisBuild.name}
             src= {this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
           />
         </CardActionArea>
-        </div>
             <CardContent>
             <Typography paragraph></Typography>
-                <Button style={{fontFamily:'apple',fontSize: "20px"}} variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
+                <Button className={classes.Button} variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
                 </Button>&nbsp;
-                <Button style={{fontFamily:'apple',fontSize: "20px"}}  variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen} >
+                <Button className={classes.Button} variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen} >
                 Delete Build
                 </Button>
             </CardContent>
@@ -157,9 +181,13 @@ class UserBuildsItem extends Component {
       </Dialog>
     </div>
 </>
-  )
+    )
+  }
 }
-}
+
+UserBuildsItem.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
   selectBuild: state.selectBuild,
@@ -167,4 +195,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default withRouter(connect(mapStateToProps)(UserBuildsItem));
+export default withStyles(styles)(connect(mapStateToProps)(withRouter(UserBuildsItem)));

@@ -48,6 +48,19 @@ const styles = theme => ({
     textAlign: 'center',
     fontFamily:'apple',
     fontSize: "18px"
+  },
+  Details:{
+    color:'white',
+    textAlign: 'center',
+    margin:'20px'
+  },
+  backTitle:{
+    textAlign: 'center', 
+    color:'white',
+    paddingTop: '50px',
+    fontSize: '40px',
+    fontFamily: 'apple',
+    fontWeight:'bold'
   }
 });
 
@@ -156,7 +169,7 @@ class ComponentItem extends Component {
               <br></br>
               <br></br>
               <br></br>
-              <p>{this.props.thisComponent.details}</p>
+              <p className={classes.Details}>{this.props.thisComponent.details}</p>
               <br></br>
               <br></br>
               <br></br>
