@@ -23,6 +23,35 @@ import ComponentItem from '../ComponentItem/ComponentItem'
 import EditBuildItem from '../EditBuildItem/EditBuildItem';
 import './ComponentPage.css'
 
+const styles = theme => ({
+  frontCard: {
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple', 
+  },
+  Media: {
+    height: 240,
+    objectFit: 'contain'
+  },
+  backCard:{
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple', 
+  },
+  cardTitle: {
+    textAlign: 'center',
+    marginLeft: '20px'
+  },
+  Button:{
+    textAlign: 'center',
+    fontFamily:'apple',
+    fontSize: "18px"
+  }
+});
 
 const getCookie = (cookieName) => {
   const cookieString = RegExp(''+cookieName+'[^;]+').exec(document.cookie);
@@ -93,10 +122,10 @@ class ComponentPage extends Component {
  </div>
 
 
-  <div className = "horizontal-center">
- <Button style={{ fontSize: "40px"}} variant="contained" color="primary" onClick = {this.saveComponent}>SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <div style={{textAlign:'center',marginTop: '70px'}}>
+ <Button style={{ fontSize: "40px",fontFamily:'apple'}} variant="contained" color="primary" onClick = {this.saveComponent}>SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <Button style={{ fontSize: "40px"}} variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
+ <Button style={{ fontSize: "40px",fontFamily:'apple', position:'absolute'}} variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
  </div>
 
  </>
@@ -104,6 +133,7 @@ class ComponentPage extends Component {
     )
   }
 }
+
 
 const mapStateToProps = state => ({
 selectComponent: state.selectComponent,
@@ -115,5 +145,9 @@ newBuild: state.newBuild,
 user: state.user,
 });
 
-export default withRouter(connect(mapStateToProps)(ComponentPage));
+ComponentPage.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(connect(mapStateToProps)(withRouter(ComponentPage)));
 

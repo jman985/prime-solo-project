@@ -20,7 +20,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 import EditBuildItem from '../EditBuildItem/EditBuildItem'
 import './EditBuildPage.css'
-import { MdModeEdit } from 'react-icons/md';
+import { MdModeEdit,MdAdd} from 'react-icons/md';
+import { IoIosSave } from 'react-icons/io';
 
 
 const getCookie = (cookieName) => {
@@ -114,14 +115,16 @@ class EditBuildPage extends Component {
                 
                 <TextField id="outlined-basic" label="Name your build" variant="outlined" onChange = {(event)=> this.onChange(event)}/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Button style={{ textAlign: 'center',fontSize: "20px"}} variant="contained" color="primary" onClick={this.saveBuildName}>Save Build Name</Button>
+                <Button style={{ textAlign: 'center',fontSize: "20px"}} variant="contained" color="primary" onClick={this.saveBuildName}>
+                  <IoIosSave/>&nbsp;Save Build Name</Button>
               </div>
               : 
               <div className="build-display">
                 
                 <label style={{ textAlign: 'center',fontSize: "25px",fontFamily:'apple'}}>{this.state.buildname} </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;
-              <Button style={{ textAlign: 'center',fontSize: "20px"}} variant="outlined" color="secondary" onClick={this.editBuildName}><MdModeEdit/>Edit Build Name</Button>
+              <Button style={{ textAlign: 'center',fontSize: "20px"}} variant="outlined" color="primary" onClick={this.editBuildName}><MdModeEdit/>
+              Add/Edit Build Name</Button>
               </div>
                 }
         </div>
@@ -149,12 +152,12 @@ class EditBuildPage extends Component {
 <br></br>
 <br></br>
 
-<div className= "horizontal-center">
-    <Button style={{ fontSize: "40px"}} variant="contained" size ="large" color="primary" onClick = {this.reviewBuildClick}>
-      COMPLETE BUILD AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style={{textAlign:'center'}}>
+    <Button style={{ fontSize: "40px",fontFamily:'apple'}} variant="contained" size ="large" color="primary" onClick = {this.reviewBuildClick}>
+      COMPLETE AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <Button style={{ fontSize: "40px"}} variant="contained" size ="large" color="secondary" onClick={this.handleDialogClickOpen} >
-      DELETE BUILD AND START OVER</Button>
+    <Button style={{ fontSize: "40px",fontFamily:'apple'}} variant="contained" size ="large" color="secondary" onClick={this.handleDialogClickOpen} >
+      DELETE AND START OVER</Button>
 </div>
 
 <div>

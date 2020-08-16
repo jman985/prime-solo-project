@@ -83,6 +83,7 @@ class UserBuildsItem extends Component {
           style={{
             textAlign: 'center',
             marginLeft: "30px"
+            ,fontFamily:'apple'
           }}>
         <CardHeader title={this.props.thisBuild.name}>
         </CardHeader>
@@ -99,10 +100,10 @@ class UserBuildsItem extends Component {
         </div>
             <CardContent>
               <Typography paragraph></Typography>
-                <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
+                <Button style={{fontFamily:'apple',fontSize: "20px"}} variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
-                </Button>&nbsp;
-                <Button variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen}>
+                </Button>&nbsp;&nbsp;&nbsp;
+                <Button style={{fontFamily:'apple',fontSize: "20px"}} variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen}>
                 Delete Build
                 </Button>
             </CardContent>
@@ -121,10 +122,10 @@ class UserBuildsItem extends Component {
         </div>
             <CardContent>
             <Typography paragraph></Typography>
-                <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
+                <Button style={{fontFamily:'apple',fontSize: "20px"}} variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
                 </Button>&nbsp;
-                <Button variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen} >
+                <Button style={{fontFamily:'apple',fontSize: "20px"}}  variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen} >
                 Delete Build
                 </Button>
             </CardContent>

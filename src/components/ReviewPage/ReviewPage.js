@@ -32,15 +32,15 @@ class ReviewPage extends Component {
   render() {
     return (
       <>
-      <div className="container" style={{ textAlign: 'center'}}>
-        <h1 className="title"><strong>REVIEW YOUR BUILD</strong></h1>
+      <div className="container" style={{ textAlign: 'center',fontFamily:'apple'}}>
+        <h1 style={{fontSize:'60px', marginTop:'120px'}}><strong>REVIEW YOUR BUILD</strong></h1>
           <br></br>
           <h1><strong>Build Name: </strong>{this.state.buildname}</h1>
           <br></br>
           <h2>Components</h2>
           <br></br>
           </div>
-      <div style={{ textAlign: 'center'}}>
+      <div style={{ textAlign: 'center',fontFamily: 'apple'}}>
         <ul >
             {this.props.build.filter(x => x.id > 8).map( component =>
             <> 
@@ -51,7 +51,7 @@ class ReviewPage extends Component {
          </ul>
           <br></br>
           <br></br>
-          <Button style={{ fontSize: "40px"}} variant="contained" size ="large" color="primary" onClick= {this.homeClick}>HOME</Button>
+          <Button style={{ fontSize: "40px", fontFamily:'apple'}} variant="contained" size ="large" color="primary" onClick= {this.homeClick}>HOME</Button>
          </div>
     </>
     )

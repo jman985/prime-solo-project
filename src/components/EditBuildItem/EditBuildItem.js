@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
-import { borders, sizing } from '@material-ui/system';
+import { borders, sizing, fontWeight, width } from '@material-ui/system';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
@@ -24,6 +24,36 @@ import { IoMdSwap } from 'react-icons/io';
 import { IoIosAdd } from 'react-icons/io';
 import { FaExchangeAlt } from 'react-icons/fa';
 
+
+const styles = theme => ({
+  frontCard: {
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple', 
+  },
+  Media: {
+    height: 240,
+    objectFit: 'contain'
+  },
+  backCard:{
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple', 
+  },
+  cardTitle: {
+    textAlign: 'center',
+    marginLeft: '20px'
+  },
+  Button:{
+    textAlign: 'center',
+    fontFamily:'apple',
+    fontSize: "18px"
+  }
+});
 
 
 class EditBuildItem extends Component {
@@ -61,21 +91,21 @@ class EditBuildItem extends Component {
   }
 
   render(){
+    const {classes} = this.props;
+
   return (
     <>
-  
   <Grid item xs={10} sm={8} md={5} >
     <MDBCol container spacing = {10} className= "column">
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
 
-      {this.props.thisComponent.id > 8?
+    {this.props.thisComponent.id > 8?
 
-        <Card className="card-front" variant="outlined"
-          style={{ textAlign: 'center'}}>
+        <Card className={classes.frontCard} variant="outlined">
           <CardHeader title={this.props.thisComponent.name}>
           </CardHeader>
           <CardActionArea>
-            <CardMedia component="img" onClick={this.handleClick}
+            <CardMedia component="img" onClick={this.handleClick} className={classes.Media}
               aria-label="Show more"
               alt={this.props.thisComponent.name}
               src={this.props.thisComponent.image}
@@ -83,7 +113,7 @@ class EditBuildItem extends Component {
               paragraph= {this.props.thisComponent.details}
             />
           </CardActionArea>
-            <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+            <MDBBtn className={classes.Button} color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
               <FaExchangeAlt /> Change {this.props.thisComponent.type}
             </MDBBtn>
         </Card>
@@ -99,7 +129,7 @@ class EditBuildItem extends Component {
                 <div className='text-white text-center d-flex align-items-center py-5 px-1'>
                   <div className="align-items-center">
                   <MDBCardTitle  >
-                    <strong className="title" style={{ fontSize: '60px',fontFamily: 'apple'}}>{this.props.thisComponent.name}</strong>
+                    <strong className="title" style={{ fontSize: '65px',fontFamily: 'apple',fontWeight:'bold'}}>{this.props.thisComponent.name}</strong>
                   </MDBCardTitle>
                     <br></br>
                     <br></br>
@@ -114,7 +144,8 @@ class EditBuildItem extends Component {
                     {/* <MDBBtn className= 'text-center' color='grey' onClick= {this.handleClick} >
                       Details
                     </MDBBtn> */}
-                    <MDBBtn className= 'text-center' color='deep-orange' onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
+                    <MDBBtn className={classes.Button} color='deep-orange'
+                         onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                       <IoIosAdd /> Add {this.props.thisComponent.type}
                     </MDBBtn>
                   </div>
@@ -124,30 +155,29 @@ class EditBuildItem extends Component {
 
         <MDBCard
           className='card-image'
-          style={{
-            backgroundImage: 'url(' + this.props.thisComponent.image + ')'
+          style={{ backgroundImage: 'url(' + this.props.thisComponent.image + ')'
           }}
           onClick= {this.handleClick}
         >
             
           <div className='text-white d-flex align-items-center py-5 px-1' style={{ textAlign: 'center'}} >
-            <div>
+            <div style={{ textAlign: 'center'}}>
               <MDBCardTitle tag='h3' className='pt-2 text-center' >
                 <strong>{this.props.thisComponent.name}</strong>
               </MDBCardTitle>
                 <br></br>
                 <br></br>
-                <p>{this.props.thisComponent.details}</p>
+                <p >{this.props.thisComponent.details}</p>
                 <br></br>
                 <br></br>
                 
                 {this.props.thisComponent.id > 8?
-                    <MDBBtn className= 'text-center h1' color='deep-orange' 
+                    <MDBBtn style={{ textAlign: 'center',fontFamily:'apple',fontSize: "18px"}} color='deep-orange' 
                       onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                       <FaExchangeAlt /> Change {this.props.thisComponent.type}
                     </MDBBtn>
                     :
-                    <MDBBtn className= 'text-center h1' color='deep-orange' 
+                    <MDBBtn style={{ textAlign: 'center',fontFamily:'apple',fontSize: "18px"}} color='deep-orange' 
                       onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                       <IoIosAdd/> Add {this.props.thisComponent.type}
                     </MDBBtn>
@@ -164,6 +194,10 @@ class EditBuildItem extends Component {
 }
 }
 
+EditBuildItem.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
 const mapStateToProps = state => ({
     buildComponent: state.buildComponent,
     selectBuild: state.selectBuild,
@@ -171,4 +205,4 @@ const mapStateToProps = state => ({
     user: state.user,
   });
   
-  export default withRouter(connect(mapStateToProps)(EditBuildItem));
+  export default withStyles(styles)(connect(mapStateToProps)(withRouter(EditBuildItem)));
