@@ -28,6 +28,7 @@ const styles = theme => ({
     margin: 'auto',
     textAlign: 'center',
     fontFamily:'apple', 
+    borderColor: '#3f51b5'
   },
   Media: {
     height: 240,
@@ -52,7 +53,7 @@ const styles = theme => ({
   Details:{
     color:'white',
     textAlign: 'center',
-    margin:'20px'
+    fontSize:'18px'
   },
   backTitle:{
     textAlign: 'center', 
@@ -162,7 +163,7 @@ class ComponentItem extends Component {
             
           <div className='text-white text-center align-items-center pl-80 px-10'>
             <div>
-              <MDBCardTitle tag='h3' className='pt-4'>
+              <MDBCardTitle className= {classes.backTitle}>
                 <strong>{this.props.thisComponent.name}</strong>
               </MDBCardTitle>
               <br></br>

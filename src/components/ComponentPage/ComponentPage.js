@@ -29,7 +29,7 @@ const styles = theme => ({
     height:400,
     margin: 'auto',
     textAlign: 'center',
-    fontFamily:'apple', 
+    fontFamily:'apple',
   },
   Media: {
     height: 240,

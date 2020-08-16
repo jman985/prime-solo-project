@@ -34,6 +34,7 @@ const styles = theme => ({
     margin: 'auto',
     textAlign: 'center',
     fontFamily:'apple', 
+    borderColor: '#3f51b5'
   },
   Media: {
     height: 240,
@@ -44,7 +45,9 @@ const styles = theme => ({
     height:400,
     margin: 'auto',
     textAlign: 'center',
-    fontFamily:'apple', 
+    fontFamily:'apple',
+    boxShadow: 'inset 0 0 0 2000px rgba(65, 63, 69, 0.733)',
+    color:'white'
   },
   cardTitle: {
     textAlign: 'center',
@@ -112,7 +115,7 @@ class UserBuildsItem extends Component {
     <Grid item xs={9} sm={4} md={3} >
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
       <Card variant="outlined" className={classes.frontCard}>
-        <CardHeader title={this.props.thisBuild.name}>
+        <CardHeader style={{fontFamily:'apple'}} title={this.props.thisBuild.name}>
         </CardHeader>
         <CardActionArea>
           <CardMedia  component="img" onClick={this.handleClick} className={classes.Media}
@@ -121,7 +124,6 @@ class UserBuildsItem extends Component {
             src={this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
             title={this.props.thisBuild.name}
             paragraph= {this.props.thisBuild.name}
-            
           />
         </CardActionArea>
             <CardContent>
@@ -134,25 +136,33 @@ class UserBuildsItem extends Component {
                 </Button>
             </CardContent>
           </Card>
+
         <Card variant="outlined"
-          className={classes.frontCard}>
-        <CardHeader title= {this.props.thisBuild.name}/>
+          className={classes.backCard}>
+        <CardHeader style={{fontFamily:'apple'}} title= {this.props.thisBuild.name}/>
         <CardActionArea>
-          <CardMedia  component="img" onClick={this.handleClick} className={classes.Media}
+          <CardMedia component="text" onClick={this.handleClick} className={classes.Media}
             aria-label="Show more"
-            alt={this.props.thisBuild.name}
-            src= {this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
+            title={this.props.thisBuild.name}
+            style={{width: 400,
+              height:400,
+              textAlign: 'center',
+              color:'white',
+              fontFamily:'apple',
+              boxShadow: 'inset 0 0 0 2000px rgba(65, 63, 69, 0.733)',
+              backgroundImage: this.props.thisBuild.case_id>8? 'url(' + this.props.thisBuild.image + ')': 
+              'url("images/apple-bite2.png")',
+              backgroundPosition: 'center'
+              }}
           />
-        </CardActionArea>
-            <CardContent>
-            <Typography paragraph></Typography>
-                <Button className={classes.Button} variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
+                <Button className={classes.Button} variant="contained" color="primary" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
                 </Button>&nbsp;
-                <Button className={classes.Button} variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen} >
+                <Button className={classes.Button} variant="contained" color="secondary" onClick={this.handleDialogClickOpen} >
                 Delete Build
                 </Button>
-            </CardContent>
+        </CardActionArea>
+            
           </Card>
         </ReactCardFlip>
 

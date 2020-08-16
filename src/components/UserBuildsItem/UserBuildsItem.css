@@ -1,1 +1,9 @@
 
+.component-default-front{
+    height: 400px;
+    width: 400px;
+    background-position: center;
+    background-size: cover;
+    box-shadow:inset 0 0 0 2000px rgba(65, 63, 69, 0.733);
+    cursor: pointer;
+}
