@@ -12,7 +12,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader';
 import Collapse from '@material-ui/core/Collapse';
-import { Box, Grid, Slide, Paper, Typography} from '@material-ui/core';
+import { Box, Grid, Slide, Paper,Typography,Dialog,DialogContent,DialogContentText,DialogTitle,DialogActions,CardActions} from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -27,8 +27,45 @@ const getCookie = (cookieName) => {
   return decodeURIComponent(!!cookieString ? cookieString.toString().replace(/^[^=]+./,'') : '');
 }
 
+const styles = theme => ({
+  frontCard: {
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple', 
+    borderColor: '#3f51b5'
+  },
+  Media: {
+    height: 260,
+    objectFit: 'contain'
+  },
+  backCard:{
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple',
+    boxShadow: 'inset 0 0 0 2000px rgba(65, 63, 69, 0.733)',
+    color:'white'
+  },
+  cardTitle: {
+    textAlign: 'center',
+    marginLeft: '20px'
+  },
+  Button:{
+    textAlign: 'center',
+    fontFamily:'apple',
+    fontSize: "18px"
+  }
+});
+
 class UserBuildsItem extends Component {
    
+  state = {
+    deleteDialogOpen: false
+  }
+
   constructor() {
     super();
       this.state = {
@@ -46,6 +83,7 @@ class UserBuildsItem extends Component {
     event.preventDefault();
     console.log('in remove item:', id);
     this.props.dispatch({type: 'REMOVE_BUILD', payload: id})
+    this.handleDialogClose();
   }
 
   editBuild = (event, id)=> {
@@ -57,22 +95,30 @@ class UserBuildsItem extends Component {
     this.props.history.push('/builder/' + id);
   }
 
+  handleDialogClickOpen = () => {
+    this.setState({
+      deleteDialogOpen: true
+    })
+  };
+
+  handleDialogClose = () => {
+      this.setState({
+        deleteDialogOpen: false
+      })
+    };
 
   render(){
+    const {classes} = this.props;
+
   return (
     <>
-    <Grid item xs={8} sm={4} md={2} >
+    <Grid item xs={9} sm={4} md={3} >
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-      <Card variant="outlined"
-          style={{
-            textAlign: 'center',
-            marginLeft: "30px"
-          }}>
-        <CardHeader title={this.props.thisBuild.name}>
+      <Card variant="outlined" className={classes.frontCard}>
+        <CardHeader style={{fontFamily:'apple'}} title={this.props.thisBuild.name}>
         </CardHeader>
-        <div className = "rgba-grey-strong">
         <CardActionArea>
-          <CardMedia  component="img" onClick={this.handleClick}
+          <CardMedia  component="img" onClick={this.handleClick} className={classes.Media}
             aria-label="Show more"
             alt={this.props.thisBuild.name}
             src={this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
@@ -80,46 +126,84 @@ class UserBuildsItem extends Component {
             paragraph= {this.props.thisBuild.name}
           />
         </CardActionArea>
-        </div>
             <CardContent>
-              <Typography paragraph></Typography>
-                <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
+            <Typography paragraph></Typography>
+                <Button className={classes.Button} variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
-                </Button>&nbsp;
-                <Button variant="contained" color="secondary" size="small" onClick={ (event) => this.removeBuild(event, this.props.thisBuild.id) }>
+                </Button>&nbsp;&nbsp;&nbsp;
+                <Button className={classes.Button} variant="contained" color="secondary" size="small" onClick={this.handleDialogClickOpen}>
                 Delete Build
                 </Button>
             </CardContent>
           </Card>
+
         <Card variant="outlined"
-          style={{ textAlign: 'center',marginLeft: "30px",fontFamily: 'apple'}}>
-        <CardHeader title= {this.props.thisBuild.name}/>
-        <div className = "rgba-grey-strong">
-        <CardActionArea>
-          <CardMedia  component="img" onClick={this.handleClick}
+          className={classes.backCard}>
+        <CardHeader style={{fontFamily:'apple'}} title= {this.props.thisBuild.name}/>
+          <CardMedia component="text" onClick={this.handleClick} className={classes.Media}
             aria-label="Show more"
-            alt={this.props.thisBuild.name}
-            src= {this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
-          />
-        </CardActionArea>
-        </div>
-            <CardContent>
-            <Typography paragraph></Typography>
-                <Button variant="contained" color="primary" size="small" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
+            title={this.props.thisBuild.name}
+            style={{width: 400,
+              maxHeight:600,
+              textAlign: 'center',
+              color:'white',
+              fontFamily:'apple',
+              boxShadow: 'inset 0 0 0 1000px rgba(65, 63, 69, 0.733)',
+              backgroundImage: this.props.thisBuild.case_id>8? 'url(' + this.props.thisBuild.image + ')': 
+              'url("images/apple-bite2.png")',
+              backgroundPosition: 'center'
+              }}
+            >
+              <ul>
+                  <p>{this.props.thisBuild.id}                  </p>
+              </ul>
+                </CardMedia>
+                <CardContent >
+                  <Button className={classes.Button} variant="contained" color="primary" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build
-                </Button>&nbsp;
-                <Button variant="contained" color="secondary" size="small" onClick={ (event) => this.removeBuild(event, this.props.thisBuild.id) }>
+                  </Button>&nbsp;
+                  <Button className={classes.Button} variant="contained" color="secondary" onClick={this.handleDialogClickOpen} >
                 Delete Build
                 </Button>
-            </CardContent>
+                </CardContent>
+                
+        
+            
           </Card>
         </ReactCardFlip>
 
     </Grid>
+    <div>
+      <Dialog
+        open={this.state.deleteDialogOpen}
+        onClose={this.handleDialogClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete this build?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            This action cannot be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+        <Button onClick={ (event) => this.removeBuild(event, this.props.thisBuild.id) } color="secondary" autoFocus>
+            Yes
+          </Button>
+          <Button onClick={this.handleDialogClose} color="primary">
+            No
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
 </>
-  )
+    )
+  }
 }
-}
+
+UserBuildsItem.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
   selectBuild: state.selectBuild,
@@ -127,4 +211,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default withRouter(connect(mapStateToProps)(UserBuildsItem));
+export default withStyles(styles)(connect(mapStateToProps)(withRouter(UserBuildsItem)));

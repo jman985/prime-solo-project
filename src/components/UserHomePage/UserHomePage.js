@@ -64,8 +64,7 @@ class UserHomePage extends Component {
   };
 
   state = {
-    buildname: getCookie('buildname'||''),
-    buildId: getCookie('buildId'||'')
+    buildname: getCookie('buildname'||' '),
   }
 
   viewBuildsHandleClick = () => {

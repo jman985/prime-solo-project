@@ -1,8 +1,5 @@
 
 
-
-
-
 // Used to store the build selected for detailed viewing, editing 
 const selectBuildReducer= (state = [], action) => {
     switch (action.type) {

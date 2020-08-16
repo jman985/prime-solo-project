@@ -21,6 +21,50 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import ReactCardFlip from 'react-card-flip';
 import './ComponentItem.css'
 
+const styles = theme => ({
+  frontCard: {
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple', 
+    borderColor: '#3f51b5'
+  },
+  Media: {
+    height: 240,
+    objectFit: 'contain'
+  },
+  backCard:{
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple', 
+  },
+  cardTitle: {
+    textAlign: 'center',
+    marginLeft: '20px'
+  },
+  Button:{
+    textAlign: 'center',
+    fontFamily:'apple',
+    fontSize: "18px"
+  },
+  Details:{
+    color:'white',
+    textAlign: 'center',
+    fontSize:'18px'
+  },
+  backTitle:{
+    textAlign: 'center', 
+    color:'white',
+    paddingTop: '50px',
+    fontSize: '40px',
+    fontFamily: 'apple',
+    fontWeight:'bold'
+  }
+});
+
 
 class ComponentItem extends Component {
 
@@ -79,37 +123,33 @@ class ComponentItem extends Component {
   
 
   render(){
+    const {classes} = this.props;
+
   return (
     <>
   <Grid item xs={9} sm={5} md={3}>
     <MDBCol container spacing = {50}>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-        <Card className="card-front" variant="outlined"
-          style={{ textAlign: 'center'}}>
+        <Card className= {classes.frontCard} variant="outlined">
         <CardHeader title={this.props.thisComponent.name}>
         </CardHeader>
         <CardActionArea>
-          <CardMedia component="img" onClick={this.handleClick} aria-expanded={this.state.expanded}
+          <CardMedia component="img" className={classes.Media} onClick={this.handleClick}
             aria-label="Show more"
             alt={this.props.thisComponent.name}
             src={this.props.thisComponent.image}
             title={this.props.thisComponent.name}
             paragraph= {this.props.thisComponent.details}
-            
           />
-          <CardContent>
+          </CardActionArea>
               <Typography paragraph></Typography>
               {this.state.componentSelected ?
-              <Button variant="contained" color="secondary" size="small" onClick = {this.deSelectComponent}>
+              <Button className={classes.Button} variant="contained" color="secondary" size="small" onClick = {this.deSelectComponent}>
               REMOVE</Button>
               :
-                <Button variant="contained" color="primary" size="small" color="primary" onClick = {this.selectComponent}>
+                <Button className={classes.Button} variant="contained" color="primary" size="small" color="primary" onClick = {this.selectComponent}>
                 SELECT</Button> 
-                
                 }
-            </CardContent>
-        </CardActionArea>
-            
           </Card>
 
         <MDBCard variant="outlined"
@@ -123,14 +163,14 @@ class ComponentItem extends Component {
             
           <div className='text-white text-center align-items-center pl-80 px-10'>
             <div>
-              <MDBCardTitle tag='h3' className='pt-4'>
+              <MDBCardTitle className= {classes.backTitle}>
                 <strong>{this.props.thisComponent.name}</strong>
               </MDBCardTitle>
               <br></br>
               <br></br>
               <br></br>
               <br></br>
-              <p>{this.props.thisComponent.details}</p>
+              <p className={classes.Details}>{this.props.thisComponent.details}</p>
               <br></br>
               <br></br>
               <br></br>
@@ -149,8 +189,12 @@ class ComponentItem extends Component {
 
 </>
   )
+  }
 }
-}
+
+ComponentItem.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
     selectComponent: state.selectComponent,
@@ -161,4 +205,4 @@ const mapStateToProps = state => ({
     user: state.user,
   });
   
-  export default withRouter(connect(mapStateToProps)(ComponentItem));
+  export default withStyles(styles)(connect(mapStateToProps)(withRouter(ComponentItem)));

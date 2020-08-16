@@ -23,6 +23,34 @@ import ComponentItem from '../ComponentItem/ComponentItem'
 import EditBuildItem from '../EditBuildItem/EditBuildItem';
 import './ComponentPage.css'
 
+const styles = theme => ({
+  frontCard: {
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple',
+  },
+  Media: {
+    height: 240,
+    objectFit: 'contain'
+  },
+  backCard:{
+    width: 400,
+    height:400,
+    margin: 'auto',
+    textAlign: 'center',
+    fontFamily:'apple', 
+  },
+  cardTitle: {
+    textAlign: 'center',
+    marginLeft: '20px'
+  },
+  Button:{
+    fontSize: "40px",
+    fontFamily:'apple'
+  }
+});
 
 const getCookie = (cookieName) => {
   const cookieString = RegExp(''+cookieName+'[^;]+').exec(document.cookie);
@@ -42,7 +70,8 @@ class ComponentPage extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.handleResize);
+    this.props.dispatch({type: 'UNSET_COMPONENT'});
   }
 
   handleResize = () => {
@@ -63,13 +92,16 @@ class ComponentPage extends Component {
     this.props.selectComponent.type === 'Memory'? 'UPDATE_MEMORY':
       'UPDATE_PSU', payload: this.props.selectComponent});
 
-    this.props.history.push('/builder/' + this.props.match.params.buildId)
+    this.props.history.push('/builder/' + this.props.match.params.buildId);
 
     }
 
 
   render() {
+    const {classes} = this.props;
+
     return (
+
       <>
       <div>
         <h1 className= "title" style={{ textAlign: 'center', marginTop: '150px', marginBottom:'30px', fontSize:'70px', fontFamily: 'apple'}}>
@@ -77,32 +109,37 @@ class ComponentPage extends Component {
       </div>
       
               
-<div className = '.container'>
-   <Grid 
-   container
-   spacing={10}
-   direction="row"
-   justify="center"
-   alignItems="flex-start">
+          <div className = '.container'>
+            <Grid 
+            container
+            spacing={10}
+            direction="row"
+            justify="center"
+            alignItems="flex-start">
 
-       {this.props.buildComponent.filter(x => x.id > 8).map( y =>
-         <ComponentItem key={y.id} thisComponent={y}/>
-       )}
- </Grid>
- </div>
+                {this.props.buildComponent.filter(x => x.id > 8).map( y =>
+                  <ComponentItem key={y.id} thisComponent={y}/>
+                )}
+          </Grid>
+          </div>
 
 
-  <div className = "horizontal-center">
- <Button style={{ fontSize: "40px"}} variant="contained" color="primary" onClick = {this.saveComponent}>SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <Button style={{ fontSize: "40px"}} variant="contained" color="secondary" onClick = {this.cancelClick} >CANCEL</Button>
- </div>
+      <div style={{textAlign:'center',marginTop: '70px'}}>
+        <Button className= {classes.Button} variant="contained" color="primary" onClick = {this.saveComponent}>
+            SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <Button className= {classes.Button} variant="contained" color="secondary" onClick = {this.cancelClick} >
+        CANCEL</Button>
+    </div>
 
  </>
- 
-    )
+     )
   }
 }
+
+ComponentPage.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
 selectComponent: state.selectComponent,
@@ -114,5 +151,6 @@ newBuild: state.newBuild,
 user: state.user,
 });
 
-export default withRouter(connect(mapStateToProps)(ComponentPage));
+
+export default withStyles(styles)(connect(mapStateToProps)(withRouter(ComponentPage)));
 
