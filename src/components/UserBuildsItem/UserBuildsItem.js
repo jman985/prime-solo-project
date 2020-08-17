@@ -40,6 +40,7 @@ const styles = theme => ({
     height: 260,
     objectFit: 'contain'
   },
+
   backCard:{
     width: 400,
     height:400,
@@ -120,7 +121,7 @@ class UserBuildsItem extends Component {
 
   return (
     <>
-    <Grid item xs={9} sm={4} md={3} >
+    <Grid item xs={9} sm={4} md={3}>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
       <Card variant="outlined" className={classes.frontCard}>
         <CardHeader style={{fontFamily:'apple'}} title={this.props.thisBuild.build_name}>
@@ -162,7 +163,7 @@ class UserBuildsItem extends Component {
               backgroundPosition: 'center'
               }}
             >
-              <div style={{fontSize: '18px', lineHeight: '.5'}}>             
+              <div style={{fontSize: '20px', lineHeight: '.9'}}>             
                   {this.buildBackRender('Case',this.props.thisBuild.case_id,this.props.thisBuild.case_name)}
                   {this.buildBackRender('CPU',this.props.thisBuild.cpu_id,this.props.thisBuild.cpu_name)}
                   {this.buildBackRender('Cooler',this.props.thisBuild.cooler_id,this.props.thisBuild.cooler_name)}

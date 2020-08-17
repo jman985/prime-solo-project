@@ -15,6 +15,7 @@
     position: relative;
     /* display: inline-block; */
     margin-left: 20%;
+    margin-bottom: 5%;
 }
 
 .horizontal-center {
@@ -34,5 +35,5 @@
   }
 
   .build-display{
-    margin-left: 36%;
+    margin-left: 32%;
   }
