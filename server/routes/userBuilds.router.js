@@ -9,8 +9,34 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', rejectUnauthenticated, req.user);
 
-    pool.query(`SELECT build.id, build.name, image, build.case_id FROM "build"
-    JOIN "components" ON "case_id" = "components"."id" WHERE build.user_id = $1 AND components.type = 'Case' ORDER BY build.name;`, [req.user.id])
+    pool.query(`SELECT build.id,
+    build.name as build_name,
+    build.case_id AS case_id,
+    "case".image AS image, 
+    "case".name AS "case_name",
+    cpu.id AS "cpu_id",
+    cpu.name AS "cpu_name",
+    cooler.id AS "cooler_id",
+    cooler.name AS "cooler_name",
+    mobo.id AS "mobo_id",
+    mobo.name AS "mobo_name",
+    gpu.id AS gpu_id,
+    gpu.name AS "gpu_name",
+    storage.id AS storage_id,
+    storage.name AS "storage_name",
+    memory.id AS memory_id,
+    memory.name AS "storage_name",
+    psu.id AS psu_id,
+    psu.name AS "psu_name"
+    FROM "build"
+    INNER JOIN "components" "case" ON "case_id" = "case"."id"
+    INNER JOIN "components" cpu ON "cpu_id" = "cpu"."id"
+    INNER JOIN "components" cooler ON "cooler_id" = "cooler"."id"
+    INNER JOIN "components" mobo ON "mobo_id" = "mobo"."id"
+    INNER JOIN "components" gpu ON "gpu_id" = "gpu"."id"
+    INNER JOIN "components" "storage" ON "storage_id" = "storage"."id"
+    INNER JOIN "components" memory ON "memory_id" = "memory"."id"
+    INNER JOIN "components" psu ON "psu_id" = "psu"."id" WHERE build.user_id = $1 ORDER BY build.name;`, [req.user.id])
         .then(results => res.send(results.rows))
         .catch(error => {
             console.log('Error making SELECT for builds:', error);

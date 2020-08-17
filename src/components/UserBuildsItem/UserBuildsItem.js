@@ -89,7 +89,7 @@ class UserBuildsItem extends Component {
   editBuild = (event, id)=> {
     event.preventDefault();
     this.props.dispatch({type: 'FETCH_BUILD', payload: id});
-    document.cookie = `buildname=${this.props.thisBuild.name}`
+    document.cookie = `buildname=${this.props.thisBuild.build_name}`
     console.log('select build', id);
     this.props.dispatch({type: 'SELECT_BUILD', payload: id})
     this.props.history.push('/builder/' + id);
@@ -107,6 +107,14 @@ class UserBuildsItem extends Component {
       })
     };
 
+    buildBackRender = (type, id, name) =>{
+      if(id > 8){
+        return <p>{type}: &nbsp;{name}</p>
+      }else{
+        return null;
+      }
+    }
+
   render(){
     const {classes} = this.props;
 
@@ -115,15 +123,15 @@ class UserBuildsItem extends Component {
     <Grid item xs={9} sm={4} md={3} >
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
       <Card variant="outlined" className={classes.frontCard}>
-        <CardHeader style={{fontFamily:'apple'}} title={this.props.thisBuild.name}>
+        <CardHeader style={{fontFamily:'apple'}} title={this.props.thisBuild.build_name}>
         </CardHeader>
         <CardActionArea>
           <CardMedia  component="img" onClick={this.handleClick} className={classes.Media}
             aria-label="Show more"
-            alt={this.props.thisBuild.name}
+            alt={this.props.thisBuild.build_name}
             src={this.props.thisBuild.case_id>8? this.props.thisBuild.image: "images/apple-bite2.png"}
-            title={this.props.thisBuild.name}
-            paragraph= {this.props.thisBuild.name}
+            title={this.props.thisBuild.build_name}
+            paragraph= {this.props.thisBuild.build_name}
           />
         </CardActionArea>
             <CardContent>
@@ -139,10 +147,10 @@ class UserBuildsItem extends Component {
 
         <Card variant="outlined"
           className={classes.backCard}>
-        <CardHeader style={{fontFamily:'apple'}} title= {this.props.thisBuild.name}/>
+        <CardHeader style={{fontFamily:'apple'}} title= {this.props.thisBuild.build_name}/>
           <CardMedia component="text" onClick={this.handleClick} className={classes.Media}
             aria-label="Show more"
-            title={this.props.thisBuild.name}
+            title={this.props.thisBuild.build_name}
             style={{width: 400,
               maxHeight:600,
               textAlign: 'center',
@@ -154,10 +162,18 @@ class UserBuildsItem extends Component {
               backgroundPosition: 'center'
               }}
             >
-              <ul>
-                  <p>{this.props.thisBuild.id}                  </p>
-              </ul>
-                </CardMedia>
+              <div style={{fontSize: '18px', lineHeight: '.5'}}>             
+                  {this.buildBackRender('Case',this.props.thisBuild.case_id,this.props.thisBuild.case_name)}
+                  {this.buildBackRender('CPU',this.props.thisBuild.cpu_id,this.props.thisBuild.cpu_name)}
+                  {this.buildBackRender('Cooler',this.props.thisBuild.cooler_id,this.props.thisBuild.cooler_name)}
+                  {this.buildBackRender('Motherboard',this.props.thisBuild.mobo_id,this.props.thisBuild.mobo_name)}
+                  {this.buildBackRender('GPU',this.props.thisBuild.gpu_id,this.props.thisBuild.gpu_name)}
+                  {this.buildBackRender('Storage',this.props.thisBuild.storage_id,this.props.thisBuild.storage_name)}
+                  {this.buildBackRender('Memory',this.props.thisBuild.memory_id,this.props.thisBuild.memory_name)}
+                  {this.buildBackRender('PSU',this.props.thisBuild.psu_id,this.props.thisBuild.psu_name)}
+                  
+                  </div>                
+              </CardMedia>
                 <CardContent >
                   <Button className={classes.Button} variant="contained" color="primary" color="primary" onClick={ (event) => this.editBuild(event, this.props.thisBuild.id) }>
                 Edit Build

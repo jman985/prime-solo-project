@@ -188,7 +188,7 @@ class EditBuildItem extends Component {
                     <br></br>
                     <br></br>
                     <div className={classes.mdbButton}>
-                      <MDBBtn className={classes.mdbButton} variant="contained" color='primary'
+                      <MDBBtn className={classes.mdbButton} variant="contained" color= "primary"
                          onClick = { (event) => this.gotoComponent(event, this.props.thisComponent.type) }>
                       <IoIosAdd /> Add {this.props.thisComponent.type}
                     </MDBBtn>
