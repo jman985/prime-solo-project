@@ -11,7 +11,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNav
 
   <MDBNavbar className = "nav-bar" dark expand="sm" scrolling fixed="top">
     <MDBNavbarBrand className= "apple-logo">
-      <img  src = "images/apple-bite2.png" height = "100" alt= "apple-bite" />&nbsp;
+      <img  src = "images/apple-bite2.png" height = "79" alt= "apple-bite" />&nbsp;
       </MDBNavbarBrand>
      <MDBNavbarBrand className= "nav-brand"> <strong className = "black-text" 
           >Hackintosh Builder</strong></MDBNavbarBrand>
