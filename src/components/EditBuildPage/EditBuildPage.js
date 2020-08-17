@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
-import { borders, sizing } from '@material-ui/system';
+import { borders, sizing, positions } from '@material-ui/system';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
@@ -115,7 +115,7 @@ class EditBuildPage extends Component {
                 
                 <TextField id="outlined-basic" label="Name your build" variant="outlined" onChange = {(event)=> this.onChange(event)}/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Button style={{ textAlign: 'center',fontSize: "20px"}} variant="contained" color="primary" onClick={this.saveBuildName}>
+                <Button style={{ textAlign: 'center',fontSize: "20px",fontFamily:'apple', position: 'absolute'}} variant="contained" color="primary" onClick={this.saveBuildName}>
                   <IoIosSave/>&nbsp;Save Build Name</Button>
               </div>
               : 
@@ -123,20 +123,20 @@ class EditBuildPage extends Component {
                 
                 <label style={{ textAlign: 'center',fontSize: "25px",fontFamily:'apple'}}>{this.state.buildname} </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;
-              <Button style={{ textAlign: 'center',fontSize: "20px"}} variant="outlined" color="primary" onClick={this.editBuildName}><MdModeEdit/>
+              <Button style={{ textAlign: 'center',fontSize: "20px", fontFamily:'apple'}} variant="outlined" color="primary" onClick={this.editBuildName}><MdModeEdit/>
               Add/Edit Build Name</Button>
               </div>
                 }
         </div>
               
-<div className= "container">
+<div >
    <Grid 
    container
-   spacing={16}
+   spacing={10}
    direction="row"
-   justify="space-between"
+   justify="space-evenly"
    alignItems="flex-start"
-   
+   position="absolute"
  >
    {/* {this.props.newBuild.filter(x => x.id > 1).map( y =>
          <NewBuildItem key={y.id} thisComponent={y}/>
@@ -152,7 +152,7 @@ class EditBuildPage extends Component {
 <br></br>
 <br></br>
 
-<div style={{textAlign:'center'}}>
+<div style={{textAlign:'center', marginTop: '100px'}}>
     <Button style={{ fontSize: "40px",fontFamily:'apple'}} variant="contained" size ="large" color="primary" onClick = {this.reviewBuildClick}>
       COMPLETE AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -25,7 +25,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     storage.id AS storage_id,
     storage.name AS "storage_name",
     memory.id AS memory_id,
-    memory.name AS "storage_name",
+    memory.name AS "memory_name",
     psu.id AS psu_id,
     psu.name AS "psu_name"
     FROM "build"

@@ -126,8 +126,7 @@ class EditBuildItem extends Component {
 
   return (
     <>
-  <Grid item xs={10} sm={8} md={5} >
-    <MDBCol container spacing = {10} className= "column">
+  <Grid item xs={10} sm={5} md={4} >
 
     {this.props.thisComponent.id > 8?
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
@@ -147,11 +146,11 @@ class EditBuildItem extends Component {
               <FaExchangeAlt /> Change {this.props.thisComponent.type}
             </MDBBtn>
         </Card>
-
+      
       <MDBCard
          className='card-image'
          style={{ backgroundImage: 'url(' + this.props.thisComponent.image + ')',
-         margin:'auto',
+         margin: 'auto'
          }}
          onClick= {this.handleClick}>
           <MDBCardTitle className={classes.backTitle}>
@@ -169,12 +168,15 @@ class EditBuildItem extends Component {
                    </MDBBtn>  
                    </div>             
           </MDBCard>
+          
+
        </ReactCardFlip>
           :
             <MDBCard
                 className='component-default-front'
                 style={{
                   backgroundImage: 'url(' + this.props.thisComponent.image + ')',
+                  margin:'auto'
                 }}
                 onClick= {this.handleClick}
               >
@@ -195,7 +197,6 @@ class EditBuildItem extends Component {
                     </div>
               </MDBCard>
           }
-         </MDBCol>
        </Grid>
  
 </>

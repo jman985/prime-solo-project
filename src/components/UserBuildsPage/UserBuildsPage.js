@@ -2,11 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { MDBCard, MDBCardTitle, MDBBtn, MDBRow, MDBCol, MDBIcon, MDBCardBody, MDBCardImage, MDBCardText} from 'mdbreact';
 import { Box, Grid, Slide, Paper, Typography} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { withRouter } from "react-router";
+import { withStyles } from '@material-ui/styles';
 
 import UserBuildsItem from '../UserBuildsItem/UserBuildsItem'
 
 
-
+const styles = theme => ({
+  Title: {
+    textAlign: 'center', 
+    fontFamily: 'apple',
+    marginTop: '150px', 
+    marginBottom:'50px', 
+    fontSize:'70px'
+  }})
 
 
 class UserBuildsPage extends Component {
@@ -26,10 +36,11 @@ class UserBuildsPage extends Component {
   };
 
   render() {
+    const {classes} = this.props;
     return (
       <>
          
-        <h1 style={{ textAlign: 'center', fontFamily: 'apple',marginTop: '150px', marginBottom:'50px', fontSize:'70px'}}><strong >Your Hackintosh Builds</strong></h1>
+        <h1 className={classes.Title}><strong >Your Hackintosh Builds</strong></h1>
          
           {/* <p>Your ID is: {this.props.user.id}</p> */}
 
@@ -52,9 +63,13 @@ class UserBuildsPage extends Component {
   }
 }
 
+UserBuildsPage.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
 const mapStateToProps = state => ({
   userBuilds: state.userBuilds,
   user: state.user,
 });
 
-export default connect(mapStateToProps)(UserBuildsPage);
+export default withStyles(styles)(connect(mapStateToProps)(withRouter(UserBuildsPage)));

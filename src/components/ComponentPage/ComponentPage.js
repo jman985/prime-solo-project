@@ -124,7 +124,7 @@ class ComponentPage extends Component {
           </div>
 
 
-      <div style={{textAlign:'center',marginTop: '70px'}}>
+      <div style={{textAlign:'center',marginTop: '100px'}}>
         <Button className= {classes.Button} variant="contained" color="primary" onClick = {this.saveComponent}>
             SAVE AND RETURN</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
