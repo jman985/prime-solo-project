@@ -8,6 +8,13 @@ import { Link } from 'react-router-dom';
 
 const AboutPage = () => (
   <div style={{ textAlign: 'center'}}>
+     <h1 style={{ textAlign: 'center', marginTop: '150px', marginBottom:'30px', fontSize:'70px', fontFamily: 'apple'}}>
+      About</h1>
+      <div style={{marginLeft: '300px',marginRight: '300px'}}>
+      <p>HACKINTOSH BUILDER is a personal computer components selector consisting solely of macOS-compatible computer components.  
+        The intent of this project is to allow the user to create their own custom, macOS-compatible computer a.k.a a “Hackintosh” capable of 
+        installing and running macOS just like a real Apple computer and save it to their user account.</p>
+        </div>
     <h1 style={{ textAlign: 'center', marginTop: '150px', marginBottom:'30px', fontSize:'70px', fontFamily: 'apple'}}>
       Acknowledgements</h1>
     <div>
