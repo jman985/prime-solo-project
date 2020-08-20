@@ -11,6 +11,9 @@ Directly above this is how long it took you to develop the project. Your project
 
 ## Screen Shots
 
+**Login Page View**
+![Login Page View](/public/images/loginView.png)
+
 **Home Page View**
 ![Home Page View](/public/images/homeView.png)
 
