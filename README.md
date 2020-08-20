@@ -14,7 +14,6 @@ To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.he
 **Home Page View**
 ![Home Page View](/public/images/homeView.png)
 
-
 ![Builder View](/public/images/builderView.png)
 
 ![Component View (CPU)](/public/images/componentView.png)
