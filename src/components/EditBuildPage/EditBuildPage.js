@@ -154,7 +154,7 @@ class EditBuildPage extends Component {
 
 <div style={{textAlign:'center', marginTop: '100px'}}>
     <Button style={{ fontSize: "40px",fontFamily:'apple'}} variant="contained" size ="large" color="primary" onClick = {this.reviewBuildClick}>
-      COMPLETE AND REVIEW</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      REVIEW AND PRINT</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <Button style={{ fontSize: "40px",fontFamily:'apple'}} variant="contained" size ="large" color="secondary" onClick={this.handleDialogClickOpen} >
       DELETE AND START OVER</Button>
