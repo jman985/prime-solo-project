@@ -58,12 +58,16 @@ Before you get started, make sure you have the following software installed on y
 ## Usage
 How does someone use this application? Tell a user story here.
 
-1. xxx
-2. xxx
-3. xxx
-4. xxx
-5. xxx
-6. xxx
+1. Register as a new user by clicking on "Don't have an account? Sign Up" at the login page and registering your username and password.
+2. Login using your username and password.
+3. At the Home Page, click on "Build Your Hackintosh" to start a new build.
+4. Add components to your build by clicking on "ADD CPU" (or "Add CPU Cooler", "Add Motherboard, etc.).
+5. At the "Select Your (Component Type)" page, click on any of the component photos to view and compare the specifications for that particular component.
+6. Click the "SELECT" button to select the desired component, then click "SAVE AND RETURN" to save it to your build.
+7. Repeat step 5 for any remaing components, as desired.  Click "CHANGE (Component Type)" on any previously added components to swap them out for a different variety.
+8. Click "ADD/EDIT BUILD NAME" at any time to name your build.
+9. When finished adding components, click "REVIEW AND PRINT" to view your build components on a print-friendly page.
+10. Click on "View Builds" in the navigation bar at any time to view any previous or in-progress builds for editing or deletion.
 
 
 ## Built With
