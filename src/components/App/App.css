@@ -42,3 +42,13 @@ input {
     border-bottom:1px solid #444; 
     cursor: pointer;
 }
+@font-face {
+    font-family: 'SEGA';
+    src: local('SEGA'), url(../../fonts/SEGA.TTF) format('truetype');
+
+  }
+
+  @font-face{
+    font-family: 'apple';
+    src: local('apple'), url(../../fonts/MYRIADAT.TTF) format('truetype');
+  }
