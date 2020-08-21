@@ -3,7 +3,6 @@ import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
 import userBuilds from './userBuildsReducer';
-import newBuild from './newBuildReducer';
 import selectBuild from './selectBuildReducer';
 import build from './buildReducer';
 import buildComponent from './componentReducer';
@@ -19,7 +18,6 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
   userBuilds,
-  newBuild,
   selectBuild,
   build,
   buildComponent,

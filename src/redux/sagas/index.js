@@ -4,7 +4,6 @@ import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import getUserBuildsSaga from './getUserBuildsSaga';
 import deleteUserBuildSaga from './deleteUserBuildSaga';
-import getNewBuildSaga from './getNewBuildSaga';
 import addBuildSaga from './addBuildSaga';
 import getBuildSaga from './getBuildSaga';
 import getComponentSaga from './getComponentSaga';
@@ -23,7 +22,6 @@ export default function* rootSaga() {
     userSaga(),
     getUserBuildsSaga(),
     deleteUserBuildSaga(),
-    getNewBuildSaga(),
     addBuildSaga(),
     getBuildSaga(),
     getComponentSaga(),
