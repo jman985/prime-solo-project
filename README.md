@@ -7,7 +7,7 @@ _Duration: 2 Week Sprint_
 Hackintosh Builder is a personal computer (PC) builder application that contains strictly macOS compatible PC components to allow the user to build their own custom PC capable of installing and running macOS.  To complete their "Hackintosh" build, the user chooses up to one PC component in each of eight catagories - CPU, CPU Cooler, Motherboard, Case, GPU, Storage, Memory, and PSU.  The app gives the user the freedom to Edit, Review and Print, Delete, or Save their build at any time.
 
 
-<!-- To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com) -->
+To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](https://whispering-reaches-08747.herokuapp.com/#/home)
 
 ## Screen Shots
 
